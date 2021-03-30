@@ -9,7 +9,10 @@
 
                 <button class="btn btn-primary" (click)="stateButton()">Cambiar estado</button>
             </div>
-            <p>{{message}}</p>
+            <p *ngIf="stateMessage; else nonePersona">{{message}}</p>
+            <ng-template #nonePersona>
+                <p>No se ha agregado ninguna persona</p>
+            </ng-template>
             <label>Titulo persona</label>
             <input type="text" class="form-control" 
             [(ngModel)]="titulo" >
