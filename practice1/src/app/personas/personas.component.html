@@ -3,28 +3,23 @@
         <div class="col">
             <h1>Listado de Personas</h1>
             <div class="row2">
-                <button class="btn btn-primary mr-2" [disabled]='estado'>Agregar persona</button>
+                <button class="btn btn-primary mr-2" 
+                [disabled]='estado'
+                (click)="addPersona()">Agregar persona</button>
 
                 <button class="btn btn-primary" (click)="stateButton()">Cambiar estado</button>
             </div>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
+            <p>{{message}}</p>
+            <label>Titulo persona</label>
+            <input type="text" class="form-control" 
+            [(ngModel)]="titulo" >
+            <P>{{titulo}}</P>
             <app-persona></app-persona>
             <app-persona></app-persona>
             <app-persona></app-persona>
         </div>
         <div class="col">
             <h1>Listado de Personas</h1>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
-            <app-persona></app-persona>
             <app-persona></app-persona>
             <app-persona></app-persona>
             <app-persona></app-persona>

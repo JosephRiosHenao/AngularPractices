@@ -7,8 +7,18 @@ import { Component } from "@angular/core";
 })
 export class PersonasComponent {
     public estado:boolean = true;
+    public message:string = "No se ha agregado ninguna persona";
+    public titulo:string = "Ingeniero";
 
-    stateButton() {
+    stateButton():void {
         this.estado = !this.estado;
     }
+
+    addPersona(){
+        this.message = "Persona agregada";
+    }
+
+    // modifyTitulo(event:Event){
+    //     this.titulo = (<HTMLInputElement>event.target).value;
+    // }
 }
