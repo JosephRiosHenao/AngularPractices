@@ -3,32 +3,22 @@
     <h3>{{title}}</h3>
   </div>
   <hr>
-  <form class="form-row">
-    <div class="form-group col-md-2 ">
-      <label for="nombre" class="sr-only">Nombre</label>
-      <input type="text" name="nombre" id="nombre" placeholder="Digite el nombre"
-      class="form-control bg-transparent border-success text-white-50" [(ngModel)]="nameInput">
-    </div>
-    <div class="form-group col-md-2 ">
-      <label for="apellido" class="sr-only">Apellido</label>
-      <input type="text" name="apellido" id="apellido" placeholder="Digite el apellido"
-      class="form-control bg-transparent border-success text-white-50" [(ngModel)]="lastNameInput">
-    </div>
-    <div class="col">
-      <button type="submit" class="btn btn-outline-success" (click)="addPersona()">Agregar</button>
-    </div>
-  </form>
+  <app-formulario
+  (personaCreada)="addPersona($event)"
+  ></app-formulario>
 </div>
 <hr>
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="m-3" *ngFor="let persona of personas; let i=index">
-        <span class="text-success btn">{{i+1}}.</span>
-          {{persona.nombre}} {{persona.apellido}} 
-        <button class="btn btn-outline-danger float-right" (click)="deletePersona(i)">Eliminar</button>
-        <hr>
-      </div>
+      <div class="m-3" >
+        <app-persona
+        (personaEliminada)="deletePersona($event)"
+        *ngFor="let personaElement of personas; let iElement = index"
+        [persona] = "personaElement"
+        [i] = "iElement">
+        </app-persona>
+			</div>
     </div>
   </div>
 </div>

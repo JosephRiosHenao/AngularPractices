@@ -14,15 +14,11 @@ export class AppComponent {
     new Persona('Karla','Lara')
   ];
 
-  public nameInput:string = "";
-  public lastNameInput:string = "";
-
-  addPersona(){
-    let personaAñadida = new Persona(this.nameInput,this.lastNameInput);
-    this.personas.push( personaAñadida );
+  addPersona(persona:Persona){
+    this.personas.push(persona);
   }
-
   deletePersona(index:number){
+
     this.personas.splice(index,1);
   }
 }
