@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+ /* Variables del tema light */
+ :root {
+    --main-color: #1083d6;
+    --title-color: #2a3b47;
+    --text-color: #697477;
+    --light-text-color: #a0a7ac;
+    --border-color: #eff3f5;
+    --container-color: #ffffff;
+    --body-color: #fbfbfe;
+}
+ /* Variables para el tema dark */
+body.dark-theme {
+    --main-color: #52a5e0;
+    --title-color: #eff3f5;
+    --text-color: #c8cdd0;
+    --light-text-color: #a0a7ac;
+    --border-color: #2a3b47;
+    --container-color: #212e36;
+    --body-color: #192229;
+}
+
+body.dark-theme{
+    background-color: var(--body-color);
+    color           : var(--text-color);
+}
+
+body.dark-theme h1, h2, h3, h4, h5, h6 {
+    color: var(--title-color);
+}
+
+body.dark-theme hr {
+    border        : none;
+    border-bottom : 1px solid var(--border-color);
+}
+
+
+body.dark-theme .subtitle {
+    color : var(--light-text-color);
+}
+
+body.dark-theme .button {
+    background : var(--main-color);
+}
+
+body.dark-theme .container {
+    background : var(--container-color);
+}
+
+
+.subtitle {
+    margin-top    : -1rem;
+    margin-bottom : 1.5rem;
+}
+
+.button {
+    color           : white;
+    text-decoration : none;
+    padding         : 0.5rem 1rem;
+    border-radius   : 0.25rem;
+}
+
+.container {
+    padding       : 1rem;
+    border-radius : 0.5rem;
+    margin-bottom : 2rem;
+}

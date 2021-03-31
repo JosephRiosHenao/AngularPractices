@@ -1,0 +1,22 @@
+<form class="form-row">
+    <div class="form-group col-md-2">
+        <label class="sr-only">Numero A</label>
+        <input type="number" class="form-control bg-transparent border-success text-white-50" placeholder="Ingresa el primer numero" [(ngModel)]="num1" name="num1" />
+    </div>
+    <div class="form-group col-md-2">
+        <label class="sr-only">Numero B</label>
+        <input type="number" class="form-control bg-transparent border-success text-white-50" placeholder="Ingresa el segundo numero" [(ngModel)]="num2" name="num2" />
+    </div>
+    <div class="col-1">
+        <button class="btn btn-outline-success" (click)="sumar()">Sumar</button>
+    </div>
+    <div class="col-1">
+        <button class="btn btn-outline-success" (click)="restar()">Restar</button>
+    </div>
+    <div class="col-1 mr-4">
+        <button class="btn btn-outline-success" (click)="multiplicar()">Multiplicar</button>
+    </div>
+    <div class="col-1">
+        <button class="btn btn-outline-success" (click)="dividir()">Dividir</button>
+    </div>
+</form>

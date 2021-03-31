@@ -1,15 +1,17 @@
-<div class="container">
-  <h1>{{title}}</h1>
-  <form >
-    <div class="form-group">
-      <label>Numero A</label>
-      <input type="number" class="form-control" placeholder="Ingresa el primer numero" [(ngModel)]="num1" name="num1">
+<div class="m-0 vh-100 row justify-content-center align-items-center">
+  <div class="container">
+    <div class="col">
+      <h1>{{title}}</h1>
+      <hr>
+      <app-form
+      (Sum)="sumar($event)"
+      (Res)="restar($event)"
+      (Mul)="multiplicar($event)"
+      (Div)="dividir($event)"
+      ></app-form>
+      <hr>
+      <app-result
+      [resultado]="result"></app-result>
     </div>
-    <div class="form-group">
-      <label>Numero B</label>
-      <input type="number" class="form-control" placeholder="Ingresa el segundo numero" [(ngModel)]="num2" name="num2">
-    </div>
-    <button type="submit" class="btn btn-outline-primary" (click)="sumar()">Sumar</button>
-  </form>
-  <p>{{result}}</p>
+  </div>
 </div>

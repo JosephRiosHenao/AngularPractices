@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Operadores } from './operadores.mode';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title = 'Calculadora - App';
-  public num1:number = 0;
-  public num2:number = 0;
-  public result:number = 0;
+  public title  = 'Calculadora - App';
+  public result = 0;
 
-  sumar():void {
-    this.result = this.num1 + this.num2;
-  }
+  sumar(numeros:Operadores)      {this.result = numeros.num1 + numeros.num2;}
+  restar(numeros:Operadores)     {this.result = numeros.num1 - numeros.num2;}
+  multiplicar(numeros:Operadores){this.result = numeros.num1 * numeros.num2;}
+  dividir(numeros:Operadores)    {this.result = numeros.num1 / numeros.num2;}
 }
