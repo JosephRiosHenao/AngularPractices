@@ -7,7 +7,7 @@
     <div class="form-group col-md-2 ">
         <label for="apellido" class="sr-only">Apellido</label>
         <input type="text" name="apellido" id="apellido" placeholder="Digite el apellido"
-            class="form-control bg-transparent border-success text-white-50" [(ngModel)]="lastNameInput">
+            class="form-control bg-transparent border-success text-white-50" #lastNameInput>
     </div>
     <div class="col">
         <button type="submit" class="btn btn-outline-success" (click)="addPersona()">Agregar</button>
