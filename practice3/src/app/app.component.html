@@ -3,9 +3,7 @@
     <h3>{{title}}</h3>
   </div>
   <hr>
-  <app-formulario
-  (personaCreada)="addPersona($event)"
-  ></app-formulario>
+  <app-formulario></app-formulario>
 </div>
 <hr>
 <div class="container">
@@ -13,7 +11,6 @@
     <div class="col">
       <div class="m-3" >
         <app-persona
-        (personaEliminada)="deletePersona($event)"
         *ngFor="let personaElement of personas; let iElement = index"
         [persona] = "personaElement"
         [i] = "iElement">

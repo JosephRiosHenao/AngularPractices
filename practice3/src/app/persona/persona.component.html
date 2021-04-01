@@ -2,5 +2,9 @@
 {{ persona.nombre }} {{ persona.apellido }}
 <button 
 	class="btn btn-outline-danger float-right"
-	(click)="deletePersona(i)">Eliminar</button>
+	(click)="deletePersona()">Eliminar</button>
+<button
+	class="btn btn-outline-info float-right mr-3"
+	(click)="editPersona()">Editar</button>
+
 <hr />
