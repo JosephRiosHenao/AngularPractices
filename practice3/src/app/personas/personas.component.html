@@ -1,0 +1,15 @@
+<div class="text-center mb-3">
+    <button class="btn rounded-circle btn-outline-success"  (click)="add()">+</button>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="m-3">
+                <app-persona *ngFor="let personaElement of personas; let iElement = index" 
+                    [persona]="personaElement"
+                    [i]="iElement">
+                </app-persona>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,8 @@
 <div class="container mt-5">
   <div class="col">
-    <h3>{{title}}</h3>
-  </div>
-  <hr>
-  <app-formulario></app-formulario>
-</div>
-<hr>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="m-3" >
-        <app-persona
-        *ngFor="let personaElement of personas; let iElement = index"
-        [persona] = "personaElement"
-        [i] = "iElement">
-        </app-persona>
-			</div>
-    </div>
+    <button class="btn btn-outline-warning float-right" [routerLink]="['']">HOME</button>
+    <h3>{{ title }}</h3>
   </div>
 </div>
+<hr />
+<router-outlet></router-outlet>

@@ -1,9 +1,11 @@
 <span class="text-success btn">{{ i + 1 }}.</span>
 {{ persona.nombre }} {{ persona.apellido }}
 <button 
+
 	class="btn btn-outline-danger float-right"
 	(click)="deletePersona()">Eliminar</button>
 <button
+	[routerLink]="['/personas',i]"
 	class="btn btn-outline-info float-right mr-3"
 	(click)="editPersona()">Editar</button>
 
