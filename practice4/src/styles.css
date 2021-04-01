@@ -17,6 +17,7 @@ body {
     position: relative;
     height: 100vh;
     font-weight: 400;
+    background-color: #444;
 }
 
 .right { float: right; }
@@ -109,10 +110,10 @@ body {
 .agregar {
     padding: 14px;
     border-bottom: 1px solid #e7e7e7;
-    background-color: #f7f7f7;
-}
+    background-color: #333 !important;}
 
 .agregar_contenedor {
+    background-color: #333 !important;
     margin: 0 auto;
     text-align: center;
 }
@@ -123,7 +124,7 @@ body {
     height: 44px;
     font-size: 18px;
     color: inherit;
-    background-color: #fff;
+    background-color: #333 !important;
     margin-right: 10px;
     font-weight: 300;
     transition: border 0.3s;
@@ -132,7 +133,7 @@ body {
 .agregar_descripcion,
 .agregar_valor {
     border: 1px solid #e7e7e7;
-    background-color: #fff;
+    background-color: #333 !important;
     color: inherit;
     font-family: inherit;
     font-size: 14px;
@@ -197,10 +198,12 @@ h2 {
 .elemento {
     padding: 13px;
     border-bottom: 1px solid #e7e7e7;
+    background-color: #555;
+    color:white;
 }
 
 .elemento:first-child { border-top: 1px solid #e7e7e7; }
-.elemento:nth-child(even) { background-color: #f7f7f7; }
+.elemento:nth-child(even) { background-color: rgb(97, 97, 97); }
 
 .elemento_descripcion {
     float: left;
@@ -216,7 +219,7 @@ h2 {
     margin-left: 20px;
     transition: transform 0.3s;
     font-size: 11px;
-    background-color: #FFDAD9;
+    background-color: #f3a19e;
     padding: 3px;
     border-radius: 3px;
     width: 32px;
@@ -259,7 +262,7 @@ h2 {
 
 
 .no_pagado {
-    background-color: #FFDAD9 !important;
+    background-color: #333 !important;
     cursor: pointer;
     color: #FF5049;
 
