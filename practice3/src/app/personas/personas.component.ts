@@ -16,7 +16,7 @@ export class PersonasComponent implements OnInit {
   ngOnInit():void {
     this.personasService.loadPersons().subscribe( 
       (persons: Persona[]) => {
-        persons = this.personas;
+        this.personas = persons;
         console.log("Leyendo Firebase...");
         console.log(persons);
         this.personasService.setPersons(this.personas);

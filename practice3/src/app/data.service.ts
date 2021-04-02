@@ -18,4 +18,22 @@ export class DataService{
             error => console.log('Error save perons: '+error)
         );
     }
+
+    modifyPersons(index:number, persona:Persona){
+        let url:string = "https://list-persons-angular-default-rtdb.firebaseio.com/datos/"+index+".json";
+        this.httpClient.put(url,persona).subscribe
+        (
+            response => console.log("Result modify person: "+response),
+            error => console.log("Error modify person: "+error),
+        );
+    }
+
+    deletePerson(index:number){
+        let url:string = "https://list-persons-angular-default-rtdb.firebaseio.com/datos/"+index+".json";
+        this.httpClient.delete(url).subscribe
+        (
+            response => console.log("Result delete person: "+response),
+            error => console.log("Error delete person: "+error),
+        );
+    }
 }

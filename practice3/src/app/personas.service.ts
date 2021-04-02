@@ -10,6 +10,8 @@ export class PersonasService{
     modifyPersona(nameInput: string, apellidoInput: string, index:number) {
         this.personas[index].nombre = nameInput;
         this.personas[index].apellido = apellidoInput;
+        let persona = new Persona(nameInput,apellidoInput);
+        this.dataService.modifyPersons(index, persona);
     }
     queryPersona(index:number) {
         let persona = this.personas[index]
@@ -40,6 +42,14 @@ export class PersonasService{
     }
     deletePersona(index:number){
         this.loggingService.sendMessageConsole("Se elimino perosna: "+(index+1)+". "+this.personas[index].nombre+" "+this.personas[index].apellido);
+        this.dataService.deletePerson(index);
         this.personas.splice(index,1);
+        this.organizeIndex();
     }
+    organizeIndex() {
+        if(this.personas != null){
+            this.dataService.savePersons(this.personas);
+        }
+    }
+    
 }
