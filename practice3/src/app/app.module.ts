@@ -9,20 +9,25 @@ import { PersonasService } from './personas.service';
 import { PersonaComponent } from './personas/persona/persona.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
 import { PersonasComponent } from './personas/personas.component';
+import { ErrorComponent } from './error/error.component';
+import { DataService } from './data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonaComponent,
     FormularioComponent,
-    PersonasComponent
+    PersonasComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [LoggingService, PersonasService],
+  providers: [LoggingService, PersonasService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

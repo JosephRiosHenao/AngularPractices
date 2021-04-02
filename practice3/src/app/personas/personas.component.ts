@@ -13,8 +13,14 @@ export class PersonasComponent implements OnInit {
 
   constructor(private personasService:PersonasService,
               private router:Router){}
-  ngOnInit(): void {
-    this.personas = this.personasService.personas;
+  ngOnInit():void {
+    this.personasService.loadPersons().subscribe( 
+      (persons: Persona[]) => {
+        persons = this.personas;
+        console.log("Leyendo Firebase...");
+        console.log(persons);
+        this.personasService.setPersons(this.personas);
+      });
   }
 
   add(){
