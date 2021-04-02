@@ -5,6 +5,14 @@ import { Persona } from "./persona.model";
 
 @Injectable()
 export class PersonasService{
+    modifyPersona(nameInput: string, apellidoInput: string, index:number) {
+        this.personas[index].nombre = nameInput;
+        this.personas[index].apellido = apellidoInput;
+    }
+    queryPersona(index:number) {
+        let persona = this.personas[index]
+        return persona;
+    }
     public personas:Persona[] = [
         new Persona('Juan','Perez'), 
         new Persona('Laura','Juarez'),

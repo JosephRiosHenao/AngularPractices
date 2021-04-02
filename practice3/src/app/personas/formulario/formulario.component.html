@@ -8,10 +8,10 @@
         <div class="form-group col-md-2 ">
             <label for="apellido" class="sr-only">Apellido</label>
             <input type="text" name="apellido" id="apellido" placeholder="Digite el apellido"
-                class="form-control bg-transparent border-success text-white-50" #lastNameInput required>
+                class="form-control bg-transparent border-success text-white-50" [(ngModel)]="apellidoInput" required>
         </div>
         <div class="col">
-            <button type="submit" class="btn btn-outline-success" >Agregar</button>
+            <button type="submit" class="btn btn-outline-success" >{{state}}</button>
         </div>
     </form>
 </div>
