@@ -16,9 +16,14 @@ export class PersonasComponent implements OnInit {
   ngOnInit():void {
     this.personasService.loadPersons().subscribe( 
       (persons: Persona[]) => {
-        this.personas = persons;
         console.log("Leyendo Firebase...");
         console.log(persons);
+        if(persons!=null){
+          this.personas = persons;
+        }else{
+          let persona = new Persona('Nombre','Apellido');
+          this.personas.push(persona);
+        }
         this.personasService.setPersons(this.personas);
       });
   }
