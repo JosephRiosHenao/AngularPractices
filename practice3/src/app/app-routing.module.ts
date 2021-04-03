@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuardian } from './login/login.guardian.service';
 import { FormularioComponent } from './personas/formulario/formulario.component';
 import { PersonasComponent } from './personas/personas.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes:Routes = [
   { path:'', component: PersonasComponent, canActivate:[LoginGuardian] },
@@ -13,6 +14,7 @@ const routes:Routes = [
     { path:':id', component: FormularioComponent },
   ]},
   { path:'login', component: LoginComponent },
+  { path:'register', component: RegisterComponent },
   { path:'**', component: ErrorComponent }
 ]
 

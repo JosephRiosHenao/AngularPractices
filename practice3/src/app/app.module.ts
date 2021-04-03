@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { LoginGuardian } from './login/login.guardian.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginGuardian } from './login/login.guardian.service';
     FormularioComponent,
     PersonasComponent,
     ErrorComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

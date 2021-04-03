@@ -11,12 +11,14 @@ export class DataService{
 
     loadPersons():Observable<any>{
         const token = this.loginService.getIdToken();
-        return this.httpClient.get('https://list-persons-angular-default-rtdb.firebaseio.com/datos.json?auth='+token);
+        const uid = this.loginService.getUID();
+        return this.httpClient.get('https://list-persons-angular-default-rtdb.firebaseio.com/datos/'+uid+'.json?auth='+token);
     }
 
     savePersons(personas:Persona[]){
         const token = this.loginService.getIdToken();
-        this.httpClient.put('https://list-persons-angular-default-rtdb.firebaseio.com/datos.json?auth='+token,personas).subscribe
+        const uid = this.loginService.getUID();
+        this.httpClient.put('https://list-persons-angular-default-rtdb.firebaseio.com/datos/'+uid+'.json?auth='+token,personas).subscribe
         (
             response => console.log('Result save persons: '+response),
             error => console.log('Error save perons: '+error)
@@ -25,7 +27,8 @@ export class DataService{
 
     modifyPersons(index:number, persona:Persona){
         const token = this.loginService.getIdToken();
-        let url:string = "https://list-persons-angular-default-rtdb.firebaseio.com/datos/"+index+".json?auth="+token;
+        const uid = this.loginService.getUID();
+        let url:string = "https://list-persons-angular-default-rtdb.firebaseio.com/datos/"+uid+"/"+index+".json?auth="+token;
         this.httpClient.put(url,persona).subscribe
         (
             response => console.log("Result modify person: "+response),
@@ -35,7 +38,8 @@ export class DataService{
 
     deletePerson(index:number){
         const token = this.loginService.getIdToken();
-        let url:string = "https://list-persons-angular-default-rtdb.firebaseio.com/datos/"+index+".json?auth="+token;
+        const uid = this.loginService.getUID();
+        let url:string = "https://list-persons-angular-default-rtdb.firebaseio.com/datos/"+uid+"/"+index+".json?auth="+token;
         this.httpClient.delete(url).subscribe
         (
             response => console.log("Result delete person: "+response),
