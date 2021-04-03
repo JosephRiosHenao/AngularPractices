@@ -1,13 +1,13 @@
 <div class="container">
     <form class="form" #f="ngForm" (ngSubmit)="f.form.valid && login(f)">
-        <div class="input-group">
+        <div class="form-group col">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" placeholder="Digite su email" ngModel required size="20">
+            <input type="email" name="email" class="form-control bg-transparent border-success text-white-50" placeholder="Digite su email" ngModel required size="20">
         </div>
-        <div class="input-group">
+        <div class="form-group col">
             <label for="password">Contrasña</label>
-            <input type="password" name="password" class="form-control" placeholder="Digite su contraseña" ngModel requiered size="20">
+            <input type="password" name="password" class="form-control bg-transparent border-success text-white-50" placeholder="Digite su contraseña" ngModel requiered size="20">
         </div>
-        <button type="submit" class="btn btn-outline-light">+</button>
+        <button type="submit" class="btn btn-outline-success col">Login</button>
     </form>
 </div>
