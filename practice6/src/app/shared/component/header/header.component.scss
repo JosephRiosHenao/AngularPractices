@@ -1,9 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+nav.menu {
+background-color: #3e3f3a;
+color: #fff;
+ul {
+    display: flex;
+    list-style-type: none;
+    li{
+        padding: 1rem;
+        &:hover{
+            background-color: #bb6b03;
+            transition: all 1s;
+        }
+        a{
+            text-decoration: none;
+            color:#fff;
+            margin: 0 5px;
+        }
+    }
 }
-body {
-    color: #333;
-    line-height: 1.6;
 }

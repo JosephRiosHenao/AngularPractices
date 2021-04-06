@@ -1,1 +1,43 @@
-<p>contact works!</p>
+<form novalidate class="mt-5 shadow-lg p-5" (ngSubmit)="onSave()" [formGroup]="contactForm">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Name" formControlName="name" [class]="isValidField('name')">
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('name').errors?.required">
+                    Please enter your name
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Last name" formControlName='lastName' [class]="isValidField('lastName')">
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Email" formControlName='email' [class]="isValidField('email')">
+        <div class="invalid-feedback">
+            <span *ngIf="contactForm.get('email').errors?.required">
+                Please enter your email
+            </span>
+            <span *ngIf="contactForm.get('email').errors?.pattern">
+                Please enter a valid email
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Message:</label>
+        <textarea rows="3" class="form-control" formControlName='message' [class]="isValidField('message')"></textarea>
+        <div class="invalid-feedback">
+            <span *ngIf="contactForm.get('message').errors?.required">
+                Please enter your message
+            </span>
+            <span *ngIf="contactForm.get('message').errors?.minlength">
+                The message must be longer than to {{contactForm.get('message').errors?.minlength?.requiredLength}} characters.
+            </span>
+            <span *ngIf="contactForm.get('message').errors?.maxlength">
+                The message must be less than or equal to {{contactForm.get('message').errors?.maxlength?.requiredLength}} characters.
+            </span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary btn-block">SEND</button>
+</form>
+<p class="text-center" style="color: rgb(143, 143, 143);">@Copyright Pochi 2021-2030</p>
