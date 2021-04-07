@@ -30,6 +30,10 @@ export class ContactComponent implements OnInit {
     ? "is-invalid" : validateField.touched ? "is-valid" : "";
   }
 
+  notRequiredValue(field:string):string{
+    return this.contactForm.get(field).value ? 'is-valid' : '';
+  }
+
   private initForm():void{
     this.contactForm = this.fb.group({
       name: ['',[Validators.required]],
