@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'practice7';
+  
+  playSound(sound:number):void{
+    const audio = new Audio();
+    audio.src = '../assets/sounds/'+sound+'.mp3';
+    audio.load();
+    audio.play();
+  }
+
+
 }
