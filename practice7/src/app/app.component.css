@@ -1,14 +1,32 @@
 .list-group-item{
     cursor: pointer;
-    height: 250px;
+    height: 400px;
 }
+
+h1 {
+    color: rgb(44, 44, 44);
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -250px;
+}
+
+
 
 .row{
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
 }
-.list-group-item-action:active .black {
-    opacity: 0.5;
+
+.list-group{
+    width: 100vw;
+}
+
+.black {
+    background-color: rgba(71, 71, 71, 0.267);
+}
+.list-group-item-action:active {
+    background-color: rgb(112, 112, 112);
 }
