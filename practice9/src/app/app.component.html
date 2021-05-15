@@ -20,7 +20,7 @@
 <div class="shadow mt-5 ">
   <div class="" *ngFor="let person of persons">
     <div class="col  p-2">
-      <div class="row m-auto"> - {{ person.name }} {{ person.lastName }} {{ person.quality }}</div>
+      <div class="row m-auto"> o|<- <span [ngClass]="{ 'qualityStudent' : person.quality }"> Estudiante </span> - {{ person.name }} {{ person.lastName }}</div>
     </div>
     <hr>
   </div>
