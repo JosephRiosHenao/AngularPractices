@@ -4,6 +4,9 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -17,6 +20,21 @@ const routes: Routes = [
   {
     path : "help",
     component: HelpComponent
+  },
+  {
+    path : "users",
+    component: UsersComponent,
+    children:
+    [
+      {
+        path : "add",
+        component: AddUserComponent
+      },
+      {
+        path : "edit",
+        component: EditUserComponent
+      }
+    ],
   },
   {
     path : "**",
