@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { UsersComponent } from './users/users.component';
+import { ProductComponent } from './product/product.component';
+import { ProductInfoComponent } from './product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UsersComponent } from './users/users.component';
     HeaderComponent,
     EditUserComponent,
     AddUserComponent,
-    UsersComponent
+    UsersComponent,
+    ProductComponent,
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,
