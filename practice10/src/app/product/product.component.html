@@ -1,1 +1,13 @@
-<p>product works!</p>
+<div class="container">
+  <div class="row align-items-center">
+    <div *ngFor="let product of products; index as i" class="col  col-sm-6 col-md-4">
+      <div   class="col m-4 card text-center mt-5 align-self-center" style="width: 18rem;" >
+        <div class="card-body" >
+          <h5 class="card-title"> {{ product.name }} </h5>
+          <p class="card-text"> {{ product.description }} </p>
+          <a href="#" class="btn btn-primary">{{ product.price | currency }} </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
