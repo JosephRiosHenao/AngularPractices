@@ -4,6 +4,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductInfoComponent } from './product-info/product-info.component';
 import { ProductComponent } from './product/product.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
     ],
   },
   { path : "product",  component : ProductComponent  },
+  { path : "product-info/:name", component: ProductInfoComponent},
   { path : "**",       component : NotFoundComponent },
 ];
 

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../models/product.model';
 
-interface Product {
-  name:string;
-  description:string;
-  price:number;
-}
+
 
 @Component({
   selector: 'app-product',
