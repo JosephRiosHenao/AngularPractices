@@ -25,7 +25,7 @@ export class FormAddComponent implements OnInit {
     });
   }
 
-  submit(){
+  submit() {
     console.log(this.formCreate.value);
   }
 }
