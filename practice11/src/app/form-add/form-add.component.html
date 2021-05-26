@@ -9,21 +9,21 @@
           <div class="col form-group has-success">
             <label>Name</label>
               <input type="text" class="form-control" placeholder="Input your name" formControlName="name" [ngClass]="{'is-valid': formCreate.controls.name.dirty && formCreate.controls.name.valid, 'is-invalid': formCreate.controls.name.dirty && !formCreate.controls.name.valid }">
-              <div class="invalid-feedback">Name is requiered</div>
+              <div class="invalid-feedback" *ngIf="formCreate.controls.name.errors?.required" >Name is requiered</div>
               <div class="valid-feedback">Success!</div>
             </div>
             <div class="col form-group">
               <label>Email</label>
-              <input type="email" class="form-control" placeholder="Input your email" formControlName="email" >
-              <div class="invalid-feedback">Email is requiered?</div>
-              <div class="invalid-feedback">Email is don`t valid?</div>
+              <input type="email" class="form-control" placeholder="Input your email" formControlName="email" [ngClass]="{ 'is-valid': formCreate.controls.email.dirty && formCreate.controls.email.valid, 'is-invalid': formCreate.controls.email.dirty && !formCreate.controls.email.valid }" >
+              <div class="invalid-feedback" *ngIf="formCreate.controls.email.errors?.required">Email is requiered</div>
+              <div class="invalid-feedback" *ngIf="formCreate.controls.email.errors?.email">Email is don`t valid</div>
               <div class="valid-feedback">Success!</div>
             </div>
             <div class="col form-group">
               <label>Password</label>
-              <input type="password" class="form-control" placeholder="Input your password" formControlName="password" [ngClass]="{ 'is-valid': formCreate.controls.password.valid, 'is-invalid': !formCreate.controls.password.valid }">
-              <div class="invalid-feedback">Password is requiered</div>
-              <div class="invalid-feedback">The length must be more than 8 characters</div>
+              <input type="password" class="form-control" placeholder="Input your password" formControlName="password" [ngClass]="{ 'is-valid': formCreate.controls.password.dirty && formCreate.controls.password.valid, 'is-invalid': formCreate.controls.password.dirty && !formCreate.controls.password.valid }">
+              <div class="invalid-feedback" *ngIf="formCreate.controls.password.errors?.required ">Password is requiered</div>
+              <div class="invalid-feedback" *ngIf="formCreate.controls.password.errors?.minlength">The length must be more than 8 characters</div>
               <div class="valid-feedback">Success!</div>
           </div>
         </div>
