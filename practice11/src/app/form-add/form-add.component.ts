@@ -27,5 +27,7 @@ export class FormAddComponent implements OnInit {
 
   submit() {
     console.log(this.formCreate.value);
+    console.log(this.formCreate.valid);
+    console.log(this.formCreate.controls.name.valid);
   }
 }

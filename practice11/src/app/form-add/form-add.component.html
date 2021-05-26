@@ -8,7 +8,7 @@
         <div class="col">
           <div class="col form-group has-success">
             <label>Name</label>
-              <input type="text" class="form-control" placeholder="Input your name" formControlName="name">
+              <input type="text" class="form-control" placeholder="Input your name" formControlName="name" [ngClass]="{'is-valid': formCreate.controls.name.dirty && formCreate.controls.name.valid, 'is-invalid': formCreate.controls.name.dirty && !formCreate.controls.name.valid }">
               <div class="invalid-feedback">Name is requiered</div>
               <div class="valid-feedback">Success!</div>
             </div>
@@ -21,13 +21,13 @@
             </div>
             <div class="col form-group">
               <label>Password</label>
-              <input type="password" class="form-control" placeholder="Input your password" formControlName="password" >
+              <input type="password" class="form-control" placeholder="Input your password" formControlName="password" [ngClass]="{ 'is-valid': formCreate.controls.password.valid, 'is-invalid': !formCreate.controls.password.valid }">
               <div class="invalid-feedback">Password is requiered</div>
               <div class="invalid-feedback">The length must be more than 8 characters</div>
               <div class="valid-feedback">Success!</div>
           </div>
         </div>
-        <button type="button" class="btn btn-dark btn-block mt-4" (click)="submit()">Submit</button>
+        <button [disabled]="!formCreate.valid" type="button" class="btn btn-dark btn-block mt-4" (click)="submit()">Submit</button>
       </form>
 
     </div>
