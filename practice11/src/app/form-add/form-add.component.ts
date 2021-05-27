@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+interface Person {
+  name:string;
+  email:string;
+  password:string;
+}
+
 @Component({
   selector: 'app-form-add',
   templateUrl: './form-add.component.html',
@@ -8,6 +14,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormAddComponent implements OnInit {
   formCreate!: FormGroup;
+
+  persons:Array<Person> = [];
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -29,5 +37,6 @@ export class FormAddComponent implements OnInit {
     console.log(this.formCreate.value);
     console.log(this.formCreate.valid);
     console.log(this.formCreate.controls.name.valid);
+    this.persons.push(this.formCreate.value as Person);
   }
 }
