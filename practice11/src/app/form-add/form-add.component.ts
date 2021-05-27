@@ -34,9 +34,17 @@ export class FormAddComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.formCreate.value);
-    console.log(this.formCreate.valid);
-    console.log(this.formCreate.controls.name.valid);
     this.persons.push(this.formCreate.value as Person);
+    this.formCreate.reset();
   }
+
+  edit(index:number){
+    this.formCreate.setValue({
+      name : this.persons[index].name,
+      email : this.persons[index].email,
+      password : this.persons[index].password,
+    });
+  }
+
+  submitEdit(){}
 }

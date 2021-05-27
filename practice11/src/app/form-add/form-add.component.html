@@ -27,7 +27,8 @@
               <div class="valid-feedback">Success!</div>
           </div>
         </div>
-        <button [disabled]="!formCreate.valid" type="button" class="btn btn-dark btn-block mt-4" (click)="submit()">Submit</button>
+        <button [disabled]="!formCreate.valid" type="button" class="btn btn-success btn-block mt-4" (click)="submit()">Submit</button>
+        <button [disabled]="!formCreate.valid" type="button" class="btn btn-info btn-block mt-4" (click)="submit()">Edit</button>
       </form>
 
     </div>
@@ -35,10 +36,11 @@
 </div>
 
 
-<div class="card mx-auto my-4" style="width: 300px;" *ngFor="let person of persons">
+<div class="card mx-auto my-4" style="width: 300px;" *ngFor="let person of persons; let i = index">
   <div class="card-body">
-    <h5 class="card-title">{{ person.name }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted"> {{ person.password}} </h6>
-    <p class="card-text"> {{ person.email }} </p>
+    <h5 class="card-title text-center">{{ person.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted text-center"> {{ person.password}} </h6>
+    <p class="card-text text-center"> {{ person.email }} </p>
+    <button class="btn btn-info btn-block" (click)="edit(i)"> Editar </button>
   </div>
 </div>
