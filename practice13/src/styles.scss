@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+.title-header {
+  font-size: 1em;
+}
+.subtitle-header {
+  font-size: 0.5em;
+}
+
+@media (min-width: 768px) {
+  .title-header {
+    font-size: 1.5em;
+  }
+  .subtitle-header {
+    font-size: 1em;
+  }
+  .subtitle-header-more {
+    font-size: 1.5em;
+  }
+}
