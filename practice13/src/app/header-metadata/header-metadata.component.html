@@ -6,28 +6,51 @@
 
 <div class="row">
   <div class="col">
-    <label for="Empresa" class="form-label">Empresa</label>
-    <input type="email" class="form-control" id="Empresa" placeholder="CAS TECHNOLOGY S.A.S" disabled>
+    <label for="enterprise" class="form-label">Empresa</label>
+    <input type="email" class="form-control" id="enterprise" placeholder="CAS TECHNOLOGY S.A.S" disabled>
   </div>
   <div class="col">
-    <label for="Ciudad" class="form-label">Ciudad</label>
-    <input type="email" class="form-control" id="Ciudad" placeholder="Cali, Medellin, Bogota, Pereira, Jamundi">
+    <label for="city" class="form-label">Ciudad</label>
+    <input type="email" class="form-control" id="city" placeholder="Cali, Medellin, Bogota, Pereira, Jamundi">
   </div>
 </div>
 
 <hr>
+
 <div class="row">
-  <div class="col">
-    <select class="form-select" aria-label="Default select example">
+  <div class="col-6">
+    <label for="typeWork" class="form-label">Feche de ejecución</label>
+    <select class="form-select" id="typeWork">
       <option selected>Seleccione una opción</option>
       <option value="1">Diseño</option>
       <option value="2">Interventoría</option>
       <option value="3">Construcción</option>
     </select>
   </div>
-  <div class="col">
-    <label for="date-picker">Feche de ejecución</label>
+  <div class="col-6">
+    <label for="datePicker" class="form-label">Feche de ejecución</label>
+    <input type="date" class="form-control" id="dataPicker" placeholder="dd/mm/yyyy">
   </div>
 </div>
 
+<hr>
 
+<div class="row">
+  <label for="nameProyect" class="form-label">Nombre del proyecto</label>
+  <input type="text" class="form-control" id="nameProyect" placeholder="Digite el nombre del proyecto">
+</div>
+
+<hr>
+
+<div class="row align-items-center ">
+  <div class="col-6">
+    <label for="timeInit" class="form-label">Hora de inicio</label>
+    <input type="time" id="timeInit" class="form-control">
+  </div>
+  <div class="col-6">
+    <label for="timeFinish" class="form-label">Hora de finalización</label>
+    <input type="time" id="timeFinish" class="form-control">
+  </div>
+</div>
+
+<hr>

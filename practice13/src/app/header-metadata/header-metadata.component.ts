@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderMetadataComponent implements OnInit {
 
+  public dateStart:string = "";
   constructor() { }
 
   ngOnInit(): void {
