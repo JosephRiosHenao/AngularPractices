@@ -27,8 +27,8 @@
               <div class="valid-feedback">Success!</div>
           </div>
         </div>
-        <button [disabled]="!formCreate.valid" type="button" class="btn btn-success btn-block mt-4" (click)="submit()">Submit</button>
-        <button [disabled]="!formCreate.valid" type="button" class="btn btn-info btn-block mt-4" (click)="submit()">Edit</button>
+        <button *ngIf="modeSubmit" [disabled]="!formCreate.valid" type="button" class="btn btn-success btn-block mt-4" (click)="submit()">Submit</button>
+        <button *ngIf="!modeSubmit" [disabled]="!formCreate.valid" type="button" class="btn btn-info btn-block mt-4" (click)="submit()">Edit</button>
       </form>
 
     </div>
@@ -41,6 +41,9 @@
     <h5 class="card-title text-center">{{ person.name }}</h5>
     <h6 class="card-subtitle mb-2 text-muted text-center"> {{ person.password}} </h6>
     <p class="card-text text-center"> {{ person.email }} </p>
-    <button class="btn btn-info btn-block" (click)="edit(i)"> Editar </button>
+    <div class="row">
+      <button class="btn btn-info  col-8" (click)="edit(i)"> Editar </button>
+      <button class="btn btn-danger  col-4" (click)="deleteItem(i)"> Delete </button>
+    </div>
   </div>
 </div>

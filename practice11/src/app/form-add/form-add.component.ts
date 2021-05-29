@@ -15,6 +15,9 @@ interface Person {
 export class FormAddComponent implements OnInit {
   formCreate!: FormGroup;
 
+  modeSubmit:boolean = true;
+  indexEdit:number = 0;
+
   persons:Array<Person> = [];
   constructor(private formBuilder: FormBuilder) {}
 
@@ -34,7 +37,12 @@ export class FormAddComponent implements OnInit {
   }
 
   submit() {
-    this.persons.push(this.formCreate.value as Person);
+    if (this.modeSubmit) {
+      this.persons.push(this.formCreate.value as Person);
+    }else {
+      this.modeSubmit = true;
+      this.submitEdit();
+    }
     this.formCreate.reset();
   }
 
@@ -44,7 +52,17 @@ export class FormAddComponent implements OnInit {
       email : this.persons[index].email,
       password : this.persons[index].password,
     });
+    this.modeSubmit = false;
+    this.indexEdit = index;
   }
 
-  submitEdit(){}
+  submitEdit(){
+    this.persons[this.indexEdit].name = this.formCreate.value.name;
+    this.persons[this.indexEdit].email = this.formCreate.value.email;
+    this.persons[this.indexEdit].password = this.formCreate.value.password;
+  }
+
+  deleteItem(index:number){
+    this.persons.splice(index,1);
+  }
 }
