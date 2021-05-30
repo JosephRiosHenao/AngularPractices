@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HeaderMetadataComponent } from './header-metadata/header-metadata.component';
 import { FormsModule } from '@angular/forms';
+import { FormBeforeWorkComponent } from './form-before-work/form-before-work.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HeaderMetadataComponent
+    HeaderMetadataComponent,
+    FormBeforeWorkComponent
   ],
   imports: [
     BrowserModule,
