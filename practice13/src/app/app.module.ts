@@ -8,6 +8,7 @@ import { HeaderMetadataComponent } from './header-metadata/header-metadata.compo
 import { FormsModule } from '@angular/forms';
 import { FormBeforeWorkComponent } from './form-before-work/form-before-work.component';
 import { FormAfterWorkComponent } from './form-after-work/form-after-work.component';
+import { FormDuringWorkComponent } from './form-during-work/form-during-work.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormAfterWorkComponent } from './form-after-work/form-after-work.compon
     HeaderComponent,
     HeaderMetadataComponent,
     FormBeforeWorkComponent,
-    FormAfterWorkComponent
+    FormAfterWorkComponent,
+    FormDuringWorkComponent
   ],
   imports: [
     BrowserModule,
