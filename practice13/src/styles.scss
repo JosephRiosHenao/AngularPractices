@@ -9,6 +9,13 @@
 .subtitle-header-more {
   font-size: 0.8em;
 }
+
+canvas {
+  width: 500px;
+  height: 500px;
+  background-color: #0D0909;
+}
+
 @media (min-width: 768px) {
   .title-header {
     font-size: 1.5em;
