@@ -1,37 +1,80 @@
-<div class="container">
-  <div class="card shadow-lg mb-5">
-    <div class="card-body">
-      <app-header></app-header>
-      <app-header-metadata></app-header-metadata>
-    </div>
-  </div>
 
+<div>
 
-  <div class="card shadow-lg mb-5">
-    <div class="card-body">
-      <div class="col">
-        <h2 class="text-center">Análisis de la tarea</h2>
-        <hr>
+  <div class="container">
+    <div class="card shadow-lg mb-5">
+      <div class="card-body">
+        <app-header></app-header>
+        <app-header-metadata></app-header-metadata>
       </div>
-      <app-form-before-work></app-form-before-work>
+    </div>
+
+
+    <div class="card shadow-lg mb-5">
+      <div class="card-body">
+        <div class="col">
+          <h2 class="text-center">Análisis de la tarea</h2>
+          <hr>
+        </div>
+        <app-form-before-work></app-form-before-work>
+      </div>
+    </div>
+
+    <div class="card shadow-lg mb-5">
+      <div class="card-body">
+        <app-form-during-work></app-form-during-work>
+      </div>
+    </div>
+
+    <div class="card shadow-lg mb-5">
+      <div class="card-body">
+        <app-form-after-work></app-form-after-work>
+      </div>
+    </div>
+
+    <div class="card shadow-lg mb-5">
+      <div class="card-body">
+        <app-extra-info></app-extra-info>
+      </div>
     </div>
   </div>
 
-  <div class="card shadow-lg mb-5">
-    <div class="card-body">
-      <app-form-during-work></app-form-during-work>
-    </div>
-  </div>
+  <button class="btn btn-primary m-auto">GENERATE</button>
+</div>
 
-  <div class="card shadow-lg mb-5">
-    <div class="card-body">
-      <app-form-after-work></app-form-after-work>
-    </div>
-  </div>
+<div class="">
+  <div class="container">
+    <div id="pdfTable" #pdfTable>
+      <h2 class="text-danger">Angular HTML To PDF Generator Example - ItSolutionStuff.com</h2>
 
-  <div class="card shadow-lg mb-5">
-    <div class="card-body">
-      <app-extra-info></app-extra-info>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hardik</td>
+            <td>Savani</td>
+            <td>itsolutionstuff.com</td>
+          </tr>
+          <tr>
+            <td>Vimal</td>
+            <td>Kashiyani</td>
+            <td>hdtuto.com</td>
+          </tr>
+          <tr>
+            <td>Harshad</td>
+            <td>Pathak</td>
+            <td>nicesnippets.com</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
+
+  <button class="btn btn-primary" (click)="downloadAsPDF()">Export To PDF</button>
