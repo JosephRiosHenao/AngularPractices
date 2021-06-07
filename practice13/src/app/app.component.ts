@@ -23,8 +23,7 @@ export class AppComponent {
     var html = htmlToPdfmake(pdfTable.innerHTML);
 
     const documentDefinition = { content: html };
-    pdfMake.createPdf(documentDefinition).open();
-    doc.save("documento");
+    pdfMake.createPdf(documentDefinition).download("Informe");
 
   }
 }
