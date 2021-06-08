@@ -15,21 +15,22 @@ import { DataService } from './providers/data.service';
 })
 export class AppComponent {
 
-  constructor(public data:DataService){}
+  constructor(public dataService:DataService){}
 
   @ViewChild('pdfTable') pdfTable: ElementRef;
 
   public downloadAsPDF() {
-    // const doc = new jsPDF();
+    const doc = new jsPDF();
 
-    // const pdfTable = this.pdfTable.nativeElement;
+    const pdfTable = this.pdfTable.nativeElement;
 
-    // var html = htmlToPdfmake(pdfTable.innerHTML);
+    var html = htmlToPdfmake(pdfTable.innerHTML);
 
-    // const documentDefinition = { content: html };
-    // pdfMake.createPdf(documentDefinition).download("Informe");
+    const documentDefinition = { content: html };
+    pdfMake.createPdf(documentDefinition).download("Informe");
 
-    this.data.a();
+    // this.dataService.a();
+    // this.dataService.data.form.before.form[1]
 
   }
 }
