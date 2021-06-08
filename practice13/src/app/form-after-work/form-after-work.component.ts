@@ -14,7 +14,6 @@ export class FormAfterWorkComponent implements OnInit {
   public form4:number = 2;
   public form5:number = 2;
   public form6:number = 2;
-  public form7:number = 2;
 
   constructor( private dataService:DataService ) { }
 
@@ -29,6 +28,5 @@ export class FormAfterWorkComponent implements OnInit {
     this.dataService.data.form.after.form[4] = this.form4;
     this.dataService.data.form.after.form[5] = this.form5;
     this.dataService.data.form.after.form[6] = this.form6;
-    this.dataService.data.form.after.form[7] = this.form7;
   }
 }

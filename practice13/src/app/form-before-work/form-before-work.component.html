@@ -36,23 +36,26 @@
     </div>
 
     <div class="row ">
+      <h5>Contacto #1</h5>
       <div class="col">
         <label for="namePerson1" class="formBefore-label">Nombre</label>
-        <input type="text" class="form-control" id="namePerson1" placeholder="Ingrese el nombre">
+        <input type="text" class="form-control" [(ngModel)]="contact1Name" id="namePerson1" placeholder="Ingrese el nombre" (ngModelChange)="submitData()">
       </div>
       <div class="col">
         <label for="telPerson1" class="formBefore-label">Telefono</label>
-        <input type="tel" class="form-control" id="telPerson1" placeholder="Ingrese el telefono">
+        <input type="tel" class="form-control" [(ngModel)]="contact1Tel" id="telPerson1" placeholder="Ingrese el telefono" (ngModelChange)="submitData()">
       </div>
     </div>
+    <hr>
     <div class="row ">
+      <h5>Contacto #2</h5>
       <div class="col">
         <label for="namePerson2" class="formBefore-label">Nombre</label>
-        <input type="text" class="form-control" id="namePerson2" placeholder="Ingrese el nombre">
+        <input type="text" class="form-control" [(ngModel)]="contact2Name" id="namePerson2" placeholder="Ingrese el nombre" (ngModelChange)="submitData()">
       </div>
       <div class="col">
         <label for="telPerson2" class="formBefore-label">Telefono</label>
-        <input type="tel" class="form-control" id="telPerson2" placeholder="Ingrese el telefono">
+        <input type="tel" class="form-control" [(ngModel)]="contact2Tel" id="telPerson2" placeholder="Ingrese el telefono" (ngModelChange)="submitData()">
       </div>
     </div>
 
@@ -64,18 +67,18 @@
 <div class="col">
   <div class="col">
     <div class="row">
-      <p>InformBeforee al supervisor o coordinador asignado de tu cuadrilla cuál será tu recorrido y acordar un punto y hora de encuentro, en caso de llegar a separarse</p>
+      <p>Informe al supervisor o coordinador asignado de tu cuadrilla cuál será tu recorrido y acordar un punto y hora de encuentro, en caso de llegar a separarse</p>
     </div>
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="twoFormBefore" id="twoFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form2" value=1 name="twoFormBefore" id="twoFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="twoFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="twoFormBefore" id="twoFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form2" value=0 name="twoFormBefore" id="twoFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="twoFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="twoFormBefore" id="twoFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form2" value=2 name="twoFormBefore" id="twoFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="twoFormBefore3">N/A</label>
       </div>
     </div>
@@ -93,13 +96,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="threeFormBefore" id="threeFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form3" value=1 name="threeFormBefore" id="threeFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="threeFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="threeFormBefore" id="threeFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form3" value=0 name="threeFormBefore" id="threeFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="threeFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="threeFormBefore" id="threeFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form3" value=2 name="threeFormBefore" id="threeFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="threeFormBefore3">N/A</label>
       </div>
     </div>
@@ -117,13 +120,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="fourFormBefore" id="fourFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form4" value=1 name="fourFormBefore" id="fourFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="fourFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="fourFormBefore" id="fourFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form4" value=0 name="fourFormBefore" id="fourFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="fourFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="fourFormBefore" id="fourFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form4" value=2 name="fourFormBefore" id="fourFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="fourFormBefore3">N/A</label>
       </div>
     </div>
@@ -141,13 +144,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="fiveFormBefore" id="fiveFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form5" value=1 name="fiveFormBefore" id="fiveFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="fiveFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="fiveFormBefore" id="fiveFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form5" value=0 name="fiveFormBefore" id="fiveFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="fiveFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="fiveFormBefore" id="fiveFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form5" value=2 name="fiveFormBefore" id="fiveFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="fiveFormBefore3">N/A</label>
       </div>
     </div>
@@ -165,13 +168,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="sixFormBefore" id="sixFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form6" value=1 name="sixFormBefore" id="sixFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="sixFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="sixFormBefore" id="sixFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form6" value=0 name="sixFormBefore" id="sixFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="sixFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="sixFormBefore" id="sixFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form6" value=2 name="sixFormBefore" id="sixFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="sixFormBefore3">N/A</label>
       </div>
     </div>
@@ -189,13 +192,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="sevenFormBefore" id="sevenFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form7" value=1 name="sevenFormBefore" id="sevenFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="sevenFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="sevenFormBefore" id="sevenFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form7" value=0 name="sevenFormBefore" id="sevenFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="sevenFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="sevenFormBefore" id="sevenFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form7" value=2 name="sevenFormBefore" id="sevenFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="sevenFormBefore3">N/A</label>
       </div>
     </div>
@@ -213,13 +216,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="eightFormBefore" id="eightFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form8" value=1 name="eightFormBefore" id="eightFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="eightFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="eightFormBefore" id="eightFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form8" value=0 name="eightFormBefore" id="eightFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="eightFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="eightFormBefore" id="eightFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form8" value=2 name="eightFormBefore" id="eightFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="eightFormBefore3">N/A</label>
       </div>
     </div>
@@ -237,13 +240,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="nineFormBefore" id="nineFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form9" value=1 name="nineFormBefore" id="nineFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="nineFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="nineFormBefore" id="nineFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form9" value=0 name="nineFormBefore" id="nineFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="nineFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="nineFormBefore" id="nineFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form9" value=2 name="nineFormBefore" id="nineFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="nineFormBefore3">N/A</label>
       </div>
     </div>
@@ -261,13 +264,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="tenFormBefore" id="tenFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form10" value=1 name="tenFormBefore" id="tenFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="tenFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="tenFormBefore" id="tenFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form10" value=0 name="tenFormBefore" id="tenFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="tenFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="tenFormBefore" id="tenFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form10" value=2 name="tenFormBefore" id="tenFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="tenFormBefore3">N/A</label>
       </div>
     </div>
@@ -285,13 +288,13 @@
 
     <div class="row ">
       <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="elevenFormBefore" id="elevenFormBefore1">
+        <input type="radio" class="btn-check" [(ngModel)]="form11" value=1 name="elevenFormBefore" id="elevenFormBefore1" (ngModelChange)="submitData()">
         <label class="btn btn-outline-success" for="elevenFormBefore1">SI</label>
 
-        <input type="radio" class="btn-check" name="elevenFormBefore" id="elevenFormBefore2">
+        <input type="radio" class="btn-check" [(ngModel)]="form11" value=0 name="elevenFormBefore" id="elevenFormBefore2" (ngModelChange)="submitData()">
         <label class="btn btn-outline-danger" for="elevenFormBefore2">NO</label>
 
-        <input type="radio" class="btn-check" name="elevenFormBefore" id="elevenFormBefore3">
+        <input type="radio" class="btn-check" [(ngModel)]="form11" value=2 name="elevenFormBefore" id="elevenFormBefore3" (ngModelChange)="submitData()">
         <label class="btn btn-outline-secondary" for="elevenFormBefore3">N/A</label>
       </div>
     </div>
