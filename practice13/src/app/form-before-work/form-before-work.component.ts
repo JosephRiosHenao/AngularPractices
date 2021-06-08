@@ -9,17 +9,46 @@ import { DataService } from '../providers/data.service';
 })
 export class FormBeforeWorkComponent implements OnInit {
 
-  // @Output() form1 = new EventEmitter<number>();
 
-  public form1:number;
-  constructor(private data:DataService) {}
+  public form1:number = 2;
+  public form2:number = 2;
+  public form3:number = 2;
+  public form4:number = 2;
+  public form5:number = 2;
+  public form6:number = 2;
+  public form7:number = 2;
+  public form8:number = 2;
+  public form9:number = 2;
+  public form10:number = 2;
+  public form11:number = 2;
+
+  public contact1Name:string = "";
+  public contact1Tel:string = "";
+  public contact2Name:string = "";
+  public contact2Tel:string = "";
+
+  constructor(private dataService:DataService) {}
 
   ngOnInit(): void {
   }
 
   submitData(){
-    // this.data.setForm1(this.form1);
+    this.dataService.data.form.before.form[1] = this.form1;
+    this.dataService.data.form.before.form[2] = this.form2;
+    this.dataService.data.form.before.form[3] = this.form3;
+    this.dataService.data.form.before.form[4] = this.form4;
+    this.dataService.data.form.before.form[5] = this.form5;
+    this.dataService.data.form.before.form[6] = this.form6;
+    this.dataService.data.form.before.form[7] = this.form7;
+    this.dataService.data.form.before.form[8] = this.form8;
+    this.dataService.data.form.before.form[9] = this.form9;
+    this.dataService.data.form.before.form[10] = this.form10;
+    this.dataService.data.form.before.form[11] = this.form11;
 
+    this.dataService.data.form.before.contacts[0].name = this.contact1Name;
+    this.dataService.data.form.before.contacts[0].tel = this.contact1Tel;
+    this.dataService.data.form.before.contacts[1].name = this.contact2Name;
+    this.dataService.data.form.before.contacts[1].tel = this.contact2Tel;
   }
 
 }

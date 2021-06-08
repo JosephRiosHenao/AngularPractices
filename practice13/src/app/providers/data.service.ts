@@ -59,8 +59,7 @@ export class DataService {
   },
 }
   a(){
-    this.data.form.metadata.enterprise = "MEPRESA";
-    console.log(this.data.form.metadata.enterprise);
+    console.log(this.data.form);
   }
 
   constructor() { }
