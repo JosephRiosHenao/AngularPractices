@@ -6,14 +6,62 @@ import { Data } from './data.service.model';
 })
 export class DataService {
 
-  data:Data = new Data();
-
-
-  public setForm1(v : number) {
-    this.data.form1 = v;
-    console.log(v);
+  data:Data = { form : {
+    metadata : {
+      enterprise  : "CAS TECHNOLOGY S.A.S",
+      city        : "",
+      process     : "",
+      dateInit    : "",
+      nameProject : "",
+      timeInit    : "",
+      timeFinish  : "",
+    },
+    before : {
+      contacts:[
+        { name : "", tel :"" },
+        { name : "", tel :"" },
+      ],
+      form:{
+        1:2,
+        2:2,
+        3:2,
+        4:2,
+        5:2,
+        6:2,
+        7:2,
+        8:2,
+        9:2,
+        10:2,
+        11:2,
+      },
+    },
+    during : {
+      form:{
+        1:2,
+        2:2,
+        3:2,
+        4:2,
+        5:2,
+        6:2,
+        7:2
+      }
+    },
+    after : {
+      form:{
+        1:2,
+        2:2,
+        3:2,
+        4:2,
+        5:2,
+        6:2
+      }
+    }
+  },
+}
+  a(){
+    this.data.form.metadata.enterprise = "MEPRESA";
+    console.log(this.data.form.metadata.enterprise);
   }
-
 
   constructor() { }
 }

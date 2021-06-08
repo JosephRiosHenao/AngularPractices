@@ -20,14 +20,16 @@ export class AppComponent {
   @ViewChild('pdfTable') pdfTable: ElementRef;
 
   public downloadAsPDF() {
-    const doc = new jsPDF();
+    // const doc = new jsPDF();
 
-    const pdfTable = this.pdfTable.nativeElement;
+    // const pdfTable = this.pdfTable.nativeElement;
 
-    var html = htmlToPdfmake(pdfTable.innerHTML);
+    // var html = htmlToPdfmake(pdfTable.innerHTML);
 
-    const documentDefinition = { content: html };
-    pdfMake.createPdf(documentDefinition).download("Informe");
+    // const documentDefinition = { content: html };
+    // pdfMake.createPdf(documentDefinition).download("Informe");
+
+    this.data.a();
 
   }
 }

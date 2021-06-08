@@ -18,7 +18,7 @@ export class FormBeforeWorkComponent implements OnInit {
   }
 
   submitData(){
-    this.data.setForm1(this.form1);
+    // this.data.setForm1(this.form1);
 
   }
 
