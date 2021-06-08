@@ -16,7 +16,8 @@
           <h2 class="text-center">Análisis de la tarea</h2>
           <hr>
         </div>
-        <app-form-before-work></app-form-before-work>
+        <app-form-before-work
+        ></app-form-before-work>
       </div>
     </div>
 
@@ -49,7 +50,14 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Firstname</th>
+            <th>
+              <span *ngIf="data.data.form1 == 1">SI</span>
+
+              <span *ngIf="data.data.form1 == 2">UNDEFINED</span>
+
+              <span *ngIf="data.data.form1 == 0">NO</span>
+
+            </th>
             <th>Lastname</th>
             <th>Website</th>
           </tr>

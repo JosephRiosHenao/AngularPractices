@@ -5,13 +5,17 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from 'html-to-pdfmake';
+import { DataService } from './providers/data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [DataService]
 })
 export class AppComponent {
+
+  constructor(public data:DataService){}
 
   @ViewChild('pdfTable') pdfTable: ElementRef;
 

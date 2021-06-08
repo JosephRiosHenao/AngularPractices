@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Byte } from '@angular/compiler/src/util';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { DataService } from '../providers/data.service';
 
 @Component({
   selector: 'app-form-before-work',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormBeforeWorkComponent implements OnInit {
 
-  constructor() { }
+  // @Output() form1 = new EventEmitter<number>();
+
+  public form1:number;
+  constructor(private data:DataService) {}
 
   ngOnInit(): void {
+  }
+
+  submitData(){
+    this.data.setForm1(this.form1);
+
   }
 
 }
