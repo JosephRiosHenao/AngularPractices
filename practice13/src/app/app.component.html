@@ -160,51 +160,107 @@
           <tr>
             <td>1</td>
             <td>Suspender la actividad se  encuentra en peligro de protestas, desmanes, disturbios o asonadas en su zona de trabajo.</td>
-            <td><span *ngIf="dataService.data.form.before.form[1] == 1">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[1] == 0">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[1] == 2">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[1] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[1] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[1] == 2">X</span></td>
           </tr>
           <tr>
             <td>2</td>
             <td>Guardar de manera adecuada los equipos y elementos que no esté usando.</td>
-            <td><span *ngIf="dataService.data.form.before.form[2] == 1">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[2] == 0">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[2] == 2">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[2] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[2] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[2] == 2">X</span></td>
           </tr>
           <tr>
             <td>3</td>
             <td>Notificar de inmediato a los grupos de whatsapp, supervisores, SST y jefes si tienes algún problema o se siente en peligro</td>
-            <td><span *ngIf="dataService.data.form.before.form[3] == 1">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[3] == 0">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[3] == 2">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[3] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[3] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[3] == 2">X</span></td>
           </tr>
           <tr>
             <td>4</td>
             <td>Evita estar cerca de disturbios y/o manifestaciones.</td>
-            <td><span *ngIf="dataService.data.form.before.form[4] == 1">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[4] == 0">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[4] == 2">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[4] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[4] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[4] == 2">X</span></td>
           </tr>
           <tr>
             <td>5</td>
             <td>Preste atención a su alrededor, ¿se mantentiene siempre alerta?.</td>
-            <td><span *ngIf="dataService.data.form.before.form[5] == 1">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[5] == 0">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[5] == 2">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[5] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[5] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[5] == 2">X</span></td>
           </tr>
           <tr>
             <td>6</td>
             <td>Avisar los abusos de autoridad, si detectas alguno, desde una distancia prudente.</td>
-            <td><span *ngIf="dataService.data.form.before.form[6] == 1">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[6] == 0">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[6] == 2">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[6] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[6] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[6] == 2">X</span></td>
           </tr>
           <tr>
             <td>7</td>
             <td>En caso de extrema necesidad buscar refugio en algún establecimiento cercano e informar su ubicación.</td>
-            <td><span *ngIf="dataService.data.form.before.form[7] == 1">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[7] == 0">X</span></td>
-            <td><span *ngIf="dataService.data.form.before.form[7] == 2">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[7] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[7] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.during.form[7] == 2">X</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Durante la tarea</th>
+            <th>SI</th>
+            <th>NO</th>
+            <th>N/A</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Comprobar que la situación ya ha sido controlada para que el regreso a casa se realice de manera segura.  </td>
+            <td><span *ngIf="dataService.data.form.after.form[1] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[1] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[1] == 2">X</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Ubicar a sus compañeros y regresar acompañados al punto de encuentro establecido, donde puedas iniciar de forma segura el viaje de regreso a casa.</td>
+            <td><span *ngIf="dataService.data.form.after.form[2] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[2] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[2] == 2">X</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Informar a los grupos de whatsapp, supervisores, SST y jefes que iniciara su retorno a casa</td>
+            <td><span *ngIf="dataService.data.form.after.form[3] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[3] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[3] == 2">X</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Anunciar si se presenta alguna eventualidad durante el retorno a casa</td>
+            <td><span *ngIf="dataService.data.form.after.form[4] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[4] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[4] == 2">X</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>En caso de presentarse eventualidad tener en cuenta las recomendaciones entregadas en el DURANTE LA TAREA.</td>
+            <td><span *ngIf="dataService.data.form.after.form[5] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[5] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[5] == 2">X</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Avisa cuando se te encuentre en tu casa, hospedaje o lugar de residencia.</td>
+            <td><span *ngIf="dataService.data.form.after.form[6] == 1">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[6] == 0">X</span></td>
+            <td><span *ngIf="dataService.data.form.after.form[6] == 2">X</span></td>
           </tr>
         </tbody>
       </table>
