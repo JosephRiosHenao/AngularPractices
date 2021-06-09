@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public date:string = "25/05/2021";
-  public version:number = 1;
-  
+  public date:Date = new Date();
+
   constructor() { }
 
   ngOnInit(): void {

@@ -11,7 +11,7 @@
   </div>
   <div class="col">
     <label for="city" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" id="city" placeholder="Cali, Medellin, Bogota, Pereira, Jamundi">
+    <input type="text" class="form-control" [(ngModel)]="cityForm" id="city" placeholder="Cali, Medellin, Bogota, Pereira, Jamundi" (ngModelChange)="submitData()">
   </div>
 </div>
 
@@ -20,7 +20,7 @@
 <div class="row">
   <div class="col-6">
     <label for="typeWork" class="form-label">Área/Proceso</label>
-    <select class="form-select" id="typeWork">
+    <select class="form-select" [(ngModel)]="processForm"  id="typeWork" (ngModelChange)="submitData()">
       <option selected>Seleccione una opción</option>
       <option value="1">Diseño</option>
       <option value="2">Interventoría</option>
@@ -29,15 +29,21 @@
   </div>
   <div class="col-6">
     <label for="datePicker" class="form-label">Feche de ejecución</label>
-    <input type="date" class="form-control" id="dataPicker" placeholder="dd/mm/yyyy">
+    <input type="date" class="form-control" [(ngModel)]="dateInitForm"  id="dataPicker" placeholder="dd/mm/yyyy" (ngModelChange)="submitData()">
   </div>
 </div>
 
 <hr>
 
 <div class="row">
-  <label for="nameProyect" class="form-label">Nombre del proyecto</label>
-  <input type="text" class="form-control" id="nameProyect" placeholder="Digite el nombre del proyecto">
+  <div class="col-6">
+    <label for="nameProyect" class="form-label">Nombre del proyecto</label>
+    <input type="text" class="form-control" [(ngModel)]="nameProjectForm" id="nameProyect" placeholder="Digite el nombre del proyecto" (ngModelChange)="submitData()">
+  </div>
+  <div class="col-6">
+    <label for="namePerson" class="form-label">Nombre del contratista</label>
+    <input type="text" class="form-control" [(ngModel)]="namePersonForm" id="namePerson" placeholder="Nombre del contratista" (ngModelChange)="submitData()">
+  </div>
 </div>
 
 <hr>
@@ -45,11 +51,11 @@
 <div class="row align-items-center ">
   <div class="col-6">
     <label for="timeInit" class="form-label">Hora de inicio</label>
-    <input type="time" id="timeInit" class="form-control">
+    <input type="time" id="timeInit" [(ngModel)]="timeInitForm.time"  class="form-control" (ngModelChange)="submitData()">
   </div>
   <div class="col-6">
     <label for="timeFinish" class="form-label">Hora de finalización</label>
-    <input type="time" id="timeFinish" class="form-control">
+    <input type="time" id="timeFinish" [(ngModel)]="timeFinishForm" class="form-control" (ngModelChange)="submitData()">
   </div>
 </div>
 

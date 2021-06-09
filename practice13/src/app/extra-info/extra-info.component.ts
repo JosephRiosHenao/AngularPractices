@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../providers/data.service';
 
 @Component({
   selector: 'app-extra-info',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExtraInfoComponent implements OnInit {
 
-  constructor() { }
+  public observation:string = "";
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
   }
+
+
+  submitData(){
+    this.dataService.data.form.info.observation = this.observation;
+  }
+
   
 }

@@ -15,6 +15,8 @@ import { DataService } from './providers/data.service';
 })
 export class AppComponent {
 
+  date:Date = new Date();
+
   constructor(public dataService:DataService){}
 
   @ViewChild('pdfTable') pdfTable: ElementRef;

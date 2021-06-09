@@ -7,6 +7,7 @@ export interface Form {
   before:   Before;
   during:   After;
   after:    After;
+  info: Info;
 }
 
 export interface After {
@@ -27,8 +28,13 @@ export interface Metadata {
   enterprise:  string;
   city:        string;
   process:     string;
-  dateInit:    string;
+  dateInit:    Date;
   nameProject: string;
-  timeInit:    string;
-  timeFinish:  string;
+  namePerson:  string;
+  timeInit:    Date;
+  timeFinish:  Date;
+}
+
+export interface Info {
+  observation:string;
 }

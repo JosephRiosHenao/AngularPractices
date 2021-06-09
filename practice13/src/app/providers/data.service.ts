@@ -11,10 +11,11 @@ export class DataService {
       enterprise  : "CAS TECHNOLOGY S.A.S",
       city        : "",
       process     : "",
-      dateInit    : "",
+      dateInit    : new Date(),
       nameProject : "",
-      timeInit    : "",
-      timeFinish  : "",
+      namePerson  : "",
+      timeInit    : new Date(),
+      timeFinish  : new Date(),
     },
     before : {
       contacts:[
@@ -55,6 +56,9 @@ export class DataService {
         5:2,
         6:2
       }
+    },
+    info : {
+      observation: ""
     }
   },
 }

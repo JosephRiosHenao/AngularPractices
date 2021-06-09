@@ -2,7 +2,7 @@
   <div class="row">
     <div class="form-group">
       <label for="observation">Observaciones</label>
-      <textarea class="form-control" id="observation"></textarea>
+      <textarea class="form-control" id="observation" [(ngModel)]="observation" (ngModelChange)="submitData()"></textarea>
     </div>
   </div>
 </div>

@@ -45,7 +45,52 @@
 <div >
   <div class="container">
     <div id="pdfTable" #pdfTable>
-      <h2 class="text-danger">PruebaPDF - Alpha V0.1</h2>
+      <h2 class="text-danger">PruebaPDF - Beta V1</h2>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th rowspan="2">LOGO</th>
+            <th colspan="2">CAS TECHNOLOGY</th>
+            <th>Version 01</th>
+          </tr>
+          <tr>
+            <th colspan="2">LISTA DE CHEQUEO ORDEN PUBLICO</th>
+            <th> Fecha: {{ date | date:"dd/MM/yyyy" }} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">Tu seguridad y la de tus compañeros son lo más importante. Para protegerte de manera integral incluye aspectos físicos, digitales y colectivos.</td>
+          </tr>
+          <tr>
+            <td>Empresa:</td>
+            <td>CAS TECHNOLOGY S.A.S</td>
+            <td>Ciudad:</td>
+            <td> {{ dataService.data.form.metadata.city }} </td>
+          </tr>
+          <tr>
+            <td>Área/Proceso:</td>
+            <td> {{ dataService.data.form.metadata.process }} </td>
+            <td>Feche de ejecución:</td>
+            <td> {{ dataService.data.form.metadata.dateInit | date:"dd/MM/yyyy" }} </td>
+          </tr>
+          <tr>
+            <td >Nombre del proyecto:</td>
+            <td colspan="3"> {{ dataService.data.form.metadata.nameProject }} </td>
+          </tr>
+          <tr>
+            <td >Nombre del contratista:</td>
+            <td colspan="3"> {{ dataService.data.form.metadata.namePerson }} </td>
+          </tr>
+          <tr>
+            <td>Hora de inicio:</td>
+            <td> {{ dataService.data.form.metadata.timeInit | date:"shortTime" }} </td>
+            <td>Hora de finalización:</td>
+            <td> {{ dataService.data.form.metadata.timeFinish | date:"shortTime" }} </td>
+          </tr>
+        </tbody>
+      </table>
 
       <table class="table table-bordered">
         <thead>
@@ -54,7 +99,7 @@
             <th>Antes de la tarea</th>
             <th>SI</th>
             <th>NO</th>
-            <th>N/A</th>
+            <th>NA</th>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +112,7 @@
           </tr>
           <tr>
             <td>2</td>
-            <td colspan="4"> 
+            <td colspan="4">
               <p>Elegir dos contactos de emergencia ya sea un familiar y/o amistad, quienes serán su red de seguridad y que sepan actuar en caso de presentarse una emergencia.</p>
               <p>Nombre: {{ dataService.data.form.before.contacts[0].name }} Celular: {{ dataService.data.form.before.contacts[0].tel }} </p>
               <p>Nombre: {{ dataService.data.form.before.contacts[1].name }} Celular: {{ dataService.data.form.before.contacts[1].tel }} </p>
@@ -153,7 +198,7 @@
             <th>Durante la tarea</th>
             <th>SI</th>
             <th>NO</th>
-            <th>N/A</th>
+            <th>NA</th>
           </tr>
         </thead>
         <tbody>
@@ -213,10 +258,10 @@
         <thead>
           <tr>
             <th>Item</th>
-            <th>Durante la tarea</th>
+            <th>Despues la tarea</th>
             <th>SI</th>
             <th>NO</th>
-            <th>N/A</th>
+            <th>NA</th>
           </tr>
         </thead>
         <tbody>
@@ -262,7 +307,18 @@
             <td><span *ngIf="dataService.data.form.after.form[6] == 0">X</span></td>
             <td><span *ngIf="dataService.data.form.after.form[6] == 2">X</span></td>
           </tr>
+
         </tbody>
+      </table>
+
+      <table>
+        <tr>
+          <th colspan="5">Observaciones</th>
+        </tr>
+
+        <tr>
+          <td colspan="5">{{ dataService.data.form.info.observation }}</td>
+        </tr>
       </table>
 
     </div>
