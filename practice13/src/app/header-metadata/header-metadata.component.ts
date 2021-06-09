@@ -23,7 +23,6 @@ export class HeaderMetadataComponent implements OnInit {
 
 
   submitData(){
-    this.timeInitForm.set
     this.dataService.data.form.metadata.city = this.cityForm;
     this.dataService.data.form.metadata.process = this.processForm;
     this.dataService.data.form.metadata.dateInit = this.dateInitForm;

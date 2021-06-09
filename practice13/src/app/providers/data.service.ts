@@ -62,9 +62,5 @@ export class DataService {
     }
   },
 }
-  a(){
-    console.log(this.data.form);
-  }
-
   constructor() { }
 }
