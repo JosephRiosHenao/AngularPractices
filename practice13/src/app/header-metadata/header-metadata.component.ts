@@ -9,7 +9,7 @@ import { DataService } from '../providers/data.service';
 export class HeaderMetadataComponent implements OnInit {
 
   public cityForm:string = "";
-  public processForm:string = "";
+  public processForm:string = "0";
   public dateInitForm:Date = new Date();
   public nameProjectForm:string = "";
   public namePersonForm:string = "";

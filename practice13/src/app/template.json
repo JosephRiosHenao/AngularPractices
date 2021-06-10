@@ -6,8 +6,10 @@
       "process"     : "",
       "dateInit"    : "",
       "nameProject" : "",
+      "namePerson"  : "",
       "timeInit"    : "",
-      "timeFinish"  : ""
+      "timeFinish"  : "",
+      "confirm"     : false
     },
     "before" : {
       "contacts":[
@@ -26,7 +28,8 @@
         "9":2,
         "10":2,
         "11":2
-      }
+      },
+      "confirm" : false
     },
     "during" : {
       "form":{
@@ -37,7 +40,8 @@
         "5":2,
         "6":2,
         "7":2
-      }
+      },
+      "confirm" : false
     },
     "after" : {
       "form":{
@@ -47,7 +51,8 @@
         "4":2,
         "5":2,
         "6":2
-      }
+      },
+      "confirm" : false
     }
   }
 }

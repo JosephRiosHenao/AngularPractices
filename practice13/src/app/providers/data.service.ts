@@ -16,6 +16,7 @@ export class DataService {
       namePerson  : "",
       timeInit    : new Date(),
       timeFinish  : new Date(),
+      confirm     : false,
     },
     before : {
       contacts:[
@@ -35,6 +36,7 @@ export class DataService {
         10:2,
         11:2,
       },
+      confirm : false,
     },
     during : {
       form:{
@@ -45,7 +47,8 @@ export class DataService {
         5:2,
         6:2,
         7:2
-      }
+      },
+      confirm : false,
     },
     after : {
       form:{
@@ -55,10 +58,12 @@ export class DataService {
         4:2,
         5:2,
         6:2
-      }
+      },
+      confirm : false,
     },
     info : {
-      observation: ""
+      observation: "",
+      confirm : false,
     }
   },
 }

@@ -11,7 +11,7 @@
   </div>
   <div class="col">
     <label for="city" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" [(ngModel)]="cityForm" id="city" placeholder="Cali, Medellin, Bogota, Pereira, Jamundi" (ngModelChange)="submitData()">
+    <input type="text" class="form-control" [(ngModel)]="cityForm" id="city" placeholder="Cali, Medellin, Bogota, Pereira, Jamundi" (ngModelChange)="submitData()" required>
   </div>
 </div>
 
@@ -21,10 +21,10 @@
   <div class="col-6">
     <label for="typeWork" class="form-label">Área/Proceso</label>
     <select class="form-select" [(ngModel)]="processForm"  id="typeWork" (ngModelChange)="submitData()">
-      <option selected>Seleccione una opción</option>
-      <option value="1">Diseño</option>
-      <option value="2">Interventoría</option>
-      <option value="3">Construcción</option>
+      <option selected value="0">Seleccione una opción</option>
+      <option value="Diseño">Diseño</option>
+      <option value="Interventoría">Interventoría</option>
+      <option value="Construcción">Construcción</option>
     </select>
   </div>
   <div class="col-6">

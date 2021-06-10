@@ -12,11 +12,13 @@ export interface Form {
 
 export interface After {
   form: { [key: string]: number };
+  confirm: boolean;
 }
 
 export interface Before {
   contacts: Contact[];
   form:     { [key: string]: number };
+  confirm: boolean;
 }
 
 export interface Contact {
@@ -33,8 +35,10 @@ export interface Metadata {
   namePerson:  string;
   timeInit:    Date;
   timeFinish:  Date;
+  confirm: boolean;
 }
 
 export interface Info {
   observation:string;
+  confirm: boolean;
 }
