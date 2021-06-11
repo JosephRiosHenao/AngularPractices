@@ -31,7 +31,9 @@ export class HeaderMetadataComponent implements OnInit {
     this.dataService.data.form.metadata.timeInit = this.timeInitForm;
     this.dataService.data.form.metadata.timeFinish = this.timeFinishForm;
 
-    console.log(this.dataService.data.form.metadata);
+    if (this.cityForm.length > 1 && this.processForm.length > 1 && this.nameProjectForm.length > 1 && this.namePersonForm.length > 1){
+      this.dataService.data.form.metadata.confirm = true;
+    }
   }
 
 }

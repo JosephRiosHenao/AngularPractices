@@ -63,7 +63,6 @@ export class DataService {
     },
     info : {
       observation: "",
-      confirm : false,
     }
   },
 }

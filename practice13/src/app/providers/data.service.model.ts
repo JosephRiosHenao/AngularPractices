@@ -40,5 +40,4 @@ export interface Metadata {
 
 export interface Info {
   observation:string;
-  confirm: boolean;
 }

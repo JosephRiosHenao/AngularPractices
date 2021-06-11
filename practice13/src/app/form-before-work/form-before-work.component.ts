@@ -9,17 +9,17 @@ import { DataService } from '../providers/data.service';
 export class FormBeforeWorkComponent implements OnInit {
 
 
-  public form1:number = 2;
-  public form2:number = 2;
-  public form3:number = 2;
-  public form4:number = 2;
-  public form5:number = 2;
-  public form6:number = 2;
-  public form7:number = 2;
-  public form8:number = 2;
-  public form9:number = 2;
-  public form10:number = 2;
-  public form11:number = 2;
+  public form1:number = 3;
+  public form2:number = 3;
+  public form3:number = 3;
+  public form4:number = 3;
+  public form5:number = 3;
+  public form6:number = 3;
+  public form7:number = 3;
+  public form8:number = 3;
+  public form9:number = 3;
+  public form10:number = 3;
+  public form11:number = 3;
 
   public contact1Name:string = "";
   public contact1Tel:string = "";
@@ -48,6 +48,10 @@ export class FormBeforeWorkComponent implements OnInit {
     this.dataService.data.form.before.contacts[0].tel = this.contact1Tel;
     this.dataService.data.form.before.contacts[1].name = this.contact2Name;
     this.dataService.data.form.before.contacts[1].tel = this.contact2Tel;
+
+    if (this.form1 != 3 && this.form2 != 3 && this.form3 != 3 && this.form4 != 3 && this.form5 != 3 && this.form6 != 3 && this.form7 != 3 && this.form8 != 3 && this.form9 != 3 && this.form10 != 3 && this.form11 != 3 && this.contact1Name.length > 1 && this.contact1Tel.length > 1 && this.contact2Name.length > 1 && this.contact2Tel.length > 1){
+      this.dataService.data.form.before.confirm = true;
+    }
   }
 
 }
