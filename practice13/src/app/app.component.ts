@@ -19,8 +19,8 @@ export class AppComponent implements AfterViewInit {
   
   @ViewChild('canvasRef', { static:false }) canvasRef:any;
 
-  public width:number  = 150;
-  public height:number = 150;
+  public width:number  = 200;
+  public height:number = 100;
 
   private cx:CanvasRenderingContext2D;
 
@@ -29,22 +29,26 @@ export class AppComponent implements AfterViewInit {
   @HostListener("document:mousemove",["$event"])
   onMouseMove = (e:any) => {
     if (e.target.id == "canvasId" && this.drawStarted) {
+      this.disableScroll();
       this.write(e);
     }
   }
   @HostListener("document:touchmove",["$event"])
   onTouchMove = (e:any) => {
     if (e.target.id == "canvasId" && this.drawStarted) {
+      this.disableScroll();
       this.write(e);
     }
   }
   @HostListener("document:mousedown")
   onMouseDown() {
     this.drawStarted = true;
+    this.cx.clearRect(0,0,this.width,this.height);
   }
   @HostListener("document:touchstart")
   onTouchStart() {
     this.drawStarted = true;
+    this.cx.clearRect(0,0,this.width,this.height);
   }
   @HostListener("document:mouseup")
   onMouseUp() {
@@ -52,6 +56,7 @@ export class AppComponent implements AfterViewInit {
     while (this.points.length > 1){
       this.points.pop()
     }
+    this.enableScroll();
   }
   @HostListener("document:touchend")
   onTouchEnd() {
@@ -59,6 +64,7 @@ export class AppComponent implements AfterViewInit {
     while (this.points.length > 1){
       this.points.pop()
     }
+    this.enableScroll();
   }
 
   ngAfterViewInit():void {
@@ -80,11 +86,18 @@ export class AppComponent implements AfterViewInit {
   private write(res):any {
     const canvasElement:any = this.canvasRef.nativeElement;
     const rect = canvasElement.getBoundingClientRect();
-    const prevPos = {
-      x: res.clientX - rect.left,
-      y: res.clientY - rect.top
-    };
-    
+    let prevPos = { x:0, y:0 };
+    if (res.changedTouches == undefined){
+      prevPos = {
+        x: res.clientX - rect.left,
+        y: res.clientY - rect.top
+      };
+    }else {
+      prevPos = {
+        x: res.changedTouches[0].pageX - rect.left,
+        y: res.changedTouches[0].clientY - rect.top
+      };
+    }
     this.writeSingle(prevPos);
   }
 
@@ -108,6 +121,18 @@ export class AppComponent implements AfterViewInit {
       this.cx.lineTo(currentPos.x, currentPos.y);
       this.cx.stroke();
     }
+  }
+
+
+  disableScroll(){  
+    let x = window.scrollX;
+    let y = window.scrollY;
+    window.onscroll = function(){ window.scrollTo(x, y) };
+    window.scroll(x,y);
+  }
+
+  enableScroll(){  
+    window.onscroll = null;
   }
 
 
