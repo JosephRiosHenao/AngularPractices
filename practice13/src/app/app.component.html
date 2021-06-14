@@ -39,9 +39,11 @@
       </div>
     </div>
 
-    <div class="card shadow-lg mb-5">
+    <div class="card shadow-lg mb-5 text-center">
+      <h4 class="text-center">Firma</h4>
+      <hr>
       <div class="card-body">
-        <canvas id="canvasId" #canvasRef [width]="width" [height]="height" style="background-color: red;"></canvas>
+          <canvas id="canvasId" class="m-auto shadow-lg" #canvasRef [width]="width" [height]="height" style="background-color: white;"></canvas>
       </div>
     </div>
   </div>
@@ -322,6 +324,33 @@
         </tr>
       </table>
 
+      <table  style="border: none; margin-top: 100px;">
+        <tr style="border: none;">
+          <td style="border: none;"></td>
+          <td style="border: none;"></td>
+        </tr>
+        <tr style="border: none;">
+          <td style="border: none;">_____________________________________</td>
+          <td style="border: none;">_____________________________________</td>
+        </tr>
+        <tr style="border: none;">
+          <td style="border: none;">Nombres y Apellidos Coordinador HSEQ</td>
+          <td style="border: none;">Firma HSEQ</td>
+        </tr>
+        <tr style="border: none;">
+          <td style="border: none;"> {{ dataService.data.form.metadata.namePerson }} </td>
+          <td style="border: none;"> <img [src]="firm64img"> </td>
+        </tr>
+        <tr style="border: none;">
+          <td style="border: none;">_____________________________________</td>
+          <td style="border: none;">_____________________________________</td>
+        </tr>
+        <tr style="border: none;">
+          <td style="border: none;">Nombres y Apellidos del Encargado</td>
+          <td style="border: none;">Firma del Encargado</td>
+        </tr>
+
+      </table>
     </div>
   </div>
 </div>
@@ -333,4 +362,5 @@
     </h6>
   </div>
   <button class="btn btn-primary btn-lg" type="submit" (click)="downloadAsPDF()" [disabled]="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false">Generar PDF</button>
+  <!-- <button (click)="downloadAsPDF()">XDE</button> -->
 </div>
