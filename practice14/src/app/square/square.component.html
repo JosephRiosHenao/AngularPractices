@@ -1,0 +1,58 @@
+<div class="container mt-5">
+
+    <h1 class="text-center mt-5" >Calculadora de Cuadrado </h1>
+    <svg width="120" height="120"
+        viewBox="0 0 120 120"
+        xmlns="http://www.w3.org/2000/svg">
+   
+     <rect x="10" y="10" width="100" height="100"/>
+   </svg>
+    <p class="text-center">Para calcular tanto el area como el perimetro requieres saber el ancho y largo <strong>OBLIGATORIO</strong></p>
+
+
+
+    <div class="row">
+        <div class="col">
+            <label for="">Ancho (cm)</label>
+            <input type="number" class="form-control" placeholder="Digite el ancho" [(ngModel)]="ancho" (ngModelChange)="calculate()">
+            <label for="">Largo (cm)</label>
+            <input type="number" class="form-control" placeholder="Digite el largo" [(ngModel)]="largo" (ngModelChange)="calculate()">
+        </div>
+        <div class="col">
+            <div class="row text-center mt-3">
+                <div class="div">
+                    <h3>Area: {{ areaR }}cm</h3>
+                </div>
+                <div class="div">
+                    <h3>Perimetro: {{ perimetroR }}cm</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="m-5">
+
+    <h1 class="text-center" >Calculadora de Triangulo </h1>
+    <div class="container-a" style="width: 100px; height: 100px;">        <svg id="triangle" viewBox="0 0 100 100">
+        <polygon points="50 15, 100 100, 0 100"/>
+</svg></div>
+    <p class="text-center">Para calcular el area requieres saber el ancho y alto <strong>OBLIGATORIO</strong></p>
+
+    <div class="row">
+        <div class="col">
+            <label for="">Altura (cm)</label>
+            <input type="number" class="form-control" placeholder="Digite el ancho" [(ngModel)]="alturaT" (ngModelChange)="calculateT()">
+            <label for="">Ancho (cm)</label>
+            <input type="number" class="form-control" placeholder="Digite el largo" [(ngModel)]="anchoT" (ngModelChange)="calculateT()">
+        </div>
+        <div class="col">
+            <div class="row text-center">
+                <div class="div">
+                    <h3 class="mt-5">Area: {{ areaTR }}cm</h3>
+                </div>
+                <div class="div">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
