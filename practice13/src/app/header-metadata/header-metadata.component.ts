@@ -34,6 +34,9 @@ export class HeaderMetadataComponent implements OnInit {
     if (this.cityForm.length > 1 && this.processForm.length > 1 && this.nameProjectForm.length > 1 && this.namePersonForm.length > 1){
       this.dataService.data.form.metadata.confirm = true;
     }
+    else{
+      this.dataService.data.form.metadata.confirm = false;
+    }
   }
 
 }

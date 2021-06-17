@@ -49,8 +49,11 @@ export class FormBeforeWorkComponent implements OnInit {
     this.dataService.data.form.before.contacts[1].name = this.contact2Name;
     this.dataService.data.form.before.contacts[1].tel = this.contact2Tel;
 
-    if (this.form1 != 3 && this.form2 != 3 && this.form3 != 3 && this.form4 != 3 && this.form5 != 3 && this.form6 != 3 && this.form7 != 3 && this.form8 != 3 && this.form9 != 3 && this.form10 != 3 && this.form11 != 3 && this.contact1Name.length > 1 && this.contact1Tel.length > 9 && this.contact2Name.length > 1 && this.contact2Tel.length > 9){
+    if (this.form1 != 3 && this.form2 != 3 && this.form3 != 3 && this.form4 != 3 && this.form5 != 3 && this.form6 != 3 && this.form7 != 3 && this.form8 != 3 && this.form9 != 3 && this.form10 != 3 && this.form11 != 3 && this.contact1Name.length > 1 && this.contact1Tel.length == 10 && this.contact2Name.length > 1 && this.contact2Tel.length == 10){
       this.dataService.data.form.before.confirm = true;
+    }
+    else{
+      this.dataService.data.form.before.confirm = false;
     }
   }
 

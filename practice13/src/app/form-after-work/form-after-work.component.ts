@@ -32,5 +32,8 @@ export class FormAfterWorkComponent implements OnInit {
     if (this.form1 != 3 && this.form2 != 3 && this.form3 != 3 && this.form4 != 3 && this.form5 != 3 && this.form6 != 3){
       this.dataService.data.form.after.confirm = true;
     }
+    else{
+      this.dataService.data.form.after.confirm = false;
+    }
   }
 }
