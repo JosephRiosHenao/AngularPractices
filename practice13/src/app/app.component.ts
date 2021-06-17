@@ -148,7 +148,7 @@ export class AppComponent implements AfterViewInit {
 
     this.firm64img = await htmlToImage.toJpeg(document.getElementById('canvasId'), { quality: 1 })
 
-    console.log(this.firm64img);
+    // console.log(this.firm64img);
     // htmlToImage.toJpeg(document.getElementById('canvasId'), { quality: 1 })
     // .then(function (dataUrl) {
     //   // var link = document.createElement('a');
@@ -170,8 +170,8 @@ export class AppComponent implements AfterViewInit {
       var html = htmlToPdfmake(pdfTable.innerHTML);
   
       const documentDefinition = { content: html };
-      pdfMake.createPdf(documentDefinition).download("Informe");
-      console.log("finish")
+      pdfMake.createPdf(documentDefinition).download("Lista-de-Chequeo-Orden-Publico");
+      console.log("Finish")
     },1000);
   }
 
