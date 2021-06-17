@@ -60,11 +60,11 @@
           <tr>
             <th rowspan="2"><img [src]="img64url" style="width: 150px;"></th>
             <th colspan="2" style="text-align:center;" >CAS TECHNOLOGY</th>
-            <th>Version 01</th>
+            <th>Version 03</th>
           </tr>
           <tr>
             <th colspan="2" style="text-align:center;" >LISTA DE CHEQUEO ORDEN PUBLICO</th>
-            <th> Fecha: {{ date | date:"dd/MM/yyyy" }} </th>
+            <th> Fecha: 16/06/2021 </th>
           </tr>
         </thead>
         <tbody>
@@ -323,22 +323,10 @@
         </tr>
       </table>
 
-      <table  style="border: none; margin-top: 100px;">
-        <tr style="border: none;">
-          <td style="border: none;"></td>
-          <td style="border: none;"></td>
-        </tr>
-        <tr style="border: none;">
-          <td style="border: none;">_____________________________________</td>
-          <td style="border: none;">_____________________________________</td>
-        </tr>
-        <tr style="border: none;">
-          <td style="border: none;">Nombres y Apellidos Coordinador HSEQ</td>
-          <td style="border: none;">Firma HSEQ</td>
-        </tr>
+      <table  style="border: none;">
         <tr style="border: none;">
           <td style="border: none;"> {{ dataService.data.form.metadata.namePerson }} </td>
-          <td style="border: none;"> <img [src]="firm64img"> </td>
+          <td style="border: none;"> <img height="50" width="200" [src]="firm64img"> </td>
         </tr>
         <tr style="border: none;">
           <td style="border: none;">_____________________________________</td>
@@ -347,6 +335,18 @@
         <tr style="border: none;">
           <td style="border: none;">Nombres y Apellidos del Encargado</td>
           <td style="border: none;">Firma del Encargado</td>
+        </tr>
+        <tr style="border: none;">
+          <td style="border: none;"></td>
+          <td style="border: none;"></td>
+        </tr>
+        <tr style="border: none; margin-top: 50px;">
+          <td style="border: none;">_____________________________________</td>
+          <td style="border: none;">_____________________________________</td>
+        </tr>
+        <tr style="border: none;">
+          <td style="border: none;">Nombres y Apellidos Coordinador HSEQ</td>
+          <td style="border: none;">Firma HSEQ</td>
         </tr>
 
       </table>
@@ -362,7 +362,7 @@
         <h5 class="modal-title" id="staticBackdropLabel">Firma</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
         <canvas id="canvasId" class="m-auto shadow-lg" #canvasRef [width]="width" [height]="height" style="background-color: white;"></canvas>
       </div>
       <div class="modal-footer">
@@ -380,5 +380,6 @@
     </h6>
   </div>
   <button class="btn btn-primary btn-lg" type="submit" data-bs-target="#firmModal" data-bs-toggle="modal" [disabled]="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false">Generar PDF</button>
-  <!-- <button (click)="downloadAsPDF()" >XDE</button> -->
+  <button data-bs-target="#firmModal" data-bs-toggle="modal" >XDE</button>
+  <!-- <button data-bs-target="#firmModal" data-bs-toggle="modal" (click)="downloadAsPDF()" >XDE</button> -->
 </div>
