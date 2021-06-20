@@ -3,10 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TableClientComponent } from './components/table-client/table-client.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { EditClientComponent } from './components/edit-client/edit-client.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    TableClientComponent,
+    ClientsComponent,
+    EditClientComponent,
+    LoginComponent,
+    RegisterComponent,
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
