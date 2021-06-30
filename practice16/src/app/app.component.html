@@ -1,13 +1,13 @@
 <div *ngIf="authC.user | async as user; else showLogin">
   <h1>Hello {{ user.displayName }}!</h1>
   <img [src]="avatar" alt="">
+  <input type="file" id="avatarPhoto" (change)="fileChangeEvent($event)">
   <button (click)="logout()">Logout</button>
 </div>
 <ng-template #showLogin>
   <p>Please login.</p>
   <button (click)="login()">Login with Google</button>
+  <input type="text" [(ngModel)]="email" >
+  <input type="text" [(ngModel)]="pass" >
+  <button (click)="singinWithEmail()">EMAIL</button>
 </ng-template>
-
-<input type="text" [(ngModel)]="email" >
-<input type="text" [(ngModel)]="pass" >
-<button (click)="singinWithEmail()">EMAIL</button>
