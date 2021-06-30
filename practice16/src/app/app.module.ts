@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    FormsModule
   ],
   providers: [
     
