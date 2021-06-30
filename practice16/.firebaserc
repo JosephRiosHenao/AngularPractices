@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mastergym-cf566": {
+      "hosting": {
+        "practice16": [
+          "mastergym-cf566"
+        ]
+      }
+    }
+  }
+}
