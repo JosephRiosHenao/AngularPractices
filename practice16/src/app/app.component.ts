@@ -59,6 +59,7 @@ export class AppComponent {
     fileChangeEvent(e:Event){
 
       let user = firebase.auth().currentUser;
+      let newURL:string = "";
 
       let file = (e.target as HTMLInputElement).files[0];
       console.log(file)
@@ -77,12 +78,20 @@ export class AppComponent {
           storageRef.getDownloadURL().then((url) => {
               user.updateProfile({
                 photoURL: url,
-              }).then(()=> this.avatar = url );
+              });
+              newURL = url;
+              console.log("Perfil actualizado!")
+              this.avatar = newURL;
+              
+              console.log(this.avatar)
+              console.log(newURL)
             }
           );
         });
-        
       }
     }
 
+  setAvatar(img:string){
+    this.avatar = img;
+  }
 }
