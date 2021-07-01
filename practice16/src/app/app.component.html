@@ -2,6 +2,7 @@
   <h1>Hello {{ user.displayName }}!</h1>
   <img [src]="avatar" alt="">
   <input type="file" id="avatarPhoto" (change)="fileChangeEvent($event)">
+  <button (click)="updateProfile()">UPDATE</button>
   <button (click)="logout()">Logout</button>
   <p>
     {{avatar}}

@@ -35,7 +35,6 @@ export class AppComponent {
       console.log(user);
       this.avatar = user?.photoURL;
       if (!user?.emailVerified){ user?.sendEmailVerification(); }
-      console.log(user?.emailVerified)
     })
   }
   
@@ -82,15 +81,25 @@ export class AppComponent {
               newURL = url;
               console.log("Perfil actualizado!")
               this.avatar = newURL;
-              
-              console.log(this.avatar)
-              console.log(newURL)
             }
-          );
-        });
-      }
+            );
+          });
+        }
+        setTimeout(()=>{
+          console.log("Actualizacion de vista");
+          this.updateProfile();
+        },5000);
     }
 
+
+  updateProfile(){
+    this.authC.user.subscribe((user) =>{
+      this.avatar = user?.photoURL;
+      if (!user?.emailVerified){ user?.sendEmailVerification(); }
+    })
+  }
+
+  
   setAvatar(img:string){
     this.avatar = img;
   }
