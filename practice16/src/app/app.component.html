@@ -2,11 +2,9 @@
   <h1>Hello {{ user.displayName }}!</h1>
   <img [src]="avatar" alt="">
   <input type="file" id="avatarPhoto" (change)="fileChangeEvent($event)">
+  <input type="text" [(ngModel)]="name">
   <button (click)="updateProfile()">UPDATE</button>
   <button (click)="logout()">Logout</button>
-  <p>
-    {{avatar}}
-  </p>
 </div>
 <ng-template #showLogin>
   <p>Please login.</p>

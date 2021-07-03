@@ -11,24 +11,9 @@ export class AppComponent {
   avatar:any = "";
   public pass:string = "";
   public email:string = "";
+  public name:string = "";
 
 
-  actionCodeSettings = {
-    // The URL to redirect to for sign-in completion. This is also the deep
-    // link for mobile redirects. The domain (www.example.com) for this URL
-    // must be whitelisted in the Firebase Console.
-    url: 'https://www.example.com/finishSignUp?cartId=1234',
-    iOS: {
-      bundleId: 'com.example.ios'
-    },
-    android: {
-      packageName: 'com.example.android',
-      installApp: true,
-      minimumVersion: '12'
-    },
-    // This must be true.
-    handleCodeInApp: true
-  };
 
   constructor( public authC:AngularFireAuth ){
     this.authC.user.subscribe((user) =>{
@@ -93,10 +78,15 @@ export class AppComponent {
 
 
   updateProfile(){
-    this.authC.user.subscribe((user) =>{
-      this.avatar = user?.photoURL;
-      if (!user?.emailVerified){ user?.sendEmailVerification(); }
-    })
+    var user = firebase.auth().currentUser;
+    if (user != null){
+      this.avatar = user.photoURL;
+      user.updateProfile(
+        {
+          displayName: this.name,
+        }
+      );
+    }
   }
 
   
