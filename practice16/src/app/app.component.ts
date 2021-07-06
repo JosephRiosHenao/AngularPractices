@@ -9,8 +9,7 @@ import firebase from 'firebase';
 })
 export class AppComponent {
   avatar:any = "";
-  public pass:string = "";
-  public email:string = "";
+
   public name:string = "";
   public loading:boolean = true;
 
@@ -23,24 +22,11 @@ export class AppComponent {
       if (!user?.emailVerified){ user?.sendEmailVerification(); }
     })
   }
-  
-  login(){
-    this.authC.signInWithPopup( new firebase.auth.GoogleAuthProvider() );
-    console.log(this.authC.user);
-  }
-  
+
   logout(){
     this.authC.signOut();
   }
-  
-  singinWithEmail(){
-    this.authC.createUserWithEmailAndPassword(this.email, this.pass).then(
-      () => {
-        
-      }
-      )
-    }
-    
+
     fileChangeEvent(e:Event){
 
       let user = firebase.auth().currentUser;
