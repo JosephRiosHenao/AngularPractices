@@ -12,6 +12,7 @@ export class AppComponent {
   public pass:string = "";
   public email:string = "";
   public name:string = "";
+  public loading:boolean = true;
 
 
 
