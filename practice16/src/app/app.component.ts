@@ -10,6 +10,8 @@ import firebase from 'firebase';
 export class AppComponent {
   avatar:any = "";
 
+  public user: firebase.User;
+
   public name:string = "";
   public loading:boolean = true;
 
@@ -17,9 +19,10 @@ export class AppComponent {
 
   constructor( public authC:AngularFireAuth ){
     this.authC.user.subscribe((user) =>{
-      console.log(user);
+      this.user = user;
       this.avatar = user?.photoURL;
       if (!user?.emailVerified){ user?.sendEmailVerification(); }
+      this.loading = false;
     })
   }
 

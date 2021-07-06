@@ -26,11 +26,7 @@ export class LoginComponent implements OnInit {
   
     
   singinWithEmail(){
-    this.authC.createUserWithEmailAndPassword(this.email, this.pass).then(
-      () => {
-        
-      }
-      )
+    this.authC.signInWithEmailAndPassword(this.email, this.pass);
     }
     
 
