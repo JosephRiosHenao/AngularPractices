@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase';
@@ -14,9 +15,15 @@ export class LoginComponent implements OnInit {
   public pass:string = "";
   public email:string = "";
 
-  constructor( private authC:AngularFireAuth) { }
+  formsLogin:FormGroup;
+
+  constructor( private authC:AngularFireAuth, private createForm:FormBuilder) { }
 
   ngOnInit(): void {
+    this.formsLogin = this.createForm.group({
+      email: ['', Validators.compose([ Validators.required, Validators.email ])],
+      pass: ['',Validators.compose([ Validators.required, Validators.minLength(8) ])]
+    });
   }
     
   login(){
