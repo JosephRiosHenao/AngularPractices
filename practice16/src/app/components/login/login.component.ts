@@ -31,10 +31,4 @@ export class LoginComponent implements OnInit {
     console.log(this.authC.user);
   }
   
-    
-  singinWithEmail(){
-    this.authC.signInWithEmailAndPassword(this.email, this.pass);
-    }
-    
-
 }
