@@ -14,7 +14,7 @@ export class AppComponent {
     http.get("https://rickandmortyapi.com/api/character").subscribe( data => {
       this.characters = data
       console.log("data update!")
-      console.log(this.characters.results)
+      console.log(this.characters)
     } );
 
 
