@@ -1,16 +1,22 @@
 <router-outlet></router-outlet>
 <div class="container">
   <div class="row">
-    <div class="col-sm-4" *ngFor="let character of characters.results; index as i">
-      <img src="{{character.image}}" alt="">
-      <p>{{character.name}}</p>
+    <div class="card-group">
+      <div class="col-sm-3" *ngFor="let character of characters.results; index as i">
+        <div class="card m-3 bg-dark text-white" style="border: 5px solid rgba(255, 255, 255, 0.25); border-radius: 3rem; overflow: hidden;">
+          <img class="card-img-top" src="{{character.image}}"  alt="">
+          <div class="card-body">
+            <p class="card-title">{{character.name}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div> 
 
   <nav>
     <ul class="pagination justify-content-center">
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+        <a class="page-link" (click)="prev()" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>     
@@ -18,7 +24,7 @@
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
       <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+        <a class="page-link" (click)="next()" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
