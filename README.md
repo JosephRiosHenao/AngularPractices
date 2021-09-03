@@ -11,3 +11,5 @@
 - practice15/ => Gym Plataform
 
 - practice17/ => MarketPlace
+- practice18/ => PokeApi
+- practice19/ => DashBoard Father
