@@ -28,3 +28,12 @@
         </div>
     </form>
 </div>
+
+<div class="container">
+    <div class="col">
+        <div class="row" *ngFor="let task of tasks; let i=index">
+            <h1>{{ task.name }}</h1>
+
+        </div>
+    </div>
+</div>

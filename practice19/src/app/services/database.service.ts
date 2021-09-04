@@ -1,3 +1,4 @@
+import { DB } from './../models/db.model';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -12,8 +13,8 @@ import { Person } from '../models/person.model';
 export class DatabaseService {
   user!: firebase.User;
   token:string = "";
-  users!: Person[];
-  tasks!: Task[];
+  persons: Person[] = [];
+  tasks: Task[] = [];
 
 
 
@@ -29,9 +30,18 @@ export class DatabaseService {
 
         authFire.idToken.subscribe( token => {
           this.token = token!;
-          http.get("https://controlclients-5d2b0-default-rtdb.firebaseio.com/.json?auth="+token).subscribe(data => {
-            console.log(data)
-          })
+          http.get<DB>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/.json?auth="+token).subscribe( (data) => {
+
+            for (let key in data.tasks){
+              this.tasks.push((data.tasks[key]))
+            }
+            console.log(this.tasks)
+
+            for (let key in data.persons){
+              this.persons.push((data.persons[key]))
+            }
+            console.log(this.persons)
+          })  
           
         })
       }else {
@@ -52,10 +62,20 @@ export class DatabaseService {
   }
 
   postTask(task:Task){
-    this.http.post("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token, task).subscribe(data => console.log(data))
+    this.http.post<{name:string}>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token, task).subscribe(data => {
+      task.id = data.name
+      this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+data.name+".json?auth="+this.token, task).subscribe(data => {
+        this.tasks.push(task)
+      })
+    })
   }
   
-  postUser(person:Person){
-    this.http.post("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons.json?auth="+this.token, person).subscribe(data => console.log(data))
+  postPerson(person:Person){
+    this.http.post<{name:string}>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons.json?auth="+this.token, person).subscribe(data => {
+      person.id = data.name
+      this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+data.name+".json?auth="+this.token, person).subscribe(data => {
+        this.persons.push(person)
+      })
+    })
   }
 }
