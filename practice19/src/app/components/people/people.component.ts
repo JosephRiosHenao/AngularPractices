@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Person } from 'src/app/models/person.model';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -10,6 +10,10 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./people.component.scss']
 })
 export class PeopleComponent implements OnInit {
+
+  dtOptions:any = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
 
   formPeople: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -24,8 +28,26 @@ export class PeopleComponent implements OnInit {
   persons:Person[] = this.db.persons;
   
   ngOnInit(): void {
+    this.dtOptions = {
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
+      },
+      // Declare the use of the extension in the dom parameter
+      dom: 'Bfrtip',
+      // Configure the buttons
+      buttons: [
+        'columnsToggle',
+        'copy',
+        'print',
+        'excel'
+      ]
+    }
+
     this.persons$ = this.db.getPersons$();
-    this.persons$.subscribe( data => this.persons = data)
+    this.persons$.subscribe( data => {
+      this.persons = data;
+      this.dtTrigger.next();
+    })
     
   }
 
@@ -41,7 +63,7 @@ export class PeopleComponent implements OnInit {
     }
     this.db.postPerson(data)
 
-    this.formPeople.reset();
+    // this.formPeople.reset();
   }
 
 }

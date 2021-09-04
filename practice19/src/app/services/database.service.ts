@@ -19,7 +19,7 @@ export class DatabaseService {
   tasks: Task[] = [];
 
   private task$ = new Subject<Task[]>();
-  private persons$ = new Subject<Person[]>();
+  public persons$ = new Subject<Person[]>();
 
 
   constructor(private authFire:AngularFireAuth, public router:Router, public http:HttpClient ) { 
@@ -44,6 +44,9 @@ export class DatabaseService {
               this.persons.push((data.persons[key]))
             }
             console.log(this.persons)
+
+            this.task$.next(this.tasks);
+            this.persons$.next(this.persons)
           })  
           
         })

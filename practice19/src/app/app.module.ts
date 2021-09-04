@@ -12,6 +12,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { PeopleComponent } from './components/people/people.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireAuthModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

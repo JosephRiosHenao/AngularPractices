@@ -26,11 +26,26 @@
 </div>
 
 <div class="container">
-    <div class="col">
-        <div class="row" *ngFor="let person of persons; let i=index; even as isEven" [ngClass]="{'even': isEven}">
-            <div class="col-md-6" >{{person.name}} y {{person.lastname}}</div>
-            <div class="col-md-6">{{person.city}}</div>
-<!--  -->
-        </div>
-    </div>
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Ciudad</th>
+            <th>Informacion</th>
+            <th>Estado</th>
+            <th>Tarea</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of persons">
+            <td>{{ person.name }}</td>
+            <td>{{ person.lastname }}</td>
+            <td>{{ person.city }}</td>
+            <td>{{ person.info }}</td>
+            <td>{{ person.state }}</td>
+            <td>{{ person.task }}</td>
+          </tr>
+        </tbody>
+      </table> 
 </div>
