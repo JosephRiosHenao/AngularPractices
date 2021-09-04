@@ -1,1 +1,30 @@
-<p>tasks works!</p>
+<div class="container">
+    <form class="row g-3 p-5" style="background-color: rgba(255, 255, 255, 0.055); border-radius: 2rem;">
+        <h1 class="text-white text-center">Create Task</h1>
+        <div class="col-md-6 form-floating">
+            <input type="text" class="form-control border-secondary text-white" id="inputName" placeholder="Name" style="background-color: rgba(255, 255, 255, 0.2);">
+            <label for="inputName" class="text-white">Name</label>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input type="time" class="form-control border-secondary text-white" id="imputWorkTime" placeholder="WorkTime" style="background-color: rgba(255, 255, 255, 0.2);">
+            <label for="imputWorkTime" class="text-white">WorkTime</label>
+        </div>
+        <div class="col-md-12 form-floating">
+            <input type="text" class="form-control border-secondary text-white" id="inputDescription" placeholder="Description" style="background-color: rgba(255, 255, 255, 0.2);">
+            <label for="inputDescription" class="text-white">Description</label>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input type="date" class="form-control border-secondary text-white" id="inputInitDate" placeholder="Init Date" style="background-color: rgba(255, 255, 255, 0.2);">
+            <label for="inputInitDate" class="text-white">Init Date</label>
+        </div>
+        <div class="col-md-6 form-floating">
+            <input type="date" class="form-control border-secondary text-white" id="inputFinishDate" placeholder="Finish Date" style="background-color: rgba(255, 255, 255, 0.2);">
+            <label for="inputFinishDate" class="text-white">Finish Date</label>
+        </div>
+
+        <div class="w-100 text-center">
+            <div class="btn text white btn-lg btn-danger btn-block col-md-2 me-3">Home</div>
+            <div class="btn text white btn-lg btn-success btn-block col-md-9">Send Task</div>
+        </div>
+    </form>
+</div>
