@@ -2,16 +2,19 @@
   <div class="text-center center">
     <div class="form-singin">
       <img src="https://firebasestorage.googleapis.com/v0/b/controlclients-5d2b0.appspot.com/o/cash-blanco.png?alt=media&token=6b51a3db-9b26-4d69-b7f5-b63a5b60ef2f" alt="" class="mb-2" style="width: 25vw;">
-    <form action="" class=" p-3">
+    <form action="" class=" p-3" [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-floating">
-        <input type="email" class="form-control  text-white mb-2 border-secondary" style="background-color: #292a30;" id="floatingInput" placeholder="name@example.com">
+        <input type="email" class="form-control  text-white mb-2 border-secondary" style="background-color: #292a30;" id="floatingInput" placeholder="name@example.com" formControlName="email">
         <label for="floatingInput" class="text-white">Email address</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control form-control text-white mb-2 border-secondary" style="background-color: #292a30;"  id="floatingPassword" placeholder="Password">
+        <input type="password" class="form-control form-control text-white mb-2 border-secondary" style="background-color: #292a30;"  id="floatingPassword" placeholder="Password" formControlName="password" >
         <label for="floatingPassword" class="text-white">Password</label>
       </div>
-      <button class="w-100 btn btn-lg" type="submit" style="background-color: #ff6634; color: white;">Sign in</button>
+      <button class="w-100 btn btn-lg" type="submit" style="background-color: #ff6634; color: white;" [disabled]="!loginForm.valid">Sign in</button>
     </form>
   </div>
 </div>
+
+<!-- admin@cas-technology.com -->
+<!-- PaSsWoRdCaS2021 -->
