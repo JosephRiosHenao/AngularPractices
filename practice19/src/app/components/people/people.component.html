@@ -24,3 +24,13 @@
         </div>
     </form>
 </div>
+
+<div class="container">
+    <div class="col">
+        <div class="row" *ngFor="let person of persons; let i=index; even as isEven" [ngClass]="{'even': isEven}">
+            <div class="col-md-6" >{{person.name}} y {{person.lastname}}</div>
+            <div class="col-md-6">{{person.city}}</div>
+<!--  -->
+        </div>
+    </div>
+</div>

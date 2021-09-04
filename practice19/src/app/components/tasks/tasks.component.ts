@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Task } from 'src/app/models/task.model';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -17,14 +18,18 @@ export class TasksComponent implements OnInit {
     dateInit : new FormControl('', Validators.required),
     dateFinish : new FormControl('', Validators.required),
   })
-
+  
   
   constructor(private db:DatabaseService) { }
   
+  tasks$!: Observable<Task[]>;
   tasks:Task[] = this.db.tasks;
 
   ngOnInit(): void {
-    this.tasks = this.db.tasks;  
+    
+    this.tasks$ = this.db.getTasks$()
+    this.tasks$.subscribe(data => this.tasks = data);
+
   }
 
   send(){
@@ -40,6 +45,7 @@ export class TasksComponent implements OnInit {
     };
 
     this.db.postTask(data)
+    this.formTask.reset();
 
   }
 

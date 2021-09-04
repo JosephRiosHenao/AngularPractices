@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/internal/Observable';
 import { DB } from './../models/db.model';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -6,6 +7,7 @@ import firebase from 'firebase/compat/app';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '../models/task.model';
 import { Person } from '../models/person.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,8 @@ export class DatabaseService {
   persons: Person[] = [];
   tasks: Task[] = [];
 
-
+  private task$ = new Subject<Task[]>();
+  private persons$ = new Subject<Person[]>();
 
 
   constructor(private authFire:AngularFireAuth, public router:Router, public http:HttpClient ) { 
@@ -66,6 +69,7 @@ export class DatabaseService {
       task.id = data.name
       this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+data.name+".json?auth="+this.token, task).subscribe(data => {
         this.tasks.push(task)
+        this.task$.next(this.tasks)
       })
     })
   }
@@ -74,8 +78,18 @@ export class DatabaseService {
     this.http.post<{name:string}>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons.json?auth="+this.token, person).subscribe(data => {
       person.id = data.name
       this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+data.name+".json?auth="+this.token, person).subscribe(data => {
+        console.log(person)
         this.persons.push(person)
+        this.persons$.next(this.persons)
       })
     })
+  }
+
+  getTasks$():Observable<Task[]> {
+    return this.task$.asObservable();
+  }
+
+  getPersons$():Observable<Person[]> {
+    return this.persons$.asObservable();
   }
 }

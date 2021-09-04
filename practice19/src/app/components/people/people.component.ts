@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Person } from 'src/app/models/person.model';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -17,15 +18,21 @@ export class PeopleComponent implements OnInit {
     info: new FormControl(''),
   })
 
+  persons$!:Observable<Person[]>;
+  
   constructor(private db:DatabaseService) { }
-
+  persons:Person[] = this.db.persons;
+  
   ngOnInit(): void {
+    this.persons$ = this.db.getPersons$();
+    this.persons$.subscribe( data => this.persons = data)
+    
   }
 
   send(){
     let data:Person = {
       name: this.formPeople.value.name,
-      lastname: this.formPeople.value.lasname,
+      lastname: this.formPeople.value.lastname,
       state: 0,
       city: this.formPeople.value.city,
       id: "0",
@@ -33,6 +40,8 @@ export class PeopleComponent implements OnInit {
       info: this.formPeople.value.info
     }
     this.db.postPerson(data)
+
+    this.formPeople.reset();
   }
 
 }
