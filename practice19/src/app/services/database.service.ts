@@ -103,9 +103,19 @@ export class DatabaseService {
   }
 
   deletePerson(id:string, index:number){
-    console.log(id)
     this.persons.splice(index,1);
     this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token).subscribe(data => {})
-    this.persons$.next(this.persons)
+    this.persons$.next(this.persons);
+  }
+  
+  putTask(task:Task, index:number){
+    this.tasks[index] = task;
+    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+task.id+".json?auth="+this.token, task).subscribe(data => {})
+    this.task$.next(this.tasks);
+  }
+  putPerson(person:Person, index:number){
+    this.persons[index] = person;
+    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+person.id+".json?auth="+this.token, person).subscribe(data => {})
+    this.persons$.next(this.persons);
   }
 }

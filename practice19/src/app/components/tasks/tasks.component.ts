@@ -19,9 +19,7 @@ export class TasksComponent implements OnInit {
     dateFinish : new FormControl('', Validators.required),
   })
   
-  
-  constructor(private db:DatabaseService) { 
-  }
+  constructor(private db:DatabaseService) { }
   
   tasks$!: Observable<Task[]>;
   tasks:Task[] = this.db.tasks;
@@ -30,10 +28,10 @@ export class TasksComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
 
   first:boolean = true;
-
+  createMode:boolean = true;
+  taskModifyIndex:number = 0;
 
   ngOnInit(): void {
-
     this.dtOptions = {
       language: {
         url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
@@ -59,28 +57,55 @@ export class TasksComponent implements OnInit {
         this.first = false
       }
     });
-
   }
-
   send(){
-    let data:Task = {
-      name: this.formTask.value.name,
-      description: this.formTask.value.description,
-      status: 0,
-      initDate: this.formTask.value.dateInit,
-      finishDate: this.formTask.value.dateFinish,
-      workTime: this.formTask.value.timeTask,
-      user: "",
-      id: "0"
-    };
-
-    this.db.postTask(data)
+    if (this.createMode) {
+      let data:Task = {
+        name: this.formTask.value.name,
+        description: this.formTask.value.description,
+        status: 0,
+        initDate: this.formTask.value.dateInit,
+        finishDate: this.formTask.value.dateFinish,
+        workTime: this.formTask.value.timeTask,
+        user: "",
+        id: "0"
+      };
+      this.db.postTask(data)
+    } else {
+      let data:Task = {
+        name: this.formTask.value.name,
+        description: this.formTask.value.description,
+        status: this.tasks[this.taskModifyIndex].status,
+        initDate: this.formTask.value.dateInit,
+        finishDate: this.formTask.value.dateFinish,
+        workTime: this.formTask.value.timeTask,
+        user: this.tasks[this.taskModifyIndex].user,
+        id: this.tasks[this.taskModifyIndex].id
+      };
+      this.db.putTask(data, this.taskModifyIndex)
+    }
     this.formTask.reset();
-
   }
 
   deleteTask(id:string, index:number){
     this.db.deleteTask(id,index);
   }
 
+  cancelModify() {
+    this.createMode = true;
+    this.formTask.reset();
+  }
+
+  modeModifyTask (id:string, index:number) {
+    this.createMode = false;
+    this.formTask.setValue({
+      name: this.tasks[index].name,
+      description: this.tasks[index].description,
+      timeTask: this.tasks[index].workTime,
+      dateInit: this.tasks[index].initDate,
+      dateFinish: this.tasks[index].finishDate
+    })
+    this.taskModifyIndex = index;
+    window.scrollTo(0, 0);
+  }
 }

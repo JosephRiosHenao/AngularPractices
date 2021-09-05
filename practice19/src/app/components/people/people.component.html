@@ -1,6 +1,11 @@
 <div class="container">
     <form class="row g-3 p-5" style="background-color: rgba(255, 255, 255, 0.055); border-radius: 2rem;" [formGroup]="formPeople" (ngSubmit)="send()">
-        <h1 class="text-white text-center">Crear Interventor</h1>
+        <ng-container *ngIf="createMode; else modifyTitle">
+          <h1 class="text-white text-center">Crear Interventor</h1>
+        </ng-container>
+        <ng-template #modifyTitle>
+          <h1 class="text-white text-center">Modificar Interventor</h1>
+        </ng-template>
         <div class="col-md-4 form-floating">
             <input type="text" class="form-control border-secondary text-white" id="inputName" placeholder="Nombre" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="name">
             <label for="inputName" class="text-white">Nombre</label>
@@ -19,8 +24,15 @@
         </div>
 
         <div class="w-100 text-center">
+          <ng-container *ngIf="createMode; else modifyMode">
             <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']">Volver</button>
-            <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Enviar</button>
+            <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Crear</button>
+          </ng-container>
+          <ng-template #modifyMode>
+            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']" (click)="cancelModify()">Cancelar</button>
+            <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Modificar</button>
+          </ng-template>
+          
         </div>
     </form>
 </div>
@@ -46,7 +58,7 @@
             <td *ngIf="person.state == 0">Disponible</td>
             <td *ngIf="person.state == 1">Ocupado</td>
             <td *ngIf="person.state == 2">Otro</td>
-            <td class="text-center"> <button class="btn btn-primary me-2">Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </td>
+            <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyPerson(person.id,i)" >Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </td>
           </tr>
         </tbody>
       </table> 

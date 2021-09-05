@@ -11,12 +11,6 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class PeopleComponent implements OnInit {
 
-  dtOptions:any = {};
-  dtTrigger: Subject<any> = new Subject<any>();
-
-  first:boolean = true;
-
-
   formPeople: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
@@ -24,10 +18,17 @@ export class PeopleComponent implements OnInit {
     info: new FormControl(''),
   })
 
-  persons$!:Observable<Person[]>;
-  
   constructor(private db:DatabaseService) { }
+  
+  persons$!:Observable<Person[]>;
   persons:Person[] = this.db.persons;
+
+  dtOptions:any = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
+  first:boolean = true;
+  createMode:boolean = true;
+  personModifyIndex:number = 0;
   
   ngOnInit(): void {
     this.dtOptions = {
@@ -55,25 +56,54 @@ export class PeopleComponent implements OnInit {
         this.first = false
       }
     })
-    
   }
 
   send(){
-    let data:Person = {
-      name: this.formPeople.value.name,
-      lastname: this.formPeople.value.lastname,
-      state: 0,
-      city: this.formPeople.value.city,
-      id: "0",
-      task: "",
-      info: this.formPeople.value.info
+    if (this.createMode){
+      let data:Person = {
+        name: this.formPeople.value.name,
+        lastname: this.formPeople.value.lastname,
+        state: 0,
+        city: this.formPeople.value.city,
+        id: "0",
+        task: "",
+        info: this.formPeople.value.info
+      }
+      this.db.postPerson(data)
+    }else {
+      let data:Person = {
+        name: this.formPeople.value.name,
+        lastname: this.formPeople.value.lastname,
+        state: this.persons[this.personModifyIndex].state,
+        city: this.formPeople.value.city,
+        id: this.persons[this.personModifyIndex].id,
+        task: this.persons[this.personModifyIndex].task,
+        info: this.formPeople.value.info
+      }
+      this.db.putPerson(data, this.personModifyIndex)
     }
-    this.db.postPerson(data)
-
     this.formPeople.reset();
   }
 
   deletePerson(id:string, index:number){
     this.db.deletePerson(id, index);
   }
+
+  cancelModify(){
+    this.createMode = true;
+    this.formPeople.reset();
+  }
+
+  modeModifyPerson(id:string, index:number) {
+    this.createMode = false;
+    this.formPeople.setValue({
+      name: this.persons[index].name,
+      lastname: this.persons[index].lastname,
+      city: this.persons[index].city,
+      info: this.persons[index].info
+    })
+    this.personModifyIndex = index;
+    window.scrollTo(0, 0);
+  }
+
 }
