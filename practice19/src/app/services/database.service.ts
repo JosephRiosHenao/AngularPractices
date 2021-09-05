@@ -103,6 +103,7 @@ export class DatabaseService {
   }
 
   deletePerson(id:string, index:number){
+    console.log(id)
     this.persons.splice(index,1);
     this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token).subscribe(data => {})
     this.persons$.next(this.persons)
