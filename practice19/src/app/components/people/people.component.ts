@@ -14,6 +14,8 @@ export class PeopleComponent implements OnInit {
   dtOptions:any = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
+  first:boolean = true;
+
 
   formPeople: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -40,13 +42,18 @@ export class PeopleComponent implements OnInit {
         'copy',
         'print',
         'excel'
-      ]
+      ],
+      pagingType: 'full_numbers',
+      // pageLength: 5
     }
 
     this.persons$ = this.db.getPersons$();
     this.persons$.subscribe( data => {
       this.persons = data;
-      this.dtTrigger.next();
+      if (this.first){
+        this.dtTrigger.next();
+        this.first = false
+      }
     })
     
   }
@@ -63,7 +70,10 @@ export class PeopleComponent implements OnInit {
     }
     this.db.postPerson(data)
 
-    // this.formPeople.reset();
+    this.formPeople.reset();
   }
 
+  deletePerson(id:string, index:number){
+    this.db.deletePerson(id, index);
+  }
 }

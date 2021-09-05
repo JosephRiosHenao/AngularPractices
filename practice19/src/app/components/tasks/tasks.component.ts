@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Task } from 'src/app/models/task.model';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -20,15 +20,45 @@ export class TasksComponent implements OnInit {
   })
   
   
-  constructor(private db:DatabaseService) { }
+  constructor(private db:DatabaseService) { 
+  }
   
   tasks$!: Observable<Task[]>;
   tasks:Task[] = this.db.tasks;
 
+  dtOptions:any = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
+  first:boolean = true;
+
+
   ngOnInit(): void {
+
+    this.dtOptions = {
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
+      },
+      // Declare the use of the extension in the dom parameter
+      dom: 'Bfrtip',
+      // Configure the buttons
+      buttons: [
+        'columnsToggle',
+        'copy',
+        'print',
+        'excel'
+      ],
+      pagingType: 'full_numbers',
+      // pageLength: 5
+    }
     
     this.tasks$ = this.db.getTasks$()
-    this.tasks$.subscribe(data => this.tasks = data);
+    this.tasks$.subscribe(data => {
+      this.tasks = data
+      if (this.first) {
+        this.dtTrigger.next();
+        this.first = false
+      }
+    });
 
   }
 
@@ -47,6 +77,10 @@ export class TasksComponent implements OnInit {
     this.db.postTask(data)
     this.formTask.reset();
 
+  }
+
+  deleteTask(id:string, index:number){
+    this.db.deleteTask(id,index);
   }
 
 }

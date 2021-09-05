@@ -95,4 +95,16 @@ export class DatabaseService {
   getPersons$():Observable<Person[]> {
     return this.persons$.asObservable();
   }
+
+  deleteTask(id:string, index:number){
+    this.tasks.splice(index,1);
+    this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+id+".json?auth="+this.token).subscribe(data => {})
+    this.task$.next(this.tasks);
+  }
+
+  deletePerson(id:string, index:number){
+    this.persons.splice(index,1);
+    this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token).subscribe(data => {})
+    this.persons$.next(this.persons)
+  }
 }

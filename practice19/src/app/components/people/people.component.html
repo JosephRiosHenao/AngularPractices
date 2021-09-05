@@ -25,7 +25,7 @@
     </form>
 </div>
 
-<div class="container">
+<div class="container table-custom mt-5 p-5 mb-5">
     <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
         <thead>
           <tr>
@@ -34,17 +34,19 @@
             <th>Ciudad</th>
             <th>Informacion</th>
             <th>Estado</th>
-            <th>Tarea</th>
+            <th class="text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let person of persons">
+          <tr *ngFor="let person of persons; let i=index">
             <td>{{ person.name }}</td>
             <td>{{ person.lastname }}</td>
             <td>{{ person.city }}</td>
             <td>{{ person.info }}</td>
-            <td>{{ person.state }}</td>
-            <td>{{ person.task }}</td>
+            <td *ngIf="person.state == 0">Disponible</td>
+            <td *ngIf="person.state == 1">Ocupado</td>
+            <td *ngIf="person.state == 2">Otro</td>
+            <td class="text-center"> <button class="btn btn-primary me-2">Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </td>
           </tr>
         </tbody>
       </table> 

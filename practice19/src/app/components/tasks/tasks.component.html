@@ -23,7 +23,7 @@
         </div>
 
         <div class="w-100 text-center">
-            <div class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']" >Volver</div>
+            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']" >Volver</button>
             <button type="submit" [disabled]="!formTask.valid" class="btn text white btn-lg btn-success btn-block col-md-9">Enviar</button>
         </div>
     </form>
@@ -32,11 +32,32 @@
 
 
 
-<div class="container">
-    <div class="col">
-        <div class="row" *ngFor="let task of tasks; let i=index">
-            <h1>{{ task.name }}</h1>
 
-        </div>
-    </div>
+<div class="container table-custom mt-5 p-5 mb-5">
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Fecha inicio</th>
+            <th>Fecha final</th>
+            <th>Tiempo</th>
+            <th>Estado</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks; let i = index">
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.initDate }}</td>
+            <td>{{ task.finishDate }}</td>
+            <td>{{ task.workTime }}</td>
+            <td *ngIf="task.status == 0">Disponible</td>
+            <td *ngIf="task.status == 1">Ocupado</td>
+            <td *ngIf="task.status == 2">Otro</td>
+            <td class="text-center"> <button class="btn btn-primary me-2">Editar</button> <button class="btn btn-danger" (click)="deleteTask(task.id, i)">Eliminar</button> </td>
+          </tr>
+        </tbody>
+      </table> 
 </div>
