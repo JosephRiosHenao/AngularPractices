@@ -9,6 +9,37 @@
         <div class="row" ></div>
     </div>
 </div>
-<div class="container">
-     
+
+
+
+<div class="container table-custom mt-5 p-5 mb-5">
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Estado</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr *ngFor="let person of persons; let i=index">
+            <td>{{ person.name }}</td>
+            <td>{{person.lastname}}</td>
+            <td *ngIf="person.state == 0">Disponible</td>
+            <td *ngIf="person.state == 1">Ocupado</td>
+            <td *ngIf="person.state == 2">Otro</td>
+            <ng-container *ngIf="person.task == ''; else actionData">
+              <td  class="text-center">    
+                  <ng-select2 class="btn" [(ngModel)]="valueSelect[i]" [data]="selectData" placeholder="Selecciona una tarea" width="300" [options]="options"></ng-select2>
+                  <button  button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></td>
+            </ng-container>
+            <ng-template #actionData>
+              <td  class="text-center"> <button class="btn btn-primary me-2" >Detalles</button> <button class="btn btn-danger">Desasignar</button> </td>
+            </ng-template>
+            
+          </tr>
+        </tbody>
+      </table> 
 </div>

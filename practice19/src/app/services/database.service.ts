@@ -13,6 +13,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class DatabaseService {
+
   user!: firebase.User;
   token:string = "";
   persons: Person[] = [];
@@ -117,5 +118,26 @@ export class DatabaseService {
     this.persons[index] = person;
     this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+person.id+".json?auth="+this.token, person).subscribe(data => {})
     this.persons$.next(this.persons);
+  }
+
+  assingTask(id: string, index: number, value:string) {
+    this.persons[index].task = value;
+    this.persons[index].state = 1;
+    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token, this.persons[index]).subscribe(data => {})
+    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+value+".json?auth="+this.token, {user: id, status:1}).subscribe(data => {})
+    this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
+      let tasksNew:Task[] = [];
+      for (let key in data){
+        tasksNew.push((data[key]))
+      }  
+      this.tasks = tasksNew;
+    })
+    this.task$.next(this.tasks);
+    this.persons$.next(this.persons)
+  }
+  
+  getTasksFree(){
+    this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {})
+
   }
 }

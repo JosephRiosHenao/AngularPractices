@@ -29,7 +29,7 @@
             <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Crear</button>
           </ng-container>
           <ng-template #modifyMode>
-            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']" (click)="cancelModify()">Cancelar</button>
+            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" (click)="cancelModify()">Cancelar</button>
             <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Modificar</button>
           </ng-template>
           

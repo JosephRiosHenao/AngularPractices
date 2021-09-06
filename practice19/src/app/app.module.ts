@@ -13,6 +13,7 @@ import { PeopleComponent } from './components/people/people.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { NgSelect2Module } from 'ng-select2';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    NgSelect2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
