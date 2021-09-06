@@ -33,10 +33,10 @@
             <ng-container *ngIf="person.task == ''; else actionData">
               <td  class="text-center">    
                   <ng-select2 class="btn" [(ngModel)]="valueSelect[i]" [data]="selectData" placeholder="Selecciona una tarea" width="300" [options]="options"></ng-select2>
-                  <button  button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></td>
+                  <button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></td>
             </ng-container>
             <ng-template #actionData>
-              <td  class="text-center"> <button class="btn btn-primary me-2" >Detalles</button> <button class="btn btn-danger">Desasignar</button> </td>
+              <td  class="text-center"> <button class="btn btn-primary me-2" >Detalles</button> <button class="btn btn-danger" (click)="desassingTask(person.id, i)">Desasignar</button> </td>
             </ng-template>
             
           </tr>
