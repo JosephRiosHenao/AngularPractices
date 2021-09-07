@@ -4,7 +4,7 @@ export interface Task {
     status: number,
     initDate: string,
     finishDate: string,
-    workTime:string,
+    workTime:number,
     user: string,
     id: string
 }

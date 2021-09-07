@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   
   dtOptions: any = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  dtOptionsModal:any;
   
   constructor(public db: DatabaseService) {}
   
@@ -27,6 +28,27 @@ export class HomeComponent implements OnInit, OnDestroy {
   tasks$!: Observable<Task[]>;
 
   isFirst:boolean = true;
+
+  personInfo:Person = {
+    name: '',
+    lastname: '',
+    state: 0,
+    city: '',
+    id: '',
+    task: '',
+    info: ''
+  };
+
+  taskInfo:Task = {
+    name: '',
+    description: '',
+    status: 0,
+    initDate: '',
+    finishDate: '',
+    workTime: 0,
+    user: '',
+    id: ''
+  }
 
   ngOnInit(): void {
 
@@ -47,6 +69,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     ],
     pagingType: 'full_numbers',
     // pageLength: 5
+  }
+
+  this.dtOptionsModal = {
+    language: {
+      url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
+    },
   }
 
     this.persons$ = this.db.getPersons$();
@@ -99,5 +127,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   desassingTask(id:string, index:number){
     this.db.desassingTask(id, index);
+  }
+
+  infoTask(taskId:string, personIndex:number){
+    this.db.infoTask(taskId).subscribe(data => {
+      this.taskInfo = data;
+      this.personInfo = this.persons[personIndex];
+    });
   }
 }

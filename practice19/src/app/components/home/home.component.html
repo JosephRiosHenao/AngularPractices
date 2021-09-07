@@ -27,19 +27,85 @@
           <tr *ngFor="let person of persons; let i=index">
             <td>{{ person.name }}</td>
             <td>{{person.lastname}}</td>
-            <td *ngIf="person.state == 0">Disponible</td>
-            <td *ngIf="person.state == 1">Ocupado</td>
-            <td *ngIf="person.state == 2">Otro</td>
+            <td *ngIf="person.state == 0" class="text-white bg-success">Disponible</td>
+            <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
+            <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
             <ng-container *ngIf="person.task == ''; else actionData">
               <td  class="text-center">    
                   <ng-select2 class="btn" [(ngModel)]="valueSelect[i]" [data]="selectData" placeholder="Selecciona una tarea" width="300" [options]="options"></ng-select2>
                   <button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></td>
             </ng-container>
             <ng-template #actionData>
-              <td  class="text-center"> <button class="btn btn-primary me-2" >Detalles</button> <button class="btn btn-danger" (click)="desassingTask(person.id, i)">Desasignar</button> </td>
+              <td  class="text-center"> <button class="btn btn-primary me-2" (click)="infoTask(person.task, i)" data-bs-toggle="modal" data-bs-target="#infoModal">Detalles</button> <button class="btn btn-danger" (click)="desassingTask(person.id, i)">Desasignar</button> </td>
             </ng-template>
-            
           </tr>
         </tbody>
       </table> 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Detalles</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="container">
+            <h4 class="text-center">Interventor</h4>
+            <table class="table table-bordered table-striped table-hover" >
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellidos</th>
+                  <th>Ciudad</th>
+                  <th>Informacion</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ personInfo.name }}</td>
+                  <td>{{ personInfo.lastname }}</td>
+                  <td>{{ personInfo.city }}</td>
+                  <td>{{ personInfo.info }}</td>
+                  <td *ngIf="personInfo.state == 0">Disponible</td>
+                  <td *ngIf="personInfo.state == 1">Ocupado</td>
+                  <td *ngIf="personInfo.state == 2">Otro</td>
+                </tr>
+              </tbody>
+            </table>       
+          </div>
+          <h4 class="text-center">Tarea</h4>
+          <table class="table table-bordered table-striped table-hover" >
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Fecha inicio</th>
+                <th>Fecha final</th>
+                <th>Tiempo</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ taskInfo.name }}</td>
+                <td>{{ taskInfo.description }}</td>
+                <td>{{ taskInfo.initDate }}</td>
+                <td>{{ taskInfo.finishDate }}</td>
+                <td>{{ taskInfo.workTime }}</td>
+                <td *ngIf="taskInfo.status == 0">Disponible</td>
+                <td *ngIf="taskInfo.status == 1">Ocupado</td>
+                <td *ngIf="taskInfo.status == 2">Otro</td>
+              </tr>
+            </tbody>
+          </table> 
+          </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

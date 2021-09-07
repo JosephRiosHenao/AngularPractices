@@ -158,4 +158,7 @@ export class DatabaseService {
     })
   }
   
+  infoTask(id:string):Observable<Task>{
+    return this.http.get<Task>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+id+".json?auth="+this.token)
+  }
 }
