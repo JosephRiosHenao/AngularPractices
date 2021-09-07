@@ -25,13 +25,14 @@ export class TasksComponent implements OnInit {
   tasks:Task[] = this.db.tasks;
 
   dtOptions:any = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+  dtTriggerTask: Subject<any> = new Subject<any>();
 
   first:boolean = true;
   createMode:boolean = true;
   taskModifyIndex:number = 0;
 
   ngOnInit(): void {
+
     this.dtOptions = {
       language: {
         url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
@@ -53,10 +54,11 @@ export class TasksComponent implements OnInit {
     this.tasks$.subscribe(data => {
       this.tasks = data
       if (this.first) {
-        this.dtTrigger.next();
+        this.dtTriggerTask.next();
         this.first = false
       }
     });
+
   }
   send(){
     if (this.createMode) {

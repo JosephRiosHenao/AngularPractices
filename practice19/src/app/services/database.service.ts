@@ -27,28 +27,30 @@ export class DatabaseService {
     authFire.onAuthStateChanged( user => {
       if(user) {
         this.user = user;
-        console.log(user);
         if (router.url == "/login"){
           router.navigate(["/"])
         }
 
         authFire.idToken.subscribe( token => {
           this.token = token!;
-          console.log(token)
-          http.get<DB>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/.json?auth="+token).subscribe( (data) => {
-
-            for (let key in data.tasks){
-              this.tasks.push((data.tasks[key]))
+          http.get<DB | null>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/.json?auth="+token).subscribe( (data) => {
+            if (data){
+              if(data.persons){
+                for (let key in data.persons){
+                  this.persons.push((data.persons[key]))
+                }
+              }
+              if (data.tasks){
+                for (let key in data.tasks){
+                  this.tasks.push((data.tasks[key]))
+                }
+              }
+            }else{
+              console.log("No data")
             }
-            console.log(this.tasks)
-
-            for (let key in data.persons){
-              this.persons.push((data.persons[key]))
-            }
-            console.log(this.persons)
-
-            this.task$.next(this.tasks);
+            
             this.persons$.next(this.persons)
+            this.task$.next(this.tasks);
           })  
           
         })
@@ -60,7 +62,6 @@ export class DatabaseService {
 
 
   login(email:string, pass:string){
-    console.log("login with: "+email+" "+pass)
     this.authFire.signInWithEmailAndPassword(email,pass).then( user => {
       if(user){
         this.user = user.user!;
@@ -72,7 +73,7 @@ export class DatabaseService {
   postTask(task:Task){
     this.http.post<{name:string}>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token, task).subscribe(data => {
       task.id = data.name
-      this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+data.name+".json?auth="+this.token, task).subscribe(data => {
+      this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+data.name+".json?auth="+this.token, {id: data.name}).subscribe(() => {
         this.tasks.push(task)
         this.task$.next(this.tasks)
       })
@@ -82,8 +83,7 @@ export class DatabaseService {
   postPerson(person:Person){
     this.http.post<{name:string}>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons.json?auth="+this.token, person).subscribe(data => {
       person.id = data.name
-      this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+data.name+".json?auth="+this.token, person).subscribe(data => {
-        console.log(person)
+      this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+data.name+".json?auth="+this.token, {id: data.name}).subscribe(() => {
         this.persons.push(person)
         this.persons$.next(this.persons)
       })
@@ -100,24 +100,24 @@ export class DatabaseService {
 
   deleteTask(id:string, index:number){
     this.tasks.splice(index,1);
-    this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+id+".json?auth="+this.token).subscribe(data => {})
+    this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+id+".json?auth="+this.token).subscribe(() => {})
     this.task$.next(this.tasks);
   }
 
   deletePerson(id:string, index:number){
     this.persons.splice(index,1);
-    this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token).subscribe(data => {})
+    this.http.delete("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token).subscribe(() => {})
     this.persons$.next(this.persons);
   }
   
   putTask(task:Task, index:number){
     this.tasks[index] = task;
-    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+task.id+".json?auth="+this.token, task).subscribe(data => {})
+    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+task.id+".json?auth="+this.token, task).subscribe(() => {})
     this.task$.next(this.tasks);
   }
   putPerson(person:Person, index:number){
     this.persons[index] = person;
-    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+person.id+".json?auth="+this.token, person).subscribe(data => {})
+    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+person.id+".json?auth="+this.token, person).subscribe(() => {})
     this.persons$.next(this.persons);
   }
 
@@ -145,7 +145,6 @@ export class DatabaseService {
       this.persons[index].state = 0;
       this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token, this.persons[index]).subscribe(data => {
         this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
-          console.log(data)
           let tasksNew:Task[] = [];
           for (let key in data){
             tasksNew.push((data[key]))
@@ -160,5 +159,56 @@ export class DatabaseService {
   
   infoTask(id:string):Observable<Task>{
     return this.http.get<Task>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+id+".json?auth="+this.token)
+  }
+  
+  finalizeTask(task:Task){
+    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+task.id+".json?auth="+this.token, {status: 3, user: ""}).subscribe(() => {
+      this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
+        let tasksNew:Task[] = [];
+        for (let key in data){
+          tasksNew.push((data[key]))
+        }  
+        this.tasks = tasksNew;
+        this.task$.next(this.tasks);
+      })
+    })
+    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+task.user+".json?auth="+this.token, {state: 0, task: ""}).subscribe(() => {
+      this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons.json?auth="+this.token).subscribe(data => {
+        let personsNew:Person[] = [];
+        for (let key in data){
+          personsNew.push((data[key]))
+        }    
+        this.persons = personsNew;  
+        this.persons$.next(this.persons);
+      })
+    })
+  }
+
+  suspendTask(task:Task){
+    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+task.id+".json?auth="+this.token, {status: 2, user: ""}).subscribe(() => {
+      this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
+        let tasksNew:Task[] = [];
+        for (let key in data){
+          tasksNew.push((data[key]))
+        }  
+        this.tasks = tasksNew;
+        this.task$.next(this.tasks);
+      })
+    })
+    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+task.user+".json?auth="+this.token, {state: 0, task: ""}).subscribe(() => {
+      this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons.json?auth="+this.token).subscribe(data => {
+        let personsNew:Person[] = [];
+        for (let key in data){
+          personsNew.push((data[key]))
+        }    
+        this.persons = personsNew;
+        this.persons$.next(this.persons);
+      })
+    })
+  }
+
+  singOut(){
+    this.authFire.signOut();
+    window.location.reload();
   }
 }

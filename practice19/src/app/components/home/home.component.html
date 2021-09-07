@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mt-3">
         <button class="col-md-5 btn btn-warning btn-lg" [routerLink]="['/people']">+ Anadir Interventor</button>
-        <div class="col-md-2"></div>
+        <button class="btn btn-danger btn-lg col-md-2" (click)="singOut()">Cerrar sesion</button>
         <button class="col-md-5 btn btn-info btn-lg" [routerLink]="['/tasks']">+ Anadir Tarea</button>
     </div>
 
@@ -13,7 +13,7 @@
 
 
 <div class="container table-custom mt-5 p-5 mb-5">
-    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerHome | async">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -70,9 +70,9 @@
                   <td>{{ personInfo.lastname }}</td>
                   <td>{{ personInfo.city }}</td>
                   <td>{{ personInfo.info }}</td>
-                  <td *ngIf="personInfo.state == 0">Disponible</td>
-                  <td *ngIf="personInfo.state == 1">Ocupado</td>
-                  <td *ngIf="personInfo.state == 2">Otro</td>
+                  <td *ngIf="personInfo.state == 0" class="text-white bg-success">Disponible</td>
+                  <td *ngIf="personInfo.state == 1" class="text-white bg-danger">Ocupado</td>
+                  <td *ngIf="personInfo.state == 2" class="text-white bg-warning">Otro</td>
                 </tr>
               </tbody>
             </table>       
@@ -96,15 +96,17 @@
                 <td>{{ taskInfo.initDate }}</td>
                 <td>{{ taskInfo.finishDate }}</td>
                 <td>{{ taskInfo.workTime }}</td>
-                <td *ngIf="taskInfo.status == 0">Disponible</td>
-                <td *ngIf="taskInfo.status == 1">Ocupado</td>
-                <td *ngIf="taskInfo.status == 2">Otro</td>
+                <td *ngIf="taskInfo.status == 0" class="text-white bg-warning">Por asignar</td>
+                <td *ngIf="taskInfo.status == 1" class="text-white bg-success">En curso</td>
+                <td *ngIf="taskInfo.status == 2" class="text-white bg-danger">Suspendida</td>
+                <td *ngIf="taskInfo.status == 3" class="text-white bg-primary">Finalizada</td>
               </tr>
             </tbody>
           </table> 
           </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" (click)="suspendTask(taskInfo)"  data-bs-dismiss="modal">Suspender</button>
+        <button type="button" class="btn btn-primary" (click)="finalizeTask(taskInfo)" data-bs-dismiss="modal">Finalizar</button>
       </div>
     </div>
   </div>

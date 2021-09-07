@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/app/models/person.model';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Task } from 'src/app/models/task.model';
@@ -10,13 +10,13 @@ import { Select2OptionData } from 'ng-select2';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   public selectData:Select2OptionData[] = [{id: "none", text: "Selecciona una tarea"}];
   public valueSelect:string[] = ["none"];
   public options:any;
   
   dtOptions: any = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+  dtTriggerHome: Subject<any> = new Subject<any>();
   dtOptionsModal:any;
   
   constructor(public db: DatabaseService) {}
@@ -52,7 +52,29 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    if (this.tasks == null){
+      this.isFirst = true;
+    }
 
+    this.persons$ = this.db.getPersons$();
+    this.persons$.subscribe((data) => {
+      this.persons = data;
+      this.persons.forEach((data,index)=>{
+        this.valueSelect[index] = "none"
+      })
+    });
+
+    this.tasks$ = this.db.getTasks$();
+    this.tasks$.subscribe((data) => {
+      this.tasks = data;
+      // Error create task 0
+      // this.defineSelectData()
+      if (this.isFirst){
+        this.dtTriggerHome.next();
+        this.isFirst = false;
+      }
+    });
+  
 
   this.dtOptions = {
     language: {
@@ -77,31 +99,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
   }
 
-    this.persons$ = this.db.getPersons$();
-    this.persons$.subscribe((data) => {
-      this.persons = data;
-      this.persons.forEach((__,index)=>{
-        this.valueSelect[index] = "none"
-      })
-    });
-
-    this.tasks$ = this.db.getTasks$();
-    this.tasks$.subscribe((data) => {
-      console.log("observable tarea")
-      console.log(data)
-      this.tasks = data;
-      this.defineSelectData()
-      if (this.isFirst){
-        this.dtTrigger.next();
-        this.isFirst = false;
-      }
-    });
-
-
     this.options = {
       closeOnSelect: true,
       width: '200'
     };
+
   }
 
   defineSelectData(){
@@ -110,12 +112,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.tasks.filter(task => task.status == 0).forEach(task => {
         this.selectData.push({id: task.id, text: task.name})
       })
-      console.log(this.selectData)
+      this.tasks.filter(task => task.status == 2).forEach(task => {
+        this.selectData.push({id: task.id, text: task.name})
+      })
   }
 
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
-  }
 
   assingTask(id:string, index:number){
     if (this.valueSelect[index] != undefined && this.valueSelect[index] != "none"){
@@ -134,5 +135,17 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.taskInfo = data;
       this.personInfo = this.persons[personIndex];
     });
+  }
+
+  suspendTask(task:Task){
+    this.db.suspendTask(task);
+  }
+
+  finalizeTask(task:Task){
+    this.db.finalizeTask(task);
+  }
+
+  singOut(){
+    this.db.singOut();
   }
 }

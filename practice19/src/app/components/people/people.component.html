@@ -38,7 +38,7 @@
 </div>
 
 <div class="container table-custom mt-5 p-5 mb-5">
-    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerPeople | async">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -55,9 +55,9 @@
             <td>{{ person.lastname }}</td>
             <td>{{ person.city }}</td>
             <td>{{ person.info }}</td>
-            <td *ngIf="person.state == 0">Disponible</td>
-            <td *ngIf="person.state == 1">Ocupado</td>
-            <td *ngIf="person.state == 2">Otro</td>
+            <td *ngIf="person.state == 0" class="text-white bg-success">Disponible</td>
+            <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
+            <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
             <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyPerson(person.id,i)" >Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </td>
           </tr>
         </tbody>

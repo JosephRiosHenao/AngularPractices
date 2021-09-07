@@ -41,7 +41,7 @@
 </div>
 
 <div class="container table-custom mt-5 p-5 mb-5">
-    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerTask | async">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -60,9 +60,10 @@
             <td>{{ task.initDate | date:'short' }}</td>
             <td>{{ task.finishDate | date:'short' }}</td>
             <td>{{ task.workTime }}</td>
-            <td *ngIf="task.status == 0">Disponible</td>
-            <td *ngIf="task.status == 1">Ocupado</td>
-            <td *ngIf="task.status == 2">Otro</td>
+            <td *ngIf="task.status == 0" class="text-white bg-warning">Por asignar</td>
+            <td *ngIf="task.status == 1" class="text-white bg-success">En curso</td>
+            <td *ngIf="task.status == 2" class="text-white bg-danger">Suspendida</td>
+            <td *ngIf="task.status == 3" class="text-white bg-primary">Finalizada</td>
             <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyTask(task.id,i)">Editar</button> <button class="btn btn-danger" (click)="deleteTask(task.id, i)">Eliminar</button> </td>
           </tr>
         </tbody>

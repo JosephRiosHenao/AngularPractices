@@ -24,7 +24,7 @@ export class PeopleComponent implements OnInit {
   persons:Person[] = this.db.persons;
 
   dtOptions:any = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+  dtTriggerPeople: Subject<any> = new Subject<any>();
 
   first:boolean = true;
   createMode:boolean = true;
@@ -52,10 +52,11 @@ export class PeopleComponent implements OnInit {
     this.persons$.subscribe( data => {
       this.persons = data;
       if (this.first){
-        this.dtTrigger.next();
+        this.dtTriggerPeople.next();
         this.first = false
       }
     })
+
   }
 
   send(){
