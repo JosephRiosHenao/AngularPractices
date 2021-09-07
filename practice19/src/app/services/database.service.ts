@@ -48,18 +48,15 @@ export class DatabaseService {
             }else{
               console.log("No data")
             }
-            
             this.persons$.next(this.persons)
             this.task$.next(this.tasks);
           })  
-          
         })
       }else {
         router.navigate(["/login"])
       }
     })
   }
-
 
   login(email:string, pass:string){
     this.authFire.signInWithEmailAndPassword(email,pass).then( user => {
@@ -124,8 +121,8 @@ export class DatabaseService {
   assingTask(id: string, index: number, value:string) {
     this.persons[index].task = value;
     this.persons[index].state = 1;
-    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token, this.persons[index]).subscribe(data => {
-      this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+value+".json?auth="+this.token, {user: id, status:1}).subscribe(data => {
+    this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token, this.persons[index]).subscribe(() => {
+      this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+value+".json?auth="+this.token, {user: id, status:1}).subscribe(() => {
         this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
           let tasksNew:Task[] = [];
           for (let key in data){
@@ -140,10 +137,10 @@ export class DatabaseService {
   }
   
   desassingTask(id:string, index:number){
-    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+this.persons[index].task+".json?auth="+this.token, {status: 0, user:""}).subscribe(data => {
+    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+this.persons[index].task+".json?auth="+this.token, {status: 0, user:""}).subscribe(() => {
       this.persons[index].task = "";
       this.persons[index].state = 0;
-      this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token, this.persons[index]).subscribe(data => {
+      this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token, this.persons[index]).subscribe(() => {
         this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
           let tasksNew:Task[] = [];
           for (let key in data){

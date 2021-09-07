@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
     task: '',
     info: ''
   };
-
   taskInfo:Task = {
     name: '',
     description: '',
@@ -52,6 +51,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.tasks = this.db.tasks;
+    this.defineSelectData()
+    
     if (this.tasks == null){
       this.isFirst = true;
     }
@@ -68,7 +70,7 @@ export class HomeComponent implements OnInit {
     this.tasks$.subscribe((data) => {
       this.tasks = data;
       // Error create task 0
-      // this.defineSelectData()
+      this.defineSelectData()
       if (this.isFirst){
         this.dtTriggerHome.next();
         this.isFirst = false;
@@ -80,9 +82,7 @@ export class HomeComponent implements OnInit {
     language: {
       url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
     },
-    // Declare the use of the extension in the dom parameter
     dom: 'Bfrtip',
-    // Configure the buttons
     buttons: [
       'columnsToggle',
       'copy',
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
       'excel'
     ],
     pagingType: 'full_numbers',
-    // pageLength: 5
+    pageLength: 5
   }
 
   this.dtOptionsModal = {

@@ -32,14 +32,11 @@ export class TasksComponent implements OnInit {
   taskModifyIndex:number = 0;
 
   ngOnInit(): void {
-
     this.dtOptions = {
       language: {
         url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
       },
-      // Declare the use of the extension in the dom parameter
       dom: 'Bfrtip',
-      // Configure the buttons
       buttons: [
         'columnsToggle',
         'copy',
@@ -47,7 +44,7 @@ export class TasksComponent implements OnInit {
         'excel'
       ],
       pagingType: 'full_numbers',
-      // pageLength: 5
+      pageLength: 5
     }
     
     this.tasks$ = this.db.getTasks$()
@@ -58,8 +55,8 @@ export class TasksComponent implements OnInit {
         this.first = false
       }
     });
-
   }
+
   send(){
     if (this.createMode) {
       let data:Task = {
@@ -70,7 +67,7 @@ export class TasksComponent implements OnInit {
         finishDate: this.formTask.value.dateFinish,
         workTime: this.formTask.value.timeTask,
         user: "",
-        id: "0"
+        id: ""
       };
       this.db.postTask(data)
     } else {

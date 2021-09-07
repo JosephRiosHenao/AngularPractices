@@ -26,7 +26,6 @@
             <input type="datetime-local" class="form-control border-secondary text-white" id="inputFinishDate" placeholder="Fecha de finalizacion" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="dateFinish">
             <label for="inputFinishDate" class="text-white">Fecha de finalizacion</label>
         </div>
-
         <div class="w-100 text-center">
           <ng-container *ngIf="createMode; else modifyMode">
             <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']" >Volver</button>

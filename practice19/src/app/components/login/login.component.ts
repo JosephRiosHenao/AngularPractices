@@ -7,19 +7,15 @@ import { DatabaseService } from 'src/app/services/database.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginForm: FormGroup;
   
   constructor(public db:DatabaseService) { 
-
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     })
-  }
-
-  ngOnInit(): void {
   }
 
   login() {

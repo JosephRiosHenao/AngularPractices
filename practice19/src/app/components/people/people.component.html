@@ -22,7 +22,6 @@
             <textarea type="text" class="form-control border-secondary text-white" id="inputInfo" placeholder="Informacion adicional" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="info"></textarea>
             <label for="inputInfo" class="text-white">Informacion</label>
         </div>
-
         <div class="w-100 text-center">
           <ng-container *ngIf="createMode; else modifyMode">
             <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']">Volver</button>
@@ -32,7 +31,6 @@
             <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" (click)="cancelModify()">Cancelar</button>
             <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Modificar</button>
           </ng-template>
-          
         </div>
     </form>
 </div>

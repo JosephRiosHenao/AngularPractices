@@ -35,9 +35,7 @@ export class PeopleComponent implements OnInit {
       language: {
         url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
       },
-      // Declare the use of the extension in the dom parameter
       dom: 'Bfrtip',
-      // Configure the buttons
       buttons: [
         'columnsToggle',
         'copy',
@@ -45,7 +43,7 @@ export class PeopleComponent implements OnInit {
         'excel'
       ],
       pagingType: 'full_numbers',
-      // pageLength: 5
+      pageLength: 5
     }
 
     this.persons$ = this.db.getPersons$();
@@ -56,7 +54,6 @@ export class PeopleComponent implements OnInit {
         this.first = false
       }
     })
-
   }
 
   send(){
@@ -66,7 +63,7 @@ export class PeopleComponent implements OnInit {
         lastname: this.formPeople.value.lastname,
         state: 0,
         city: this.formPeople.value.city,
-        id: "0",
+        id: "",
         task: "",
         info: this.formPeople.value.info
       }
