@@ -22,7 +22,16 @@ export class TasksComponent implements OnInit {
   constructor(private db:DatabaseService) { }
   
   tasks$!: Observable<Task[]>;
-  tasks:Task[] = this.db.tasks;
+  tasks:Task[] = [{
+    name: '',
+    description: '',
+    status: 0,
+    initDate: '',
+    finishDate: '',
+    workTime: 0,
+    user: '',
+    id: ''
+  }];
 
   dtOptions:any = {};
   dtTriggerTask: Subject<any> = new Subject<any>();
@@ -32,6 +41,10 @@ export class TasksComponent implements OnInit {
   taskModifyIndex:number = 0;
 
   ngOnInit(): void {
+    if (this.db.tasks != null && this.db.tasks.length > 0) {
+      this.tasks = this.db.tasks;
+    }
+
     this.dtOptions = {
       language: {
         url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
@@ -44,14 +57,15 @@ export class TasksComponent implements OnInit {
         'excel'
       ],
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 5,
+      processing: true,
     }
     
     this.tasks$ = this.db.getTasks$()
     this.tasks$.subscribe(data => {
       this.tasks = data
       if (this.first) {
-        this.dtTriggerTask.next();
+        // this.dtTriggerTask.next();
         this.first = false
       }
     });
@@ -82,6 +96,7 @@ export class TasksComponent implements OnInit {
         id: this.tasks[this.taskModifyIndex].id
       };
       this.db.putTask(data, this.taskModifyIndex)
+      this.cancelModify();
     }
     this.formTask.reset();
   }

@@ -21,7 +21,13 @@ export class PeopleComponent implements OnInit {
   constructor(private db:DatabaseService) { }
   
   persons$!:Observable<Person[]>;
-  persons:Person[] = this.db.persons;
+  persons: Person[] = [{city: "",
+  id: "",
+  info: "",
+  lastname: "",
+  name: "",
+  state: 0,
+  task: ""}];
 
   dtOptions:any = {};
   dtTriggerPeople: Subject<any> = new Subject<any>();
@@ -31,6 +37,10 @@ export class PeopleComponent implements OnInit {
   personModifyIndex:number = 0;
   
   ngOnInit(): void {
+    if (this.db.persons != null && this.db.persons.length > 0) {
+      this.persons = this.db.persons;
+    }
+
     this.dtOptions = {
       language: {
         url: '//cdn.datatables.net/plug-ins/1.11.1/i18n/es_es.json',
@@ -43,14 +53,15 @@ export class PeopleComponent implements OnInit {
         'excel'
       ],
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 5,
+      processing: true,
     }
 
     this.persons$ = this.db.getPersons$();
     this.persons$.subscribe( data => {
       this.persons = data;
       if (this.first){
-        this.dtTriggerPeople.next();
+        // this.dtTriggerPeople.next();
         this.first = false
       }
     })
@@ -78,7 +89,8 @@ export class PeopleComponent implements OnInit {
         task: this.persons[this.personModifyIndex].task,
         info: this.formPeople.value.info
       }
-      this.db.putPerson(data, this.personModifyIndex)
+      this.db.putPerson(data, this.personModifyIndex);
+      this.cancelModify();
     }
     this.formPeople.reset();
   }

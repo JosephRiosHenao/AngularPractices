@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Person } from 'src/app/models/person.model';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Task } from 'src/app/models/task.model';
@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
   
   constructor(public db: DatabaseService) {}
   
-  persons: Person[] = this.db.persons;
   persons$!: Observable<Person[]>;
+  persons: Person[] = this.db.persons;
   
-  tasks: Task[] = this.db.tasks;
   tasks$!: Observable<Task[]>;
+  tasks: Task[] = this.db.tasks;
 
   isFirst:boolean = true;
 
@@ -51,8 +51,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.tasks = this.db.tasks;
-    this.defineSelectData()
+    if (this.db.persons != null && this.db.persons.length > 0) {
+      this.persons = this.db.persons;
+      this.valueSelect = [];
+      this.persons.forEach(()=>{
+        this.valueSelect.push("none")
+      })
+    }
+    if (this.db.tasks != null && this.db.tasks.length > 0) {
+      this.tasks = this.db.tasks;
+      this.defineSelectData()
+    }
     
     if (this.tasks == null){
       this.isFirst = true;
@@ -61,15 +70,15 @@ export class HomeComponent implements OnInit {
     this.persons$ = this.db.getPersons$();
     this.persons$.subscribe((data) => {
       this.persons = data;
-      this.persons.forEach((data,index)=>{
-        this.valueSelect[index] = "none"
+      this.valueSelect = [];
+      this.persons.forEach(()=>{
+        this.valueSelect.push("none")
       })
     });
 
     this.tasks$ = this.db.getTasks$();
     this.tasks$.subscribe((data) => {
       this.tasks = data;
-      // Error create task 0
       this.defineSelectData()
       if (this.isFirst){
         this.dtTriggerHome.next();
@@ -90,7 +99,8 @@ export class HomeComponent implements OnInit {
       'excel'
     ],
     pagingType: 'full_numbers',
-    pageLength: 5
+    pageLength: 5,
+    processing: true,
   }
 
   this.dtOptionsModal = {

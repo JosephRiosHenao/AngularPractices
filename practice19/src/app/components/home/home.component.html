@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mt-3">
         <button class="col-md-5 btn btn-warning btn-lg" [routerLink]="['/people']">+ Anadir Interventor</button>
-        <button class="btn btn-danger btn-lg col-md-2" (click)="singOut()">Cerrar sesion</button>
+        <button class="btn text-white btn-lg col-md-2"  style="background-color: rgba(255, 255, 255, 0.2);"  (click)="singOut()">Cerrar sesion</button>
         <button class="col-md-5 btn btn-info btn-lg" [routerLink]="['/tasks']">+ Anadir Tarea</button>
     </div>
 
@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="container table-custom mt-5 p-5 mb-5">
-    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerHome | async">
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -20,20 +20,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let person of persons; let i=index">
-            <td>{{ person.name }}</td>
-            <td>{{person.lastname}}</td>
-            <td *ngIf="person.state == 0" class="text-white bg-success">Disponible</td>
-            <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
-            <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
-            <ng-container *ngIf="person.task == ''; else actionData">
-              <td  class="text-center">    
-                  <ng-select2 class="btn" [(ngModel)]="valueSelect[i]" [data]="selectData" placeholder="Selecciona una tarea" width="300" [options]="options"></ng-select2>
-                  <button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></td>
-            </ng-container>
-            <ng-template #actionData>
-              <td  class="text-center"> <button class="btn btn-primary me-2" (click)="infoTask(person.task, i)" data-bs-toggle="modal" data-bs-target="#infoModal">Detalles</button> <button class="btn btn-danger" (click)="desassingTask(person.id, i)">Desasignar</button> </td>
-            </ng-template>
+          <tr *ngFor="let person of persons; let i=index" [ngClass]="{'invisible': person.id == ''}">
+              <td>{{ person.name }}</td>
+              <td>{{person.lastname}}</td>
+              <td *ngIf="person.state == 0" class="text-white bg-success">Disponible</td>
+              <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
+              <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
+              <ng-container *ngIf="person.task == ''; else actionData">
+                <td  class="text-center">    
+                    <ng-select2 class="btn" [(ngModel)]="valueSelect[i]" [data]="selectData" placeholder="Selecciona una tarea" width="300" [options]="options"></ng-select2>
+                    <button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></td>
+              </ng-container>
+              <ng-template #actionData>
+                <td  class="text-center"> <button class="btn btn-primary me-2" (click)="infoTask(person.task, i)" data-bs-toggle="modal" data-bs-target="#infoModal">Detalles</button> <button class="btn btn-danger" (click)="desassingTask(person.id, i)">Desasignar</button> </td>
+              </ng-template>
           </tr>
         </tbody>
       </table> 
@@ -60,7 +60,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr [ngClass]="{'invisible': personInfo.id == ''}">
                   <td>{{ personInfo.name }}</td>
                   <td>{{ personInfo.lastname }}</td>
                   <td>{{ personInfo.city }}</td>
@@ -85,7 +85,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr [ngClass]="{'invisible': personInfo.id == ''}">
                 <td>{{ taskInfo.name }}</td>
                 <td>{{ taskInfo.description }}</td>
                 <td>{{ taskInfo.initDate }}</td>

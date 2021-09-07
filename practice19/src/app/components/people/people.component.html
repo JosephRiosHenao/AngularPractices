@@ -36,7 +36,7 @@
 </div>
 
 <div class="container table-custom mt-5 p-5 mb-5">
-    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTriggerPeople | async">
+    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -48,7 +48,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let person of persons; let i=index">
+          <tr *ngFor="let person of persons; let i=index" [ngClass]="{ 'invisible': person.id == ''}">
             <td>{{ person.name }}</td>
             <td>{{ person.lastname }}</td>
             <td>{{ person.city }}</td>

@@ -16,8 +16,25 @@ export class DatabaseService {
 
   user!: firebase.User;
   token:string = "";
-  persons: Person[] = [];
-  tasks: Task[] = [];
+  persons: Person[] = [{    
+    name: '',
+    lastname: '',
+    state: 0,
+    city: '',
+    id: '',
+    task: '',
+    info: ''
+  }];
+  tasks: Task[] = [{
+    name: '',
+    description: '',
+    status: 0,
+    initDate: '',
+    finishDate: '',
+    workTime: 0,
+    user: '',
+    id: ''
+  }];
 
   private task$ = new Subject<Task[]>();
   public persons$ = new Subject<Person[]>();
@@ -34,6 +51,8 @@ export class DatabaseService {
         authFire.idToken.subscribe( token => {
           this.token = token!;
           http.get<DB | null>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/.json?auth="+token).subscribe( (data) => {
+            this.persons = [];
+            this.tasks = [];
             if (data){
               if(data.persons){
                 for (let key in data.persons){
@@ -208,4 +227,5 @@ export class DatabaseService {
     this.authFire.signOut();
     window.location.reload();
   }
+
 }
