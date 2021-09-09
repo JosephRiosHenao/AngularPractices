@@ -10,12 +10,34 @@
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    height: 100vh;
+    min-height: 100vh;
+    background: url("https://cdn.shortpixel.ai/spai/w_898+q_lossy+ret_img/https://www.eude.es/wp-content/uploads/2018/05/Dise%C3%B1o-sin-t%C3%ADtulo-2021-05-11T165120.480.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    background-attachment: fixed;
 }
+
+.center::before{
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 112, 29, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
 
 .form-singin {
     width: 100%;
-    max-width: 330px;
-    padding: 15px;
+    max-width: 350px;
+    padding: 1rem;
     margin: auto;
+    z-index: 9;
+    background-color: white;
+    // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    // box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    box-shadow: rgba(0, 0, 0, 0.80) 0px 22px 70px 4px;
+    border-radius: 1rem;
 }

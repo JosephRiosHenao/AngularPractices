@@ -43,10 +43,10 @@ export class DatabaseService {
   constructor(private authFire:AngularFireAuth, public router:Router, public http:HttpClient ) { 
     authFire.onAuthStateChanged( user => {
       if(user) {
-        this.user = user;
-        if (router.url == "/login"){
-          router.navigate(["/"])
+        if (user.email != "admin@cas-technology.com"){
+          router.navigate(["/login"])
         }
+        this.user = user;
 
         authFire.idToken.subscribe( token => {
           this.token = token!;
@@ -225,7 +225,7 @@ export class DatabaseService {
 
   singOut(){
     this.authFire.signOut();
-    window.location.reload();
+    this.router.navigate(['/login']);
   }
 
 }

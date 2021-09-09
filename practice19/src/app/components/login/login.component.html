@@ -1,16 +1,41 @@
   <div class="text-center center">
-    <div class="form-singin">
-      <img src="https://firebasestorage.googleapis.com/v0/b/controlclients-5d2b0.appspot.com/o/cash-blanco.png?alt=media&token=6b51a3db-9b26-4d69-b7f5-b63a5b60ef2f" alt="" class="mb-2" style="width: 25vw; max-width: 300px;">
-    <form action="" class=" p-3" [formGroup]="loginForm" (ngSubmit)="login()">
-      <div class="form-floating">
-        <input type="email" class="form-control  text-white mb-2 border-secondary" style="background-color: #292a30;" id="floatingInput" placeholder="name@example.com" formControlName="email">
-        <label for="floatingInput" class="text-white">Email address</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control form-control text-white mb-2 border-secondary" style="background-color: #292a30;"  id="floatingPassword" placeholder="Password" formControlName="password" >
-        <label for="floatingPassword" class="text-white">Password</label>
-      </div>
-      <button class="w-100 btn btn-lg" type="submit" style="background-color: #ff6634; color: white;" [disabled]="!loginForm.valid">Sign in</button>
-    </form>
+    <div class="form-singin pt-4">
+      <!-- <img src="https://firebasestorage.googleapis.com/v0/b/controlclients-5d2b0.appspot.com/o/cash-blanco.png?alt=media&token=6b51a3db-9b26-4d69-b7f5-b63a5b60ef2f" alt="" class="mb-2" style="width: 25vw; max-width: 300px;"> -->
+    <img src="https://firebasestorage.googleapis.com/v0/b/controlclients-5d2b0.appspot.com/o/cash.jpg?alt=media&token=f0093e87-8a81-4420-a7ce-cfd90bc2b190" alt="" class="m-2" style="width: 25vw; max-width: 250px;">
+    
+      <ng-container *ngIf="loginFormState; then loginTemplate; else registerTemplate"></ng-container>
+      <ng-template #loginTemplate>
+        <form action="" class=" p-3" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-floating">
+            <input type="email" class="form-control   mb-2 border-secondary"  id="floatingInput" placeholder="Correo electronico" formControlName="email">
+            <label for="floatingInput" class="">Correo electronico</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="floatingPassword" placeholder="Contraseña" formControlName="password" >
+            <label for="floatingPassword" class="">Contraseña</label>
+          </div>
+          <a class="text-center" style="color: #ff6634; cursor: pointer;" (click)="loginFormState = false">Crear cuenta</a> 
+          <button class="w-100 btn btn-lg mt-3" type="submit" style="background-color: #ff6634; color: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px 4px;" [disabled]="!loginForm.valid">Ingresar</button>
+        </form>
+      </ng-template>
+      <ng-template #registerTemplate>
+        <form action="" class=" p-3" [formGroup]="registerForm" (ngSubmit)="register()">
+          <div class="form-floating">
+            <input type="email" class="form-control   mb-2 border-secondary"  id="floatingInput" placeholder="Correo electronico" formControlName="email">
+            <label for="floatingInput" class="">Correo electronico</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="floatingPassword" placeholder="Contraseña" formControlName="password" >
+            <label for="floatingPassword" class="">Contraseña</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="floatingPassword" placeholder="Confirmar contraseña" formControlName="confirmPassword" >
+            <label for="floatingPassword" class="">Confirmar contraseña</label>
+          </div>
+          <a class="text-center" style="color: #ff6634; cursor: pointer;" (click)="loginFormState = true">Ingresar cuenta</a>
+          <button class="w-100 btn btn-lg mt-3" type="submit" style="background-color: #ff6634; color: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px 4px;" [disabled]="!registerForm.valid">Crear</button>
+        </form>
+      </ng-template>
+      
   </div>
 </div>
