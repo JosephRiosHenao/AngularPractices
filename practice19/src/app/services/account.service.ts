@@ -16,7 +16,11 @@ export class AccountService {
         if (router.url == "/login") {
           router.navigate(["/forms"])
         }   
-      }
+        if (router.url == "/") {
+          router.navigate(["/forms"])
+        }
+      
+    }
     })
   }
 

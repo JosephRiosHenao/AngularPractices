@@ -7,12 +7,12 @@
       <ng-template #loginTemplate>
         <form action="" class=" p-3" [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="form-floating">
-            <input type="email" class="form-control   mb-2 border-secondary"  id="floatingInput" placeholder="Correo electronico" formControlName="email">
-            <label for="floatingInput" class="">Correo electronico</label>
+            <input type="email" class="form-control   mb-2 border-secondary"  id="loginInputEmail" placeholder="Correo electronico" formControlName="email">
+            <label for="loginInputEmail" class="">Correo electronico</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="floatingPassword" placeholder="Contraseña" formControlName="password" >
-            <label for="floatingPassword" class="">Contraseña</label>
+            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="loginInputPass" placeholder="Contraseña" formControlName="password" >
+            <label for="loginInputPass" class="">Contraseña</label>
           </div>
           <a class="text-center" style="color: #ff6634; cursor: pointer;" (click)="loginFormState = false">Crear cuenta</a> 
           <button class="w-100 btn btn-lg mt-3" type="submit" style="background-color: #ff6634; color: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px 4px;" [disabled]="!loginForm.valid">Ingresar</button>
@@ -21,16 +21,16 @@
       <ng-template #registerTemplate>
         <form action="" class=" p-3" [formGroup]="registerForm" (ngSubmit)="register()">
           <div class="form-floating">
-            <input type="email" class="form-control   mb-2 border-secondary"  id="floatingInput" placeholder="Correo electronico" formControlName="email">
-            <label for="floatingInput" class="">Correo electronico</label>
+            <input type="email" class="form-control   mb-2 border-secondary"  id="registerInputEmail" placeholder="Correo electronico" formControlName="email">
+            <label for="registerInputEmail" class="">Correo electronico</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="floatingPassword" placeholder="Contraseña" formControlName="password" >
-            <label for="floatingPassword" class="">Contraseña</label>
+            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="registerInputPass" placeholder="Contraseña" formControlName="password" >
+            <label for="registerInputPass" class="">Contraseña</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="floatingPassword" placeholder="Confirmar contraseña" formControlName="confirmPassword" >
-            <label for="floatingPassword" class="">Confirmar contraseña</label>
+            <input type="password" class="form-control form-control  mb-2 border-secondary"   id="registerInputConfPass" placeholder="Confirmar contraseña" formControlName="confirmPassword" >
+            <label for="registerInputConfPass" class="">Confirmar contraseña</label>
           </div>
           <a class="text-center" style="color: #ff6634; cursor: pointer;" (click)="loginFormState = true">Ingresar cuenta</a>
           <button class="w-100 btn btn-lg mt-3" type="submit" style="background-color: #ff6634; color: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px 4px;" [disabled]="!registerForm.valid">Crear</button>

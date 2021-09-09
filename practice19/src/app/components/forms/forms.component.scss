@@ -1,0 +1,31 @@
+.flexbox {
+    display: flex;
+    flex-direction: row;     
+    justify-content: center; 
+    align-items: center;    
+    min-height: 100vh;
+    align-content: space-around;
+    background: url("https://firebasestorage.googleapis.com/v0/b/controlclients-5d2b0.appspot.com/o/wallpaper2.png?alt=media&token=7beeb6ea-291b-4301-995e-93796b8bd8ef");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    flex-wrap: wrap;
+}
+
+.flexbox::before {
+    content: "";
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to top, rgba(255, 112, 29, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+

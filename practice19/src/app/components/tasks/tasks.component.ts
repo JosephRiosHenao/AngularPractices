@@ -16,7 +16,7 @@ export class TasksComponent implements OnInit {
     timeTask : new FormControl('', Validators.required),
     description : new FormControl(''),
     dateInit : new FormControl('', Validators.required),
-    dateFinish : new FormControl('', Validators.required),
+    dateFinish : new FormControl(''),
   })
   
   constructor(private db:DatabaseService) { }
