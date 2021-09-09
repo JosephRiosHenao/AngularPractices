@@ -44,7 +44,7 @@ export class DatabaseService {
     authFire.onAuthStateChanged( user => {
       if(user) {
         if (user.email != "admin@cas-technology.com"){
-          router.navigate(["/login"])
+          router.navigate(["/forms"])
         }
         this.user = user;
 
@@ -73,15 +73,6 @@ export class DatabaseService {
         })
       }else {
         router.navigate(["/login"])
-      }
-    })
-  }
-
-  login(email:string, pass:string){
-    this.authFire.signInWithEmailAndPassword(email,pass).then( user => {
-      if(user){
-        this.user = user.user!;
-        this.router.navigate(["/"])
       }
     })
   }

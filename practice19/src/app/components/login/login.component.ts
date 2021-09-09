@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AccountService } from 'src/app/services/account.service';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent {
 
   loginFormState:boolean = true;
   
-  constructor(public db:DatabaseService) { 
+  constructor(private accountService:AccountService) { 
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
       password: new FormControl('', Validators.required)
@@ -27,11 +28,13 @@ export class LoginComponent {
   }
 
   login() {
-    this.db.login(this.loginForm.value.email,this.loginForm.value.password)
+    this.accountService.login(this.loginForm.value.email, this.loginForm.value.password)
   }
 
   register() {
-    
+    if (this.registerForm.value.password === this.registerForm.value.confirmPassword) {
+      this.accountService.register(this.registerForm.value.email, this.registerForm.value.password)
+    }
   }
 
 }
