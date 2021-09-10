@@ -15,6 +15,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { NgSelect2Module } from 'ng-select2';
 import { FormsComponent } from './components/forms/forms.component';
+import { FormOneTemplateComponent } from './components/form-one-template/form-one-template.component';
+import { ExtraInfoComponent } from './components/form-one/extra-info/extra-info.component';
+import { FormAfterWorkComponent } from './components/form-one/form-after-work/form-after-work.component';
+import { FormDuringWorkComponent } from './components/form-one/form-during-work/form-during-work.component';
+import { FormBeforeWorkComponent } from './components/form-one/form-before-work/form-before-work.component';
+import { HeaderComponent } from './components/form-one/header/header.component';
+import { HeaderMetadataComponent } from './components/form-one/header-metadata/header-metadata.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,14 @@ import { FormsComponent } from './components/forms/forms.component';
     TasksComponent,
     PeopleComponent,
     HomeComponent,
-    FormsComponent
+    FormsComponent,
+    FormOneTemplateComponent,
+    ExtraInfoComponent,
+    FormAfterWorkComponent,
+    FormBeforeWorkComponent,
+    FormDuringWorkComponent,
+    HeaderComponent,
+    HeaderMetadataComponent,
   ],
   imports: [
     BrowserModule,

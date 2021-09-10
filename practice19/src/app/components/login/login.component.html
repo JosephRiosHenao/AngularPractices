@@ -5,7 +5,7 @@
     
       <ng-container *ngIf="loginFormState; then loginTemplate; else registerTemplate"></ng-container>
       <ng-template #loginTemplate>
-        <form action="" class=" p-3" [formGroup]="loginForm" (ngSubmit)="login()">
+        <form class=" p-3" [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="form-floating">
             <input type="email" class="form-control   mb-2 border-secondary"  id="loginInputEmail" placeholder="Correo electronico" formControlName="email">
             <label for="loginInputEmail" class="">Correo electronico</label>
@@ -19,7 +19,7 @@
         </form>
       </ng-template>
       <ng-template #registerTemplate>
-        <form action="" class=" p-3" [formGroup]="registerForm" (ngSubmit)="register()">
+        <form class=" p-3" [formGroup]="registerForm" (ngSubmit)="register()">
           <div class="form-floating">
             <input type="email" class="form-control   mb-2 border-secondary"  id="registerInputEmail" placeholder="Correo electronico" formControlName="email">
             <label for="registerInputEmail" class="">Correo electronico</label>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsService } from 'src/app/services/forms.service';
 
 @Component({
   selector: 'app-forms',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formSevice:FormsService) { }
 
   ngOnInit(): void {
   }
 
-  logout() {
+  signOut() {
+    this.formSevice.signOut();
     
   }
 

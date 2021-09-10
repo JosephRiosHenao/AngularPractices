@@ -43,7 +43,7 @@ export class DatabaseService {
   constructor(private authFire:AngularFireAuth, public router:Router, public http:HttpClient ) { 
     authFire.onAuthStateChanged( user => {
       if(user) {
-        if (user.email != "admin@cas-technology.com"){
+        if (user.email != "cas.techno2020@gmail.com"){
           router.navigate(["/forms"])
         }
         this.user = user;

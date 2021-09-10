@@ -10,7 +10,7 @@ export class AccountService {
   constructor(public  authFire: AngularFireAuth, public  router:Router ) { 
     authFire.onAuthStateChanged((user) => {
       if (user){
-        if (user.email == "admin@cas-technology.com"){
+        if (user.email == "cas.techno2020@gmail.com"){
           router.navigate(["/dashboard"])
         }   
         if (router.url == "/login") {
@@ -19,7 +19,6 @@ export class AccountService {
         if (router.url == "/") {
           router.navigate(["/forms"])
         }
-      
     }
     })
   }
@@ -27,7 +26,7 @@ export class AccountService {
   login(email:string, pass:string){
     this.authFire.signInWithEmailAndPassword(email,pass).then( user => {
       if (user){
-        if (user.user?.email == "admin@cas-technology.com"){
+        if (user.user?.email == "cas.techno2020@gmail.com"){
           this.router.navigate(["/dashboard"])
         }   
         if (this.router.url == "/login") {
@@ -40,7 +39,7 @@ export class AccountService {
   register(email:string, pass:string){
     this.authFire.createUserWithEmailAndPassword(email,pass).then( user => {
       if (user){
-        if (user.user?.email == "admin@cas-technology.com"){
+        if (user.user?.email == "cas.techno2020@gmail.com"){
           this.router.navigate(["/dashboard"])
         }   
         if (this.router.url == "/login") {

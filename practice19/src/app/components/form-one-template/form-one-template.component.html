@@ -1,0 +1,390 @@
+
+<div>
+
+    <div class="container">
+      <div class="card shadow-lg mb-5">
+        <div class="card-body">
+          <app-header></app-header>
+          <app-header-metadata></app-header-metadata>
+        </div>
+      </div>
+  
+  
+      <div class="card shadow-lg mb-5">
+        <div class="card-body">
+          <div class="col">
+            <h2 class="text-center">Análisis de la tarea</h2>
+            <hr>
+          </div>
+          <app-form-before-work
+          ></app-form-before-work>
+        </div>
+      </div>
+  
+      <div class="card shadow-lg mb-5">
+        <div class="card-body">
+          <app-form-during-work></app-form-during-work>
+        </div>
+      </div>
+  
+      <div class="card shadow-lg mb-5">
+        <div class="card-body">
+          <app-form-after-work></app-form-after-work>
+        </div>
+      </div>
+  
+      <div class="card shadow-lg mb-5">
+        <div class="card-body">
+          <app-extra-info></app-extra-info>
+        </div>
+      </div>
+  <!-- 
+      <div class="card shadow-lg mb-5 text-center">
+        <h4 class="text-center">Firma</h4>
+        <hr>
+        <div class="card-body">
+        </div>
+      </div> -->
+    </div>
+  
+  </div>
+  
+  
+  
+  <div style="display: none;">
+    <div class="container">
+      <div id="pdfTable" #pdfTable>
+        <!-- style="display: none;" -->
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th rowspan="2"><img [src]="img64url" style="width: 150px;"></th>
+              <th colspan="2" style="text-align:center;" >CAS TECHNOLOGY</th>
+              <th>Version 03</th>
+            </tr>
+            <tr>
+              <th colspan="2" style="text-align:center;" >LISTA DE CHEQUEO ORDEN PUBLICO</th>
+              <th> Fecha: 16/06/2021 </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="text-align:center;" >
+              <td colspan="4" style="text-align:center;" >Tu seguridad y la de tus compañeros son lo más importante. Para protegerte de manera integral incluye aspectos físicos, digitales y colectivos.</td>
+            </tr>
+            <tr>
+              <td>Empresa:</td>
+              <td>CAS TECHNOLOGY S.A.S</td>
+              <td>Ciudad:</td>
+              <td> {{ dataService.data.form.metadata.city }} </td>
+            </tr>
+            <tr>
+              <td>Área/Proceso:</td>
+              <td> {{ dataService.data.form.metadata.process }} </td>
+              <td>Feche de ejecución:</td>
+              <td> {{ dataService.data.form.metadata.dateInit | date:"dd/MM/yyyy" }} </td>
+            </tr>
+            <tr>
+              <td >Nombre del proyecto:</td>
+              <td colspan="3"> {{ dataService.data.form.metadata.nameProject }} </td>
+            </tr>
+            <tr>
+              <td >Nombre del contratista:</td>
+              <td colspan="3"> {{ dataService.data.form.metadata.namePerson }} </td>
+            </tr>
+            <tr>
+              <td>Hora de inicio:</td>
+              <td> {{ dataService.data.form.metadata.timeInit }} </td>
+              <td>Hora de finalización:</td>
+              <td> {{ dataService.data.form.metadata.timeFinish }} </td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Antes de la tarea</th>
+              <th>SI</th>
+              <th>NO</th>
+              <th>NA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Conoce las rutas de las marchas y los horarios </td>
+              <td><span *ngIf="dataService.data.form.before.form[1] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[1] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[1] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td colspan="4">
+                <p>Elegir dos contactos de emergencia ya sea un familiar y/o amistad, quienes serán su red de seguridad y que sepan actuar en caso de presentarse una emergencia.</p>
+                <p>Nombre: {{ dataService.data.form.before.contacts[0].name }} Celular: {{ dataService.data.form.before.contacts[0].tel }} </p>
+                <p>Nombre: {{ dataService.data.form.before.contacts[1].name }} Celular: {{ dataService.data.form.before.contacts[1].tel }} </p>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Informe al supervisor o coordinador asignado de tu cuadrilla cuál será tu recorrido y acordar un punto y hora de encuentro, en caso de llegar a separarse</td>
+              <td><span *ngIf="dataService.data.form.before.form[2] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[2] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[2] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Tener a la mano teléfonos para casos de emergencia médica y legal.</td>
+              <td><span *ngIf="dataService.data.form.before.form[3] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[3] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[3] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Mantener la carga al 100% de la batería de tu teléfono móvil. Puedes llevar una pila externa para estar siempre  en comunicado.</td>
+              <td><span *ngIf="dataService.data.form.before.form[4] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[4] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[4] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Procurar tener saldo en tu teléfono móvil para hacer llamadas y enviar mensajes.</td>
+              <td><span *ngIf="dataService.data.form.before.form[5] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[5] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[5] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Portar de manera visible el carné donde se evidencien los datos de la persona (nombre, cedula, eps, arl y grupo sanguíneo).</td>
+              <td><span *ngIf="dataService.data.form.before.form[6] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[6] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[6] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Revise que el botiquín de la cuadrilla que se encuentre debidamente dotado con lo necesario en caso de presentarse una emergencia</td>
+              <td><span *ngIf="dataService.data.form.before.form[7] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[7] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[7] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>Lleve sólo lo necesario: Agua, identificación, dinero en efectivo, contactos de emergencia. Evite portar mochilas grandes, pesadas y bolsas de mano.</td>
+              <td><span *ngIf="dataService.data.form.before.form[8] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[8] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[8] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Manténgase siempre hidratado</td>
+              <td><span *ngIf="dataService.data.form.before.form[9] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[9] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[9] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>Manténgase siempre alerta y buscando nuevas rutas de evacuación rápidas y seguras.</td>
+              <td><span *ngIf="dataService.data.form.before.form[10] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[10] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[10] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>Informe inmediatamente a sus compañeros la ruta de evacuación más segura que identificó.</td>
+              <td><span *ngIf="dataService.data.form.before.form[11] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[11] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.before.form[11] == 2">X</span></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Durante la tarea</th>
+              <th>SI</th>
+              <th>NO</th>
+              <th>NA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Suspender la actividad se  encuentra en peligro de protestas, desmanes, disturbios o asonadas en su zona de trabajo.</td>
+              <td><span *ngIf="dataService.data.form.during.form[1] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[1] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[1] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Guardar de manera adecuada los equipos y elementos que no esté usando.</td>
+              <td><span *ngIf="dataService.data.form.during.form[2] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[2] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[2] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Notificar de inmediato a los grupos de whatsapp, supervisores, SST y jefes si tienes algún problema o se siente en peligro</td>
+              <td><span *ngIf="dataService.data.form.during.form[3] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[3] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[3] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Evita estar cerca de disturbios y/o manifestaciones.</td>
+              <td><span *ngIf="dataService.data.form.during.form[4] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[4] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[4] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Preste atención a su alrededor, ¿se mantentiene siempre alerta?.</td>
+              <td><span *ngIf="dataService.data.form.during.form[5] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[5] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[5] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Avisar los abusos de autoridad, si detectas alguno, desde una distancia prudente.</td>
+              <td><span *ngIf="dataService.data.form.during.form[6] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[6] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[6] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>En caso de extrema necesidad buscar refugio en algún establecimiento cercano e informar su ubicación.</td>
+              <td><span *ngIf="dataService.data.form.during.form[7] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[7] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.during.form[7] == 2">X</span></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Despues la tarea</th>
+              <th>SI</th>
+              <th>NO</th>
+              <th>NA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Comprobar que la situación ya ha sido controlada para que el regreso a casa se realice de manera segura.  </td>
+              <td><span *ngIf="dataService.data.form.after.form[1] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[1] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[1] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Ubicar a sus compañeros y regresar acompañados al punto de encuentro establecido, donde puedas iniciar de forma segura el viaje de regreso a casa.</td>
+              <td><span *ngIf="dataService.data.form.after.form[2] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[2] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[2] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Informar a los grupos de whatsapp, supervisores, SST y jefes que iniciara su retorno a casa</td>
+              <td><span *ngIf="dataService.data.form.after.form[3] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[3] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[3] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Anunciar si se presenta alguna eventualidad durante el retorno a casa</td>
+              <td><span *ngIf="dataService.data.form.after.form[4] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[4] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[4] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>En caso de presentarse eventualidad tener en cuenta las recomendaciones entregadas en el DURANTE LA TAREA.</td>
+              <td><span *ngIf="dataService.data.form.after.form[5] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[5] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[5] == 2">X</span></td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Avisa cuando se te encuentre en tu casa, hospedaje o lugar de residencia.</td>
+              <td><span *ngIf="dataService.data.form.after.form[6] == 1">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[6] == 0">X</span></td>
+              <td><span *ngIf="dataService.data.form.after.form[6] == 2">X</span></td>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+        <table>
+          <tr>
+            <th colspan="5">Observaciones</th>
+          </tr>
+  
+          <tr>
+            <td colspan="5">{{ dataService.data.form.info.observation }}</td>
+          </tr>
+        </table>
+  
+        <table  style="border: none;">
+          <tr style="border: none;">
+            <td style="border: none;"> </td>
+            <td style="border: none;"> <img height="50" width="200" [src]="firm64img"> </td>
+          </tr>
+          <tr style="border: none;">
+            <td style="border: none; position: relative;"> {{ dataService.data.form.metadata.namePerson }}
+              <span style="position: absolute; bottom: 0; right: 0px;">_____________________________________</span>
+            </td>
+            <td style="border: none; position: relative;"> 
+              <span style="position: absolute; bottom: 0; right: 0px;">_____________________________________</span>
+            </td>
+          </tr>
+          <tr style="border: none;">
+            <td style="border: none;">Nombres y Apellidos del Encargado</td>
+            <td style="border: none;">Firma del Encargado</td>
+          </tr>
+          <tr style="border: none;">
+            <td style="border: none;"></td>
+            <td style="border: none;"></td>
+          </tr>
+          <tr style="border: none; margin-top: 50px;">
+            <td style="border: none;">_____________________________________</td>
+            <td style="border: none;">_____________________________________</td>
+          </tr>
+          <tr style="border: none;">
+            <td style="border: none;">Nombres y Apellidos Coordinador HSEQ</td>
+            <td style="border: none;">Firma HSEQ</td>
+          </tr>
+  
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal fade" id="firmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Firma</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <canvas id="canvasId" class="m-auto shadow-lg" #canvasRef [width]="width" [height]="height" style="background-color: white;"></canvas>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="downloadAsPDF()">Descargar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="d-grid gap-2 col-6 mx-auto mb-5">
+    <div *ngIf="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false" class="alert alert-danger" role="alert">
+      <h6 class="text-center">
+        FALTA LLENAR ALGUNOS CAMPOS
+      </h6>
+    </div>
+    <button class="btn btn-primary btn-lg" type="submit" data-bs-target="#firmModal" data-bs-toggle="modal" [disabled]="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false">Generar PDF</button>
+    <button data-bs-target="#firmModal" data-bs-toggle="modal" >XDE</button>
+    <!-- <button data-bs-target="#firmModal" data-bs-toggle="modal" (click)="downloadAsPDF()" >XDE</button> -->
+  </div>
+  
