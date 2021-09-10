@@ -12,14 +12,13 @@ export class FormsService {
 
 
   constructor(public authFire:AngularFireAuth, public router:Router, public http:HttpClient ) { 
-    http.get("")
     authFire.onAuthStateChanged((user) => {
       if (user){
         if (user.email == "cas.techno2020@gmail.com"){
           router.navigate(["/dashboard"])
         }   
         this.uid = user.uid;
-        http.get("https://controlclients-5d2b0-default-rtdb.firebaseio.com/users/"+this.uid+".json").subscribe((data) => {
+        http.get("https://controlclients-5d2b0-default-rtdb.firebaseio.com/users/"+this.uid+"/form2.json").subscribe((data) => {
 
         })
       }else {
