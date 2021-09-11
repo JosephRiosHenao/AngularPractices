@@ -1,0 +1,47 @@
+
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <label for="city" class="form-label">Ciudad</label>
+      <input type="text" class="form-control" [(ngModel)]="city" id="city" placeholder="Cali, Medellin, Bogota, Pereira, Jamundi" (ngModelChange)="submitData()" required>
+    </div>
+    <div class="col-md-6">
+      <label for="campus" class="form-label">Sede</label>
+      <input type="text" class="form-control" [(ngModel)]="campus" id="campus" placeholder="Digite la sede" (ngModelChange)="submitData()" required>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <label for="driverName" class="form-label">Nombre del conductor</label>
+      <input type="text" class="form-control" [(ngModel)]="driverName" id="driverName" placeholder="Digite el nombre" (ngModelChange)="submitData()" required>
+    </div>
+    <div class="col-md-6">
+      <label for="identification" class="form-label">Cedula</label>
+      <input type="text" class="form-control" [(ngModel)]="identification" id="identification" placeholder="Digite la cedula" (ngModelChange)="submitData()" required>
+    </div>
+  </div>
+
+  <hr>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <label for="position" class="form-label">Cargo</label>
+      <input type="text" class="form-control" [(ngModel)]="position" id="position" placeholder="Digite el cargo" (ngModelChange)="submitData()">
+    </div>
+    <div class="col-md-4">
+      <label for="timeInPosition" class="form-label">Antiguedad en el cargo</label>
+      <input type="text" class="form-control" [(ngModel)]="timeInPosition" id="timeInPosition" placeholder="Digite su antiguedad" (ngModelChange)="submitData()">
+    </div>
+    <div class="col-md-4">
+      <label for="immediateSupervisor" class="form-label">Jefe inmediato</label>
+      <input type="time" id="immediateSupervisor" [(ngModel)]="immediateSupervisor"  class="form-control" (ngModelChange)="submitData()">
+    </div>
+  </div>
+  
+  <hr>
+  

@@ -4,8 +4,8 @@
     <div class="container">
       <div class="card shadow-lg mb-5">
         <div class="card-body">
-          <app-header></app-header>
-          <app-header-metadata></app-header-metadata>
+          <!-- <app-header></app-header> -->
+          <!-- <app-header-metadata></app-header-metadata> -->
         </div>
       </div>
   
@@ -16,26 +16,26 @@
             <h2 class="text-center">Análisis de la tarea</h2>
             <hr>
           </div>
-          <app-form-before-work
-          ></app-form-before-work>
+          <!-- <app-form-before-work
+          ></app-form-before-work> -->
         </div>
       </div>
   
       <div class="card shadow-lg mb-5">
         <div class="card-body">
-          <app-form-during-work></app-form-during-work>
+          <!-- <app-form-during-work></app-form-during-work> -->
         </div>
       </div>
   
       <div class="card shadow-lg mb-5">
         <div class="card-body">
-          <app-form-after-work></app-form-after-work>
+          <!-- <app-form-after-work></app-form-after-work> -->
         </div>
       </div>
   
       <div class="card shadow-lg mb-5">
         <div class="card-body">
-          <app-extra-info></app-extra-info>
+          <!-- <app-extra-info></app-extra-info> -->
         </div>
       </div>
   <!-- 
@@ -51,10 +51,9 @@
   
   
   
-  <div style="display: none;">
+  <!-- <div style="display: none;">
     <div class="container">
       <div id="pdfTable" #pdfTable>
-        <!-- style="display: none;" -->
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -81,7 +80,7 @@
               <td>Área/Proceso:</td>
               <td> {{ dataService.data.form.metadata.process }} </td>
               <td>Feche de ejecución:</td>
-              <td> {{ dataService.data.form.metadata.dateInit | date:"dd/MM/yyyy" }} </td>
+              <td> {{ dataService.data.form.metadata.dateInit}} </td>
             </tr>
             <tr>
               <td >Nombre del proyecto:</td>
@@ -356,7 +355,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> -->
   
   
   <div class="modal fade" id="firmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -378,12 +377,14 @@
   </div>
   
   <div class="d-grid gap-2 col-6 mx-auto mb-5">
-    <div *ngIf="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false" class="alert alert-danger" role="alert">
+    <!-- <div *ngIf="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false" class="alert alert-danger" role="alert"> -->
+    <div *ngIf="dataService.confirmHeader == false " class="alert alert-danger" role="alert">
       <h6 class="text-center">
         FALTA LLENAR ALGUNOS CAMPOS
       </h6>
     </div>
-    <button class="btn btn-primary btn-lg" type="submit" data-bs-target="#firmModal" data-bs-toggle="modal" [disabled]="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false">Generar PDF</button>
+    <!-- <button class="btn btn-primary btn-lg" type="submit" data-bs-target="#firmModal" data-bs-toggle="modal" [disabled]="dataService.data.form.metadata.confirm == false || dataService.data.form.before.confirm == false || dataService.data.form.during.confirm == false || dataService.data.form.after.confirm == false">Generar PDF</button> -->
+    <button class="btn btn-primary btn-lg" type="submit" data-bs-target="#firmModal" data-bs-toggle="modal" [disabled]="dataService.confirmHeader">Generar PDF</button>
     <!-- <button data-bs-target="#firmModal" data-bs-toggle="modal" >XDE</button> -->
     <!-- <button data-bs-target="#firmModal" data-bs-toggle="modal" (click)="downloadAsPDF()" >XDE</button> -->
   </div>

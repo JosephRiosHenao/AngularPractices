@@ -13,17 +13,18 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 import htmlToPdfmake from 'html-to-pdfmake';
-import { DataService } from '../form-one/providers/data.service';
+import { DataService } from '../form-two/providers/data.service';
 
 
 @Component({
-  selector: 'app-form-one-template',
-  templateUrl: './form-one-template.component.html',
-  styleUrls: ['./form-one-template.component.scss'],
+  selector: 'app-form-two-template',
+  templateUrl: './form-two-template.component.html',
+  styleUrls: ['./form-two-template.component.scss'],
   providers: [DataService]
+
 })
-export class FormOneTemplateComponent implements OnInit, AfterViewInit {
- 
+export class FormTwoTemplateComponent implements OnInit {
+
   public drawStarted:boolean = false;
   
   @ViewChild('canvasRef', { static:false }) canvasRef:any;
@@ -180,7 +181,7 @@ export class FormOneTemplateComponent implements OnInit, AfterViewInit {
       var html = htmlToPdfmake(pdfTable.innerHTML);
   
       const documentDefinition = { content: html };
-      pdfMake.createPdf(documentDefinition).download("Lista-de-Chequeo-Orden-Publico");
+      pdfMake.createPdf(documentDefinition).download("FS-SST-02_"+this.dataService.data.form.metadata.info.driverName);
       console.log("Finish")
     },1000);
   }

@@ -22,6 +22,8 @@ import { FormDuringWorkComponent } from './components/form-one/form-during-work/
 import { FormBeforeWorkComponent } from './components/form-one/form-before-work/form-before-work.component';
 import { HeaderComponent } from './components/form-one/header/header.component';
 import { HeaderMetadataComponent } from './components/form-one/header-metadata/header-metadata.component';
+import { HeaderTwoComponent } from './components/form-two/header-two/header-two.component';
+import { FormTwoTemplateComponent } from './components/form-two-template/form-two-template.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { HeaderMetadataComponent } from './components/form-one/header-metadata/h
     FormDuringWorkComponent,
     HeaderComponent,
     HeaderMetadataComponent,
+    HeaderTwoComponent,
+    FormTwoTemplateComponent,
   ],
   imports: [
     BrowserModule,
