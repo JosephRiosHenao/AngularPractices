@@ -24,6 +24,7 @@ import { HeaderComponent } from './components/form-one/header/header.component';
 import { HeaderMetadataComponent } from './components/form-one/header-metadata/header-metadata.component';
 import { HeaderTwoComponent } from './components/form-two/header-two/header-two.component';
 import { FormTwoTemplateComponent } from './components/form-two-template/form-two-template.component';
+import { ActivityBoardComponent } from './components/form-two/activity-board/activity-board.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FormTwoTemplateComponent } from './components/form-two-template/form-tw
     HeaderMetadataComponent,
     HeaderTwoComponent,
     FormTwoTemplateComponent,
+    ActivityBoardComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ export class HeaderTwoComponent implements OnInit {
   position:string;
   timeInPosition:string;
   immediateSupervisor:string;
+  
   brand:string;
   model:string;
   propertyCard:string;
