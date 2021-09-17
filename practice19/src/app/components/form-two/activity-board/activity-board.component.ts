@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../providers/data.service';
 
 @Component({
   selector: 'app-activity-board',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityBoardComponent implements OnInit {
 
-  constructor() { }
+  week1:number[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+  constructor(private dateService:DataService) { }
 
   ngOnInit(): void {
   }
