@@ -20,6 +20,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "core-js",
+              "raf",
+              "xlsx",
+              "@babel/runtime"
+            ],
             "outputPath": "dist/practice19",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -57,13 +63,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "7mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "7mb",
+                  "maximumError": "10mb"
                 }
               ],
               "fileReplacements": [
