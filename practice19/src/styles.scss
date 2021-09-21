@@ -4,7 +4,15 @@
 
 html {
     scroll-behavior: smooth;
+
 }
 .invisible-custom{
     display: none;
+}
+
+.backGR{
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgb(48, 49, 59);
+    padding-bottom: 3rem;
 }

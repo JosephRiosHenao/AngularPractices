@@ -1,70 +1,73 @@
-<div class="container">
-    <form class="row g-3 p-5" style="background-color: rgba(255, 255, 255, 0.055); border-radius: 2rem;" [formGroup]="formTask" (ngSubmit)="send()">
-      <ng-container *ngIf="createMode; else modifyTitle">
-          <h1 class="text-white text-center">Crear Tarea</h1>
-        </ng-container>
-        <ng-template #modifyTitle>
-          <h1 class="text-white text-center">Modificar Tarea</h1>
-        </ng-template>
-        <div class="col-md-6 form-floating">
-            <input type="text" class="form-control border-secondary text-white" id="inputName" placeholder="Nombre" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="name">
-            <label for="inputName" class="text-white">Nombre</label>
-        </div>
-        <div class="col-md-6 form-floating">
-            <input type="number" class="form-control border-secondary text-white" id="imputWorkTime" placeholder="Tiempo de la tarea" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="timeTask">
-            <label for="imputWorkTime" class="text-white">Tiempo del trabajo</label>
-        </div>
-        <div class="col-md-12 form-floating">
-            <input type="text" class="form-control border-secondary text-white" id="inputDescription" placeholder="Descripcion" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="description">
-            <label for="inputDescription" class="text-white">Descripcion</label>
-        </div>
-        <div class="col-md-6 form-floating">
-            <input type="datetime-local" class="form-control border-secondary text-white" id="inputInitDate" placeholder="Fecha de inicio" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="dateInit">
-            <label for="inputInitDate" class="text-white">Fecha de inicio</label>
-        </div>
-        <div class="col-md-6 form-floating">
-            <input type="datetime-local" class="form-control border-secondary text-white" id="inputFinishDate" placeholder="Fecha de finalizacion" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="dateFinish">
-            <label for="inputFinishDate" class="text-white">Fecha de finalizacion</label>
-        </div>
-        <div class="w-100 text-center">
-          <ng-container *ngIf="createMode; else modifyMode">
-            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']" >Volver</button>
-            <button type="submit" [disabled]="!formTask.valid" class="btn text white btn-lg btn-success btn-block col-md-9">Crear</button>
-          </ng-container>
-          <ng-template #modifyMode>
-            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" (click)="cancelModify()" >Cancelar</button>
-            <button type="submit" [disabled]="!formTask.valid" class="btn text white btn-lg btn-success btn-block col-md-9">Modificar</button>
-          </ng-template>
-        </div>
-    </form>
-</div>
+<div class="backGR">
 
-<div class="container table-custom mt-5 p-5 mb-5">
-    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Fecha inicio</th>
-            <th>Fecha final</th>
-            <th>Tiempo</th>
-            <th>Estado</th>
-            <th class="text-center">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let task of tasks; let i = index" [ngClass]="{ 'invisible': task.id == ''}">
-            <td>{{ task.name }}</td>
-            <td>{{ task.description }}</td>
-            <td>{{ task.initDate | date:'short' }}</td>
-            <td>{{ task.finishDate | date:'short' }}</td>
-            <td>{{ task.workTime }}</td>
-            <td *ngIf="task.status == 0" class="text-white bg-warning">Por asignar</td>
-            <td *ngIf="task.status == 1" class="text-white bg-success">En curso</td>
-            <td *ngIf="task.status == 2" class="text-white bg-danger">Suspendida</td>
-            <td *ngIf="task.status == 3" class="text-white bg-primary">Finalizada</td>
-            <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyTask(task.id,i)">Editar</button> <button class="btn btn-danger" (click)="deleteTask(task.id, i)">Eliminar</button> </td>
-          </tr>
-        </tbody>
-      </table> 
+  <div class="container">
+      <form class="row g-3 p-5" style="background-color: rgba(255, 255, 255, 0.055); border-radius: 2rem;" [formGroup]="formTask" (ngSubmit)="send()">
+        <ng-container *ngIf="createMode; else modifyTitle">
+            <h1 class="text-white text-center">Crear Tarea</h1>
+          </ng-container>
+          <ng-template #modifyTitle>
+            <h1 class="text-white text-center">Modificar Tarea</h1>
+          </ng-template>
+          <div class="col-md-6 form-floating">
+              <input type="text" class="form-control border-secondary text-white" id="inputName" placeholder="Nombre" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="name">
+              <label for="inputName" class="text-white">Nombre</label>
+          </div>
+          <div class="col-md-6 form-floating">
+              <input type="number" class="form-control border-secondary text-white" id="imputWorkTime" placeholder="Tiempo de la tarea" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="timeTask">
+              <label for="imputWorkTime" class="text-white">Tiempo del trabajo</label>
+          </div>
+          <div class="col-md-12 form-floating">
+              <input type="text" class="form-control border-secondary text-white" id="inputDescription" placeholder="Descripcion" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="description">
+              <label for="inputDescription" class="text-white">Descripcion</label>
+          </div>
+          <div class="col-md-6 form-floating">
+              <input type="datetime-local" class="form-control border-secondary text-white" id="inputInitDate" placeholder="Fecha de inicio" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="dateInit">
+              <label for="inputInitDate" class="text-white">Fecha de inicio</label>
+          </div>
+          <div class="col-md-6 form-floating">
+              <input type="datetime-local" class="form-control border-secondary text-white" id="inputFinishDate" placeholder="Fecha de finalizacion" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="dateFinish">
+              <label for="inputFinishDate" class="text-white">Fecha de finalizacion</label>
+          </div>
+          <div class="w-100 text-center">
+            <ng-container *ngIf="createMode; else modifyMode">
+              <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/dashboard']" >Volver</button>
+              <button type="submit" [disabled]="!formTask.valid" class="btn text white btn-lg btn-success btn-block col-md-9">Crear</button>
+            </ng-container>
+            <ng-template #modifyMode>
+              <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" (click)="cancelModify()" >Cancelar</button>
+              <button type="submit" [disabled]="!formTask.valid" class="btn text white btn-lg btn-success btn-block col-md-9">Modificar</button>
+            </ng-template>
+          </div>
+      </form>
+  </div>
+  
+  <div class="container table-custom mt-5 p-5 ">
+      <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Fecha inicio</th>
+              <th>Fecha final</th>
+              <th>Tiempo</th>
+              <th>Estado</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let task of tasks; let i = index" [ngClass]="{ 'invisible': task.id == ''}">
+              <td>{{ task.name }}</td>
+              <td>{{ task.description }}</td>
+              <td>{{ task.initDate | date:'short' }}</td>
+              <td>{{ task.finishDate | date:'short' }}</td>
+              <td>{{ task.workTime }}</td>
+              <td *ngIf="task.status == 0" class="text-white bg-warning">Por asignar</td>
+              <td *ngIf="task.status == 1" class="text-white bg-success">En curso</td>
+              <td *ngIf="task.status == 2" class="text-white bg-danger">Suspendida</td>
+              <td *ngIf="task.status == 3" class="text-white bg-primary">Finalizada</td>
+              <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyTask(task.id,i)">Editar</button> <button class="btn btn-danger" (click)="deleteTask(task.id, i)">Eliminar</button> </td>
+            </tr>
+          </tbody>
+        </table> 
+  </div>
 </div>

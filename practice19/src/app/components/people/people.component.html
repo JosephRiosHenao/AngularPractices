@@ -1,63 +1,66 @@
-<div class="container">
-    <form class="row g-3 p-5" style="background-color: rgba(255, 255, 255, 0.055); border-radius: 2rem;" [formGroup]="formPeople" (ngSubmit)="send()">
-        <ng-container *ngIf="createMode; else modifyTitle">
-          <h1 class="text-white text-center">Crear Interventor</h1>
-        </ng-container>
-        <ng-template #modifyTitle>
-          <h1 class="text-white text-center">Modificar Interventor</h1>
-        </ng-template>
-        <div class="col-md-4 form-floating">
-            <input type="text" class="form-control border-secondary text-white" id="inputName" placeholder="Nombre" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="name">
-            <label for="inputName" class="text-white">Nombre</label>
-        </div>
-        <div class="col-md-4 form-floating">
-            <input type="text" class="form-control border-secondary text-white" id="imputLastname" placeholder="Apellidos" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="lastname">
-            <label for="imputLastname" class="text-white">Apellidos</label>
-        </div>
-        <div class="col-md-4 form-floating">
-            <input type="text" class="form-control border-secondary text-white" id="inputCity" placeholder="Ciudad" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="city">
-            <label for="inputCity" class="text-white">Ciudad</label>
-        </div>
-        <div class="col-md-12 form-floating">
-            <textarea type="text" class="form-control border-secondary text-white" id="inputInfo" placeholder="Informacion adicional" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="info"></textarea>
-            <label for="inputInfo" class="text-white">Informacion</label>
-        </div>
-        <div class="w-100 text-center">
-          <ng-container *ngIf="createMode; else modifyMode">
-            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/']">Volver</button>
-            <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Crear</button>
-          </ng-container>
-          <ng-template #modifyMode>
-            <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" (click)="cancelModify()">Cancelar</button>
-            <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Modificar</button>
-          </ng-template>
-        </div>
-    </form>
-</div>
+<div class="backGR">
 
-<div class="container table-custom mt-5 p-5 mb-5">
-    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Ciudad</th>
-            <th>Informacion</th>
-            <th>Estado</th>
-            <th class="text-center">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let person of persons; let i=index" [ngClass]="{ 'invisible': person.id == ''}">
-            <td>{{ person.name }}</td>
-            <td>{{ person.lastname }}</td>
-            <td>{{ person.city }}</td>
-            <td>{{ person.info }}</td>
-            <td *ngIf="person.state == 0" class="text-white bg-success">Disponible</td>
-            <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
-            <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
-            <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyPerson(person.id,i)" >Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </td>
-          </tr>
-        </tbody>
-      </table> 
+  <div class="container">
+      <form class="row g-3 p-5" style="background-color: rgba(255, 255, 255, 0.055); border-radius: 2rem;" [formGroup]="formPeople" (ngSubmit)="send()">
+          <ng-container *ngIf="createMode; else modifyTitle">
+            <h1 class="text-white text-center">Crear Interventor</h1>
+          </ng-container>
+          <ng-template #modifyTitle>
+            <h1 class="text-white text-center">Modificar Interventor</h1>
+          </ng-template>
+          <div class="col-md-4 form-floating">
+              <input type="text" class="form-control border-secondary text-white" id="inputName" placeholder="Nombre" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="name">
+              <label for="inputName" class="text-white">Nombre</label>
+          </div>
+          <div class="col-md-4 form-floating">
+              <input type="text" class="form-control border-secondary text-white" id="imputLastname" placeholder="Apellidos" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="lastname">
+              <label for="imputLastname" class="text-white">Apellidos</label>
+          </div>
+          <div class="col-md-4 form-floating">
+              <input type="text" class="form-control border-secondary text-white" id="inputCity" placeholder="Ciudad" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="city">
+              <label for="inputCity" class="text-white">Ciudad</label>
+          </div>
+          <div class="col-md-12 form-floating">
+              <textarea type="text" class="form-control border-secondary text-white" id="inputInfo" placeholder="Informacion adicional" style="background-color: rgba(255, 255, 255, 0.2);" formControlName="info"></textarea>
+              <label for="inputInfo" class="text-white">Informacion</label>
+          </div>
+          <div class="w-100 text-center">
+            <ng-container *ngIf="createMode; else modifyMode">
+              <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" [routerLink]="['/dashboard']">Volver</button>
+              <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Crear</button>
+            </ng-container>
+            <ng-template #modifyMode>
+              <button class="btn text white btn-lg btn-danger btn-block col-md-2 me-3" (click)="cancelModify()">Cancelar</button>
+              <button type="submit" class="btn text white btn-lg btn-success btn-block col-md-9" [disabled]="!formPeople.valid">Modificar</button>
+            </ng-template>
+          </div>
+      </form>
+  </div>
+  
+  <div class="container table-custom mt-5 p-5">
+      <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Ciudad</th>
+              <th>Informacion</th>
+              <th>Estado</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let person of persons; let i=index" [ngClass]="{ 'invisible': person.id == ''}">
+              <td>{{ person.name }}</td>
+              <td>{{ person.lastname }}</td>
+              <td>{{ person.city }}</td>
+              <td>{{ person.info }}</td>
+              <td *ngIf="person.state == 0" class="text-white bg-success">Disponible</td>
+              <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
+              <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
+              <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyPerson(person.id,i)" >Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </td>
+            </tr>
+          </tbody>
+        </table> 
+  </div>
 </div>
