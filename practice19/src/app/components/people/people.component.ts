@@ -53,7 +53,7 @@ export class PeopleComponent implements OnInit {
         'excel'
       ],
       pagingType: 'full_numbers',
-      pageLength: 5,
+      pageLength: 10,
       processing: true,
     }
 
