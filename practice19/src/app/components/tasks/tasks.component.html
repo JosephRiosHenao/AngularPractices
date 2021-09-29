@@ -65,7 +65,8 @@
               <td *ngIf="task.status == 1" class="text-white bg-success">En curso</td>
               <td *ngIf="task.status == 2" class="text-white bg-danger">Suspendida</td>
               <td *ngIf="task.status == 3" class="text-white bg-primary">Finalizada</td>
-              <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyTask(task.id,i)">Editar</button> <button class="btn btn-danger" (click)="deleteTask(task.id, i)">Eliminar</button> </td>
+              <div class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyTask(task.id,i)">Editar</button> <button class="btn btn-danger" (click)="deleteTask(task.id, i)">Eliminar</button> </div>
+              <td></td>
             </tr>
           </tbody>
         </table> 

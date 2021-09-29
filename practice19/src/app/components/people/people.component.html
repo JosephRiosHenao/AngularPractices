@@ -58,9 +58,10 @@
               <td *ngIf="person.state == 0" class="text-white bg-success">Disponible</td>
               <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
               <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
-              <td class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyPerson(person.id,i)" >Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </td>
+              <div class="text-center"> <button class="btn btn-primary me-2" (click)="modeModifyPerson(person.id,i)" >Editar</button> <button class="btn btn-danger" (click)="deletePerson(person.id, i)">Eliminar</button> </div>
+              <td></td>
             </tr>
           </tbody>
-        </table> 
+        </table>
   </div>
 </div>

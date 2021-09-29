@@ -158,4 +158,14 @@ export class HomeComponent implements OnInit {
   singOut(){
     this.db.singOut();
   }
+
+  searchTask(taskId:string):string{
+    if(taskId == "" || taskId == undefined || taskId == null){
+      return "No tiene tareas"
+    }else{
+      let result:Task = this.tasks.find(task => task.id == taskId);
+      return result.name;
+    }
+
+  }
 }

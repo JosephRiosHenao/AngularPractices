@@ -29,13 +29,14 @@
                 <td *ngIf="person.state == 1" class="text-white bg-danger">Ocupado</td>
                 <td *ngIf="person.state == 2" class="text-white bg-warning">Otro</td>
                 <ng-container *ngIf="person.task == ''; else actionData">
-                  <td  class="text-center">    
+                  <div  class="text-center">    
                       <ng-select2 class="btn" [(ngModel)]="valueSelect[i]" [data]="selectData" placeholder="Selecciona una tarea" width="300" [options]="options"></ng-select2>
-                      <button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></td>
+                      <button class="btn btn-success me-2" (click)="assingTask(person.id, i)">Asignar</button></div>
                 </ng-container>
                 <ng-template #actionData>
-                  <td  class="text-center"> <button class="btn btn-primary me-2" (click)="infoTask(person.task, i)" data-bs-toggle="modal" data-bs-target="#infoModal">Detalles</button> <button class="btn btn-danger" (click)="desassingTask(person.id, i)">Desasignar</button> </td>
+                  <div  class="text-center"> <button class="btn btn-primary me-2" (click)="infoTask(person.task, i)" data-bs-toggle="modal" data-bs-target="#infoModal">Detalles</button> <button class="btn btn-danger" (click)="desassingTask(person.id, i)">Desasignar</button> </div>
                 </ng-template>
+                <td class="" style="display: none;">{{ searchTask(person.task) }}</td>
             </tr>
           </tbody>
         </table> 
@@ -90,8 +91,8 @@
                 <tr [ngClass]="{'invisible': personInfo.id == ''}">
                   <td>{{ taskInfo.name }}</td>
                   <td>{{ taskInfo.description }}</td>
-                  <td>{{ taskInfo.initDate  | date:'short}}</td>
-                  <td>{{ taskInfo.finishDate  | date:'short}}</td>
+                  <td>{{ taskInfo.initDate | date:'short'}}</td>
+                  <td>{{ taskInfo.finishDate | date:'short'}}</td>
                   <td>{{ taskInfo.workTime }}</td>
                   <td *ngIf="taskInfo.status == 0" class="text-white bg-warning">Por asignar</td>
                   <td *ngIf="taskInfo.status == 1" class="text-white bg-success">En curso</td>
