@@ -132,7 +132,7 @@ export class DatabaseService {
     this.persons[index].task = value;
     this.persons[index].state = 1;
     this.http.put("https://controlclients-5d2b0-default-rtdb.firebaseio.com/persons/"+id+".json?auth="+this.token, this.persons[index]).subscribe(() => {
-      this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+value+".json?auth="+this.token, {user: id, status:1}).subscribe(() => {
+      this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+value+".json?auth="+this.token, {user: id, status:1, initDate: Date()}).subscribe(() => {
         this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
           let tasksNew:Task[] = [];
           for (let key in data){
@@ -169,7 +169,17 @@ export class DatabaseService {
   }
   
   finalizeTask(task:Task){
-    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+task.id+".json?auth="+this.token, {status: 3, user: ""}).subscribe(() => {
+    let dateFinish = new Date();
+    
+    let time = () => {
+      let date1 = new Date(task.initDate)
+      let date2 = new Date()
+      let diffTime = Math.abs(date2.getTime() - date1.getTime())
+      return (diffTime/3600000)
+    }
+
+
+    this.http.patch("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks/"+task.id+".json?auth="+this.token, {status: 3, user: "", workTime: time(), finishDate: dateFinish}).subscribe(() => {
       this.http.get<any>("https://controlclients-5d2b0-default-rtdb.firebaseio.com/tasks.json?auth="+this.token).subscribe(data => {
         let tasksNew:Task[] = [];
         for (let key in data){

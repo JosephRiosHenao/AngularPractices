@@ -90,8 +90,8 @@
                 <tr [ngClass]="{'invisible': personInfo.id == ''}">
                   <td>{{ taskInfo.name }}</td>
                   <td>{{ taskInfo.description }}</td>
-                  <td>{{ taskInfo.initDate }}</td>
-                  <td>{{ taskInfo.finishDate }}</td>
+                  <td>{{ taskInfo.initDate  | date:'short}}</td>
+                  <td>{{ taskInfo.finishDate  | date:'short}}</td>
                   <td>{{ taskInfo.workTime }}</td>
                   <td *ngIf="taskInfo.status == 0" class="text-white bg-warning">Por asignar</td>
                   <td *ngIf="taskInfo.status == 1" class="text-white bg-success">En curso</td>
