@@ -16,3 +16,12 @@ p{
 h1 h2 h3 h4 h5 h6 {
     color: white;
 }
+
+.menu-button {
+    background-color: rgb(58, 58, 71);
+    width: 150px; 
+    height: 150px; 
+    border-radius: 1rem;
+    margin: 1rem;
+    border: rgba(255, 255, 255, 0.411) solid 3px;
+}
