@@ -18,10 +18,56 @@ h1 h2 h3 h4 h5 h6 {
 }
 
 .menu-button {
-    background-color: rgb(58, 58, 71);
+    background-color: rgba(255, 255, 255, 0.05);
     width: 150px; 
     height: 150px; 
     border-radius: 1rem;
     margin: 1rem;
-    border: rgba(255, 255, 255, 0.411) solid 3px;
+    border: rgba(255, 255, 255, 0.20) solid 3px;
+    line-height: 150px;
+    color: #198754a9;
+    font-size: 100px;
+    text-align: center;
+}
+
+.menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #198754a9;
+}
+
+
+input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color:#fff;	
+    pointer-event:none;
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #e74c3c;	
+ transition: all 0.5s ease-in-out;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
 }
