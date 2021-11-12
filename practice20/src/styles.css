@@ -301,3 +301,8 @@ RESET STYLES
 .endWave{
 	display:none;
 }
+
+.result-textBox{
+  background-color: #ffffff;
+  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+}
