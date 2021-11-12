@@ -1,26 +1,50 @@
 
-<div class="w-100 vh-100">
+<div class="w-100 vh-100 canva-container">
     <div class="d-flex justify-content-center align-items-center h-100">
         <div class="row">
+            <h1 class="tittle-calc">SUM</h1>
+            <p class="text-center" ><i [routerLink]="['/home']"  class="fas fa-home icon-home"></i></p>
+        </div>
+        <div class="row">
             <div class="col-4">
-                <label class="field field_v2">
-                    <input class="field__input" placeholder="e.g. Melnikov">
-                    <span class="field__label-wrap">
-                        <span class="field__label">Last name</span>
-                    </span>
-                </label>    
+                <div class="row align-items-center align-self-center">
+                    <div class="col-10">
+                        <label class="field field_v2">
+                            <input class="field__input" placeholder="Please input the value #1">
+                            <span class="field__label-wrap">
+                                <span class="field__label">NUMBER 1</span>
+                            </span>
+                        </label>    
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-plus icon-calc"></i>
+                    </div>
+                </div>
             </div>
             <div class="col-4">
-                <label class="field field_v2">
-                    <input class="field__input" placeholder="e.g. Melnikov">
-                    <span class="field__label-wrap">
-                        <span class="field__label">Last name</span>
-                    </span>
-                </label>    
+                <div class="row align-items-center align-self-center">
+                    <div class="col-10">
+                        <label class="field field_v2">
+                            <input class="field__input" placeholder="Please input the value #2">
+                            <span class="field__label-wrap">
+                                <span class="field__label">NUMBER 2</span>
+                            </span>
+                        </label>    
+                    </div>
+                    <div class="col-2">
+                        <i class="fas fa-equals icon-calc"></i>
+                    </div>
+                </div>
             </div>
             <div class="col-4">
-    
+                <span class="result">9999999</span>
             </div>
         </div>
     </div>
+
+    <div class="ocean">
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
 </div>
+

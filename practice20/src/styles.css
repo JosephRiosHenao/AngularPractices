@@ -35,7 +35,23 @@ h1 h2 h3 h4 h5 h6 {
     color: #198754a9;
 }
 
+.icon-calc{
+  color: rgb(255, 255, 255);
+  background-color: #198754a9;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 3rem;
+}
 
+.result{
+  color: white;
+
+  font-size: xx-large;
+  zoom: 200%;
+}
 
 /*
 =====
@@ -44,7 +60,7 @@ RESET STYLES
 */
 
 .field__input{ 
-    --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #767676);
+    --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, rgb(255, 255, 255));
     
     background-color: transparent;
     border-radius: 0;
@@ -83,7 +99,9 @@ RESET STYLES
   }
   
   .field__input{
-    caret-color: #198754a9;
+    caret-color: #198754;
+    zoom:200%;
+    color: rgb(255, 255, 255);
     box-sizing: border-box;
     width: var(--fieldWidth, 100%);
     height: var(--fieldHeight, 3rem);
@@ -106,12 +124,12 @@ RESET STYLES
   }
   
   .field__input:focus::-webkit-input-placeholder{
-    opacity: 1;
+    opacity: 0.09;
     transition-delay: .2s;
   }
   
   .field__input:focus::-moz-placeholder{
-    opacity: 1;
+    opacity: 0.09;
     transition-delay: .2s;
   }
   
@@ -125,7 +143,7 @@ RESET STYLES
     right: 0;
     bottom: 0;
     left: 0;
-    color: #198754a9;
+    color: #198754;
 
   }
   
@@ -150,7 +168,8 @@ RESET STYLES
     left: var(--uiFieldPaddingLeft);
     top: calc(50% - .5em);
   
-    line-height: 1;
+    zoom: 150%;
+    line-height: 2;
     font-size: var(--fieldHintFontSize, inherit);
   
     transition: top .2s cubic-bezier(0.9, -0.15, 0.1, 1.15), opacity .2s ease-out, font-size .2s ease-out;
@@ -177,6 +196,7 @@ RESET STYLES
     transform: translate3d(-105%, 0, 0);
     will-change: transform, opacity;
     transition: transform .285s ease-out .2s, opacity .2s ease-out .2s;
+    zoom: 200%;
   }
   
   .field_v2 .field__input:focus ~ .field__label-wrap::after{
@@ -190,7 +210,94 @@ RESET STYLES
   */
   
   .field{
-    --fieldBorderColor: #e1ffe248;
-    --fieldBorderColorActive: #198754a9;
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #198754;
   }
   
+
+/* WAVES */
+
+.canva-container{
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.tittle-calc {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #198754;
+  font-size: 10rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+
+.icon-home{
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  background-color: #198754;
+  border-radius: 50%;
+  font-size: 3rem;
+  line-height: 5rem;
+  text-align: center;
+  width: 5rem;
+  height: 5rem;
+}
+
+.ocean {
+  height: 5%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #198754;
+}
+
+.wave {
+  background: url("./assets/wave.svg") repeat-x;
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+@keyframes swell {
+  0%,
+	100% {
+    transform: translate3d(0, -25px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+.endWave{
+	display:none;
+}
