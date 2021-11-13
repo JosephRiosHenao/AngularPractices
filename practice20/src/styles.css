@@ -49,7 +49,8 @@ h1 h2 h3 h4 h5 h6 {
 .result{
   color: white;
 
-  font-size: xx-large;
+  font-size: 1rem;
+  line-height: 3rem;
   zoom: 200%;
 }
 
@@ -101,7 +102,7 @@ RESET STYLES
   .field__input{
     caret-color: #198754;
     zoom:200%;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     box-sizing: border-box;
     width: var(--fieldWidth, 100%);
     height: var(--fieldHeight, 3rem);
@@ -213,6 +214,11 @@ RESET STYLES
     --fieldBorderColor: #ffffff;
     --fieldBorderColorActive: #198754;
   }
+
+  .fieldColorRed{
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #dc3545;
+  }
   
 
 /* WAVES */
@@ -262,7 +268,7 @@ RESET STYLES
   position: absolute;
   bottom: 0;
   left: 0;
-  background: #198754;
+  background: #ffffff;
 }
 
 .wave {
@@ -274,6 +280,14 @@ RESET STYLES
   animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
   transform: translate3d(0, 0, 0);
 }
+
+.waveGreen {
+  background: url("./assets/waveGreen.svg") repeat-x;
+}
+.waveRed {
+  background: url("./assets/waveRed.svg") repeat-x;
+}
+
 
 .wave:nth-of-type(2) {
   top: -175px;
@@ -303,6 +317,5 @@ RESET STYLES
 }
 
 .result-textBox{
-  background-color: #ffffff;
-  border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColorActive);
+  border-bottom: 4.5px solid rgb(255, 255, 255);  
 }

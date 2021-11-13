@@ -38,16 +38,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 result-textBox">
-                    <span class="result">{{ result | number : '1.0-3' }}</span>
+                <div class="col-4">
+                    <div class="col-12">
+                        <label class="field field_v2">
+                            <input class="field__input" placeholder="Please input the value #2" [value]="result | number : '1.0-3'" disabled>
+                            <span class="field__label-wrap">
+                                <span class="field__label">RESULT</span>
+                            </span>
+                        </label>    
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="ocean">
-      <div class="wave"></div>
-      <div class="wave"></div>
+    <div class="ocean" style="background: #198754;">
+        <div class="wave waveGreen"></div>
+        <div class="wave waveGreen"></div>
     </div>
 </div>
 
