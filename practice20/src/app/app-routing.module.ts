@@ -1,3 +1,4 @@
+import { SuperComponent } from './super/super.component';
 import { DivisionComponent } from './division/division.component';
 import { MultiplicationComponent } from './multiplication/multiplication.component';
 import { NgModule } from '@angular/core';
@@ -5,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SubtractionComponent } from './subtraction/subtraction.component';
 import { SumComponent } from './sum/sum.component';
+import { SquareComponent } from './square/square.component';
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
@@ -12,6 +14,8 @@ const routes: Routes = [
   {path: "substraction", component: SubtractionComponent},
   {path: "multiplication", component: MultiplicationComponent},
   {path: "division", component: DivisionComponent},
+  {path: "super", component: SuperComponent},
+  {path: "root", component: SquareComponent},
   {path: "**", component: HomeComponent }
 ];
 
