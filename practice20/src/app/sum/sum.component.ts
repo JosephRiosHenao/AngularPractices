@@ -18,7 +18,7 @@ export class SumComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  calculateSum(){
+  calculate(){
     this.result = (parseFloat(this.number1) + parseFloat(this.number2)).toFixed(3);
   }
 }

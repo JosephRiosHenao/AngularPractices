@@ -214,10 +214,13 @@ RESET STYLES
     --fieldBorderColor: #ffffff;
     --fieldBorderColorActive: #198754;
   }
-
   .fieldColorRed{
     --fieldBorderColor: #ffffff;
     --fieldBorderColorActive: #dc3545;
+  }
+  .fieldColorYellow{
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #ffc107;
   }
   
 
@@ -239,7 +242,7 @@ RESET STYLES
   left: 50%;
   transform: translate(-50%, -50%);
   color: #198754;
-  font-size: 10rem;
+  font-size: 8rem;
   font-weight: bold;
   text-align: center;
   width: 100%;
@@ -286,6 +289,9 @@ RESET STYLES
 }
 .waveRed {
   background: url("./assets/waveRed.svg") repeat-x;
+}
+.waveYellow {
+  background: url("./assets/waveYellow.svg") repeat-x;
 }
 
 
