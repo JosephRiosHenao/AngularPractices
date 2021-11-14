@@ -1,3 +1,4 @@
+import { DivisionComponent } from './division/division.component';
 import { MultiplicationComponent } from './multiplication/multiplication.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: "sum", component: SumComponent},
   {path: "substraction", component: SubtractionComponent},
   {path: "multiplication", component: MultiplicationComponent},
+  {path: "division", component: DivisionComponent},
   {path: "**", component: HomeComponent }
 ];
 

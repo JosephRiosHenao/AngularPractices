@@ -8,6 +8,9 @@ import { SumComponent } from './sum/sum.component';
 import { SubtractionComponent } from './subtraction/subtraction.component';
 import { FormsModule } from '@angular/forms';
 import { MultiplicationComponent } from './multiplication/multiplication.component';
+import { DivisionComponent } from './division/division.component';
+import { SquareComponent } from './square/square.component';
+import { SuperComponent } from './super/super.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { MultiplicationComponent } from './multiplication/multiplication.compone
     HomeComponent,
     SumComponent,
     SubtractionComponent,
-    MultiplicationComponent
+    MultiplicationComponent,
+    DivisionComponent,
+    SquareComponent,
+    SuperComponent
   ],
   imports: [
     BrowserModule,

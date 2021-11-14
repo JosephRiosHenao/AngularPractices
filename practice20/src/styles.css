@@ -25,14 +25,12 @@ h1 h2 h3 h4 h5 h6 {
     margin: 1rem;
     border: rgba(255, 255, 255, 0.20) solid 3px;
     line-height: 150px;
-    color: #198754a9;
     font-size: 100px;
     text-align: center;
 }
 
 .menu-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #198754a9;
 }
 
 .icon-calc{
@@ -222,6 +220,10 @@ RESET STYLES
     --fieldBorderColor: #ffffff;
     --fieldBorderColorActive: #ffc107;
   }
+  .fieldColorPurple{
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #6f42c1;
+  }
   
 
 /* WAVES */
@@ -292,6 +294,9 @@ RESET STYLES
 }
 .waveYellow {
   background: url("./assets/waveYellow.svg") repeat-x;
+}
+.wavePurple {
+  background: url("./assets/wavePurple.svg") repeat-x;
 }
 
 
