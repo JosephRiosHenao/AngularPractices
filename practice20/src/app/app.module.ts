@@ -11,6 +11,10 @@ import { MultiplicationComponent } from './multiplication/multiplication.compone
 import { DivisionComponent } from './division/division.component';
 import { SquareComponent } from './square/square.component';
 import { SuperComponent } from './super/super.component';
+import { CubeComponent } from './cube/cube.component';
+import { SalaryComponent } from './salary/salary.component';
+import { TriangleComponent } from './triangle/triangle.component';
+import { CircleComponent } from './circle/circle.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { SuperComponent } from './super/super.component';
     MultiplicationComponent,
     DivisionComponent,
     SquareComponent,
-    SuperComponent
+    SuperComponent,
+    CubeComponent,
+    SalaryComponent,
+    TriangleComponent,
+    CircleComponent
   ],
   imports: [
     BrowserModule,

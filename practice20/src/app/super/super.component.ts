@@ -10,7 +10,6 @@ export class SuperComponent implements OnInit {
   number2:string = "";
   result:string = "000";
 
-
   constructor() { }
 
   ngOnInit(): void {

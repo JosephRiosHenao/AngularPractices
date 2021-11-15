@@ -11,7 +11,10 @@
                 <h3 class="fw-bold fs-4" style="color: #198754a9;">WELCOME</h3>
                 <p class="fw-light fs-6" style="color: #ffffff88">Joseph Rios Henao</p>
                 <p class="text-center">
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success btn-lg p-2 w-25">START</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#calculatorModal" class="btn btn-success btn-lg p-2 w-25">START</button>
+                </p>
+                <p class="text-center">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#activitiesModal" class="btn btn-secondary btn-lg p-2 w-25">ACTIVITIES</button>
                 </p>
             </div>
         </div>
@@ -21,7 +24,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="calculatorModal" tabindex="-1" aria-labelledby="calculatorModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="background-color: rgb(43, 43, 53);">
     <div class="modal-header" style="background-color: rgb(43, 43, 53);">
@@ -38,6 +41,30 @@
                 <div class="col-6 menu-button" data-bs-dismiss="modal" aria-label="Close" [routerLink]="['/division']"><i class="fas fa-divide" style="color: var(--bs-purple);"></i></div>
                 <div class="col-6 menu-button" data-bs-dismiss="modal" aria-label="Close" [routerLink]="['/super']"><i class="fas fa-superscript" style="color: var(--bs-blue);"></i></div>
                 <div class="col-6 menu-button" data-bs-dismiss="modal" aria-label="Close" [routerLink]="['/root']"><i class="fas fa-square-root-alt" style="color: var(--bs-pink);"></i></div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="activitiesModal" tabindex="-1" aria-labelledby="activitiesModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background-color: rgb(43, 43, 53);">
+    <div class="modal-header" style="background-color: rgb(43, 43, 53);">
+        <h5 class="modal-title text-white fw-bolder">MODOS</h5>
+        <button type="button" class="btn btn-danger text-white fw-bolder" data-bs-dismiss="modal" aria-label="Close">X</button>
+    </div>
+    <div class="modal-body" style="background-color: rgb(43, 43, 53);">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-6 menu-button" data-bs-dismiss="modal" aria-label="Close" [routerLink]="['/cube']" ><i class="fas fa-cube" style="color: var(--bs-cyan);"></i></div>
+                <div class="col-6 menu-button" data-bs-dismiss="modal" aria-label="Close" [routerLink]="['/pyramid']"><i class="fas fa-exclamation-triangle" style="color: var(--bs-orange);"></i></div>
+                <div class="col-6 menu-button" data-bs-dismiss="modal" aria-label="Close" [routerLink]="['/circle']"><i class="fas fa-circle" style="color: var(--bs-white);"></i></div>
+                <div class="col-6 menu-button" data-bs-dismiss="modal" aria-label="Close" [routerLink]="['/salary']"><i class="fas fa-money-check-alt" style="color: var(--bs-teal);"></i></div>
 
             </div>
         </div>

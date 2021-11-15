@@ -35,7 +35,7 @@ h1 h2 h3 h4 h5 h6 {
 
 .icon-calc{
   color: rgb(255, 255, 255);
-  background-color: #198754a9;
+  background-color: #00ff88a9;
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
@@ -232,6 +232,22 @@ RESET STYLES
     --fieldBorderColor: #ffffff;
     --fieldBorderColorActive: #d63384;
   }
+  .fieldColorCyan{
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #0dcaf0;
+  }
+  .fieldColorWhite{
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #ffffff;
+  }
+  .fieldColorTeal{
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #20c997;
+  }
+  .fieldColorOrange{
+    --fieldBorderColor: #ffffff;
+    --fieldBorderColorActive: #fd7e14;
+  }
   
 
 /* WAVES */
@@ -311,6 +327,18 @@ RESET STYLES
 }
 .wavePink {
   background: url("./assets/wavePink.svg") repeat-x;
+}
+.waveCyan {
+  background: url("./assets/waveCyan.svg") repeat-x;
+}
+.waveWhite {
+  background: url("./assets/wave.svg") repeat-x;
+}
+.waveTeal {
+  background: url("./assets/waveTeal.svg") repeat-x;
+}
+.waveOrange {
+  background: url("./assets/waveOrange.svg") repeat-x;
 }
 
 
