@@ -13,3 +13,6 @@
 - practice17/ => MarketPlace
 - practice18/ => PokeApi
 - practice19/ => DashBoard to my Father
+- practice20/ => Calculator
+- practice21/ => Playground Kids Social Work
+- practice22/ => Activity School Book Store
