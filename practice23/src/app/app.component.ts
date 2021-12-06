@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'practice23';
+  data:any = ["NAN","NAN"];
+
+  updateState(state:number, value:string){
+    this.data[state] = value;
+  }
 }
