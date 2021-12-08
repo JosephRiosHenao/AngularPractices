@@ -3,19 +3,17 @@
   <input type="number" formControlName="yearsOld">
   <input type="text" formControlName="email">
   <input type="number" formControlName="tel">
-<!-- genre -->
-</form>
+  <input type="radio" name="radioGenre" id="r1" formControlName="genre" value="Male">
+  <input type="radio" name="radioGenre" id="r2" formControlName="genre" value="Female">
+</form> 
 
 <form [formGroup]="formSon">
   <input type="text" formControlName="name">
   <input type="number" formControlName="yearsOld">
-  <input type="checkbox" formControlName="activity" value="Study"> 
-  <input type="checkbox" formControlName="activity" value="Deport"> 
-  <input type="checkbox" formControlName="activity" value="Drawing">  
+  <input type="checkbox" formControlName="activity1" id="chkBox1"> 
+  <input type="checkbox" formControlName="activity2" id="chkBox2"> 
+  <input type="checkbox" formControlName="activity3" id="chkBox3">  
 </form>
-
-<p>Diferencia: {{formWork.value.yearsOld - formSon.value.yearsOld}}</p>
-
-<p>
-  El empleado {{formWork.value.name}} con la edad {{formWork.value.yearsOld}} años, su correo es {{formWork.value.email}} con el telefono {{formWork.value.tel}} y su genero es {{formWork.value.genre}}
-</p>
+<p>El empleado {{formWork.value.name}} con la edad {{formWork.value.yearsOld}} años, su correo es {{formWork.value.email}} con el telefono {{formWork.value.tel}} y su genero es {{formWork.value.genre}}</p>
+<p>Su hijo tiene el nombre {{formSon.value.name}} con la edad {{formSon.value.yearsOld}} años, su actividad es: <span *ngIf="formSon.controls['activity1'].value">Soccer </span> <span *ngIf="formSon.controls['activity2'].value">Karate </span> <span *ngIf="formSon.controls['activity3'].value">Baseball </span></p>
+<p>La diferencia de edades entre {{formWork.value.name}} y {{formSon.value.name}} es: {{formWork.value.yearsOld - formSon.value.yearsOld}}</p>

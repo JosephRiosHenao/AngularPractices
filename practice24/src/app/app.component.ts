@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent {
 
+  public activities:string[] = ["test"];
+
   public formWork:FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     yearsOld: new FormControl('', Validators.required),
@@ -19,8 +21,14 @@ export class AppComponent {
   public formSon:FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     yearsOld: new FormControl('', Validators.required),
-    activity: new FormControl('', Validators.required),
+    activity1: new FormControl('', Validators.required),
+    activity2: new FormControl('', Validators.required),
+    activity3: new FormControl('', Validators.required),
   })
+
+  a(){
+    this.formSon.controls["name"].value
+  }
 
   yearsLast:number = 0;
 
