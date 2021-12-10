@@ -1,19 +1,34 @@
-<form [formGroup]="formWork">
-  <input type="text" formControlName="name">
-  <input type="number" formControlName="yearsOld">
-  <input type="text" formControlName="email">
-  <input type="number" formControlName="tel">
-  <input type="radio" name="radioGenre" id="r1" formControlName="genre" value="Male">
-  <input type="radio" name="radioGenre" id="r2" formControlName="genre" value="Female">
-</form> 
 
-<form [formGroup]="formSon">
-  <input type="text" formControlName="name">
-  <input type="number" formControlName="yearsOld">
-  <input type="checkbox" formControlName="activity1" id="chkBox1"> 
-  <input type="checkbox" formControlName="activity2" id="chkBox2"> 
-  <input type="checkbox" formControlName="activity3" id="chkBox3">  
-</form>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="formWork" class="card-custom">
+          <input type="text" formControlName="name">
+          <input type="number" formControlName="yearsOld">
+          <input type="text" formControlName="email">
+          <input type="number" formControlName="tel">
+          <input type="radio" name="radioGenre" id="r1" formControlName="genre" value="Male">
+          <input type="radio" name="radioGenre" id="r2" formControlName="genre" value="Female">
+        </form> 
+    </div>
+    <div class="col-md-6">
+        <form [formGroup]="formSon" class="card-custom ">
+          <input type="text" formControlName="name">
+          <input type="number" formControlName="yearsOld">
+          <input type="checkbox" formControlName="activity1" id="chkBox1"> 
+          <input type="checkbox" formControlName="activity2" id="chkBox2"> 
+          <input type="checkbox" formControlName="activity3" id="chkBox3">  
+        </form>      
+    </div>
+  </div>
+</div>
+
+
 <p>El empleado {{formWork.value.name}} con la edad {{formWork.value.yearsOld}} años, su correo es {{formWork.value.email}} con el telefono {{formWork.value.tel}} y su genero es {{formWork.value.genre}}</p>
 <p>Su hijo tiene el nombre {{formSon.value.name}} con la edad {{formSon.value.yearsOld}} años, su actividad es: <span *ngIf="formSon.controls['activity1'].value">Soccer </span> <span *ngIf="formSon.controls['activity2'].value">Karate </span> <span *ngIf="formSon.controls['activity3'].value">Baseball </span></p>
 <p>La diferencia de edades entre {{formWork.value.name}} y {{formSon.value.name}} es: {{formWork.value.yearsOld - formSon.value.yearsOld}}</p>
