@@ -5,7 +5,7 @@
 
 }
 
-section.home-section {
+section.home-section{
     height: 100vh;
     background: rgb(144, 213, 223);
     width: 100%;
@@ -16,7 +16,18 @@ section.home-section {
     align-items: center;
 }
 
-section.home-section .img-bg {
+section.school-section {
+    height: 100vh;
+    background: rgb(144, 213, 223);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -24,6 +35,11 @@ section.home-section .img-bg {
     height: 100vh;
     object-fit: cover; 
     pointer-events: none;
+}
+
+.img-cloudyBG{
+    z-index: 1;
+    transform: rotate(180deg);
 }
 
 // section.home-section::before {
