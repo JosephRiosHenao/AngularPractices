@@ -4,31 +4,78 @@
 
 
 
-<div class="container">
+<div class="container vh-100">
   <div class="row">
     <div class="col-md-6">
-        <form [formGroup]="formWork" class="card-custom">
-          <input type="text" formControlName="name">
-          <input type="number" formControlName="yearsOld">
-          <input type="text" formControlName="email">
-          <input type="number" formControlName="tel">
-          <input type="radio" name="radioGenre" id="r1" formControlName="genre" value="Male">
-          <input type="radio" name="radioGenre" id="r2" formControlName="genre" value="Female">
+      <form [formGroup]="formWork" class="card-custom">
+          <h1 class="text-white fw-bolder fs-0">WORKER</h1>
+          <div class="form__group field">
+            <input class="form__field" id="name_work" type="text" formControlName="name" placeholder="a">
+            <label for="name_work" class="form__label">Name</label>
+          </div>
+          <div class="form__group field">
+            <input class="form__field" id="years_work" type="number" formControlName="yearsOld" placeholder="a">
+            <label for="years_work" class="form__label">Years Old</label>
+          </div>
+          <div class="form__group field">
+            <input class="form__field" id="email_work" type="text" formControlName="email" placeholder="a">
+            <label for="email_work" class="form__label">Email</label>
+          </div>
+          <div class="form__group field">
+            <input class="form__field" id="tel_work" type="number" formControlName="tel" placeholder="a">
+            <label for="tel_work" class="form__label">Phone</label>
+          </div>
+          <div class="form__group field">
+            <p class="text-center" style="width: 100%;">
+              <label for="r1" style="color: white; margin-right: 1rem;">Male: </label>
+              <input type="radio" name="radioGenre" id="r1" formControlName="genre" value="Male">
+            </p>
+            <p class="text-center" style="width: 100%;">
+              <label for="r2" style="color: white; margin-right: 1rem;">Female: </label>
+              <input type="radio" name="radioGenre" id="r2" formControlName="genre" value="Female">
+            </p>
+          </div>
         </form> 
     </div>
     <div class="col-md-6">
         <form [formGroup]="formSon" class="card-custom ">
-          <input type="text" formControlName="name">
-          <input type="number" formControlName="yearsOld">
-          <input type="checkbox" formControlName="activity1" id="chkBox1"> 
-          <input type="checkbox" formControlName="activity2" id="chkBox2"> 
-          <input type="checkbox" formControlName="activity3" id="chkBox3">  
+          <h1 class="text-white fw-bolder fs-0">KID</h1>
+          <div class="form__group field">
+            <input class="form__field" id="name_kid" type="text" placeholder="a" formControlName="name">
+            <label for="name_kid" class="form__label">Name</label>
+          </div>
+          <div class="form__group field">
+            <input class="form__field" id="years_kid" type="number" placeholder="a" formControlName="yearsOld">
+            <label for="years_kid" class="form__label">Years Old</label>
+          </div>
+          <div class="form__group field"></div>
+          <p class="text-center" style="width: 100%;">
+            <label for="chkBox1" style="color: white; margin-right: 1rem;">Soccer: </label>
+            <input type="checkbox" formControlName="activity1" id="chkBox1"> 
+          </p>
+          <p class="text-center" style="width: 100%;">
+            <label for="chkBox2" style="color: white; margin-right: 1rem;">Karate: </label>
+            <input type="checkbox" formControlName="activity2" id="chkBox2"> 
+          </p>
+          <p class="text-center">
+            <label for="chkBox3" style="color: white; margin-right: 1rem;">Baseball</label>
+            <input type="checkbox" formControlName="activity3" id="chkBox3">  
+          </p>
         </form>      
     </div>
   </div>
 </div>
 
 
-<p>El empleado {{formWork.value.name}} con la edad {{formWork.value.yearsOld}} años, su correo es {{formWork.value.email}} con el telefono {{formWork.value.tel}} y su genero es {{formWork.value.genre}}</p>
-<p>Su hijo tiene el nombre {{formSon.value.name}} con la edad {{formSon.value.yearsOld}} años, su actividad es: <span *ngIf="formSon.controls['activity1'].value">Soccer </span> <span *ngIf="formSon.controls['activity2'].value">Karate </span> <span *ngIf="formSon.controls['activity3'].value">Baseball </span></p>
-<p>La diferencia de edades entre {{formWork.value.name}} y {{formSon.value.name}} es: {{formWork.value.yearsOld - formSon.value.yearsOld}}</p>
+
+
+
+
+<div class="container vh-100 center-absCus">
+  <h1 class="text-white fw-bolder fs-0">RESULT</h1>
+  <p>El empleado {{formWork.value.name}} con la edad {{formWork.value.yearsOld}} años, su correo es {{formWork.value.email}} con el telefono {{formWork.value.tel}} y su genero es {{formWork.value.genre}}</p>
+  <p>Su hijo tiene el nombre {{formSon.value.name}} con la edad {{formSon.value.yearsOld}} años, su actividad es: <span *ngIf="formSon.controls['activity1'].value">Soccer </span> <span *ngIf="formSon.controls['activity2'].value">Karate </span> <span *ngIf="formSon.controls['activity3'].value">Baseball </span></p>
+  <p>La diferencia de edades entre {{formWork.value.name}} y {{formSon.value.name}} es: {{formWork.value.yearsOld - formSon.value.yearsOld}}</p>
+</div>
+
+
