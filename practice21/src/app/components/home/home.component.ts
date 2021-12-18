@@ -19,14 +19,21 @@ export class HomeComponent implements OnInit {
     let ground = document.getElementById('ground');
     let text = document.getElementById('text');
 
+    let cloudy = document.getElementById('cloudy');
+    let sky = document.getElementById('sky');
+    let school = document.getElementById('school');
+    let clouds_school = document.getElementById('clouds_school');
+    let text_contect = document.getElementById('text_contect');
+
     window. addEventListener('scroll', function() {
-      var value =  window.scrollY;
+      var value =  window.scrollY - window.innerHeight;
 
       clouds!.style.left = -value * 0.5 + 'px';
       trees!.style.top = -value * 0.15 + 'px';
       ground!.style.top = value * 0.15 + 'px';
       text!.style.top = value * 1 + 'px';
 
+      cloudy!.style.top = -value * 0.5 + 'px';
     })
   }
 
