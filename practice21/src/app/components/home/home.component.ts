@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     let text_contect = document.getElementById('text_contect');
 
     window. addEventListener('scroll', function() {
-      var value =  window.scrollY - window.innerHeight;
+      var value =  window.scrollY;
 
       clouds!.style.left = -value * 0.5 + 'px';
       trees!.style.top = -value * 0.15 + 'px';
@@ -34,6 +34,10 @@ export class HomeComponent implements OnInit {
       text!.style.top = value * 1 + 'px';
 
       cloudy!.style.top = -value * 0.5 + 'px';
+      sky!.style.top = -value * 0.5 + 'px';
+      school!.style.top = value * 0.15 + 'px';
+      clouds_school!.style.left = -value * 0.5 + 'px';
+      text_contect!.style.top = value * 1 + 'px';
     })
   }
 
