@@ -25,8 +25,14 @@ export class HomeComponent implements OnInit {
     let clouds_school = document.getElementById('clouds_school');
     let text_contect = document.getElementById('text_contect');
 
+    let school_section = document.getElementById('school_sectionDIV');
+
     window. addEventListener('scroll', function() {
-      var value =  window.scrollY;
+      
+
+           
+      var value =  window.outerHeight - window.scrollY;
+      console.log(window.scrollY - school_section!.offsetHeight)
 
       clouds!.style.left = -value * 0.5 + 'px';
       trees!.style.top = -value * 0.15 + 'px';
@@ -34,10 +40,10 @@ export class HomeComponent implements OnInit {
       text!.style.top = value * 1 + 'px';
 
       cloudy!.style.top = -value * 0.5 + 'px';
-      sky!.style.top = -value * 0.5 + 'px';
-      school!.style.top = value * 0.15 + 'px';
+      sky!.style.top = -value * 0.15 + 'px';
+      school!.style.top = value * 0.05 + 'px';
       clouds_school!.style.left = -value * 0.5 + 'px';
-      text_contect!.style.top = value * 1 + 'px';
+      // text_contect!.style.top = value * 1 + 'px';
     })
   }
 
