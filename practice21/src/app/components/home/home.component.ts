@@ -31,19 +31,19 @@ export class HomeComponent implements OnInit {
       
 
            
-      var value =  window.outerHeight - window.scrollY;
-      console.log(window.scrollY - school_section!.offsetHeight)
+      var valueTop = window.scrollY;
+      var valueBottom = school_section!.offsetHeight - school_section!.getBoundingClientRect().top
 
-      clouds!.style.left = -value * 0.5 + 'px';
-      trees!.style.top = -value * 0.15 + 'px';
-      ground!.style.top = value * 0.15 + 'px';
-      text!.style.top = value * 1 + 'px';
+      clouds!.style.left = -valueTop * 0.5 + 'px';
+      trees!.style.top = -valueTop * 0.15 + 'px';
+      ground!.style.top = valueTop * 0.15 + 'px';
+      text!.style.top = valueTop * 1 + 'px';
 
-      cloudy!.style.top = -value * 0.5 + 'px';
-      sky!.style.top = -value * 0.15 + 'px';
-      school!.style.top = value * 0.05 + 'px';
-      clouds_school!.style.left = -value * 0.5 + 'px';
-      // text_contect!.style.top = value * 1 + 'px';
+      cloudy!.style.top = -valueBottom * 0.02 + 'px';
+      sky!.style.top = valueBottom * 0.1 + 'px';
+      school!.style.top = valueBottom * 0.005 + 'px';
+      clouds_school!.style.left = -valueBottom * 0.7 + 'px';
+      // text_contect!.style.top = valueBottom * 1 + 'px';
     })
   }
 
