@@ -27,39 +27,159 @@ body {
   }
 
 
-  p {
+
+  /* Play with speed and easing of the animation */
+  $one-second: 1s;
+  $easing: cubic-bezier(1,0,1,0);
+  /* =========================================== */
+  
+  @mixin animate($count) {
+    $step: (100 / $count);
+    $progress: 0%;
+    $translate: -$digit-height;
+    @while $progress < 100 {
+      #{$progress} { transform: translateY($translate); }
+      $progress: $progress + $step;
+      $translate: $translate - $digit-height;
+    }
+  }
+  
+  $digit-height: 100px;
+  
+  .digit {
+    display: inline-block;
+    font-size: 100px;
+    color: rgba(255,255,255,1);
+    height: $digit-height;
+    line-height: 1;
+  }
+  
+  .time-part-wrapper {
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+  
+    &:not(:last-child):after {
+      content: ":";
+      display: block;
+      width: 30px;
+      height: 100px;
+      position: absolute;
+      top: 0px;
+      right: -30px;
+      color: rgba(255,255,255,1);
+      font-size: 100px;
+      line-height: 0.9;
+    }
+  }
+  
+  .time-part {
+    width: 75px;
     text-align: center;
+    height: $digit-height;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 0px;
+    box-sizing: border-box;
+    
+    .digit-wrapper {
+      animation-timing-function: $easing;
+    }
+    &.hours {
+      &.tens .digit-wrapper {
+        animation-name: hours-tens;
+        animation-duration: $one-second * 10 * 6 * 10 * 6 * 10 * 6;
+        animation-iteration-count: 1;
+      }
+      &.ones .digit-wrapper {
+        animation-name: hours-ones;
+        animation-duration: $one-second * 10 * 6 * 10 * 6 * 10;
+        animation-iteration-count: 6;
+      }
+    }
+    &.minutes {
+      &.tens .digit-wrapper {
+        animation-name: minutes-tens;
+        animation-duration: $one-second * 10 * 6 * 10 * 6;
+        animation-iteration-count: 60;
+      }
+      &.ones .digit-wrapper {
+        animation-name: minutes-ones;
+        animation-duration: $one-second * 10 * 6 * 10;
+        animation-iteration-count: 360;
+      }
+    }
+    
+    &.seconds {
+      &.tens .digit-wrapper {
+        animation-name: seconds-tens;
+        animation-duration: $one-second * 10 * 6;
+        animation-iteration-count: 3600;
+      }
+      &.ones .digit-wrapper {
+        animation-name: seconds-ones;
+        animation-duration: $one-second * 10;
+        animation-iteration-count: 21600;
+      }
+    }
+    
+    &.milliseconds {
+      &.hundreds .digit-wrapper {
+        animation-name: hundredths-tens;
+        animation-duration: $one-second;
+        animation-iteration-count: 216000;
+      }
+      &.tens .digit-wrapper {
+        animation-name: hundredths-ones;
+        animation-duration: $one-second / 10;
+        animation-iteration-count: 2160000;
+      }
+      &.ones .digit-wrapper {
+        animation-name: milliseconds;
+        animation-duration: $one-second / 100;
+        animation-iteration-count: 21600000;
+      }
+    }
   }
-  .flip-clock-wrapper{
-    max-width: 460px;
-    margin: 3em auto 2em;
-    display: flex;
-    justify-content: center;
+  @keyframes hours-tens {
+    @include animate(6)
   }
-  .counter{
-    display: flex;
-    justify-content: center;
+  @keyframes hours-ones {
+    @include animate(10)
   }
-  .clock{
-    margin-top: 30px;
+  @keyframes minutes-tens {
+    @include animate(6);
   }
-  .middle{
-      display:inline-block;
+  @keyframes minutes-ones {
+    @include animate(10);
   }
-  #sessInc, #sessDec, #breakInc, #breakDec {  
-    font-weight: bold;
+  
+  @keyframes seconds-tens {
+    @include animate(6);
   }
-  #stats {
-    background-color: #333333;
-    width: 220px;
-    height: 70px;  
-    border-radius: 10px;
-    color: #CCCCCC;
-    font-size: 45px;
-    text-align: center;
+  @keyframes seconds-ones {
+    @include animate(10);
   }
-  #statRow {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  
+  @keyframes hundredths-tens {
+    @include animate(10);
+  }
+  @keyframes hundredths-ones {
+    @include animate(10);
+  }
+  @keyframes milliseconds {
+    @include animate(10);
+  }
+  
+  
+  body {
+    font-family: Verdana;
+    background: #000000;
+    margin: 0;
+  }
+  
+  .wrapper {
+    margin: 50px auto;
+    width: 1366px;
+    position: relative;
   }

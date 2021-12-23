@@ -1,18 +1,102 @@
 
-<p class="text-center">
-  I 
-  <svg class="heart" viewBox="0 0 32 29.6">
-    <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
-    c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
-  </svg> 
-  You
-</p>
+  <div class="text-white" *ngFor="let in of counter(10);let i = index;"> {{i}} </div>
 
-    
-  <div id="clock" class="row">
-    <div class="timer"><div class="middle"></div></div>
+<button class="btn btn-primary" (click)="calcTime()" >COMENZAR</button>
+<div class="wrapper">
+  <div class="time-part-wrapper">
+    <div class="time-part hours tens">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+          <span class="digit" *ngFor="let item of constructor(10); let i = index">
+            {{i}}
+          </span>
+      </div>
+    </div>
+    <div class="time-part hours ones">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..9).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="row" id="statRow">
-    <div id="stats"></div>
+  <div class="time-part-wrapper">
+    <div class="time-part minutes tens">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..5).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="time-part minutes ones">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..9).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
   </div>
-
+  <div class="time-part-wrapper">
+    <div class="time-part seconds tens">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..5).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="time-part seconds ones">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..9).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="time-part-wrapper">
+    <div class="time-part milliseconds hundreds">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..9).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="time-part milliseconds tens">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..9).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="time-part milliseconds ones">
+      <div class="digit-wrapper">
+        <span class="digit">0</span>
+        <% (-0..9).each do |i| %>
+          <span class="digit">
+            <%= i %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
