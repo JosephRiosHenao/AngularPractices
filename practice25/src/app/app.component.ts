@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
 
   calcTime(){
-    var date2 = new Date(2015,11,1);
+    var date2 = new Date(2021,11,1);
     var date1 = new Date();
     var dateToday = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
 
