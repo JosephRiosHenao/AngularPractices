@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   initDate:Date = new Date(2021,11,1);
-  Time:number[] = [0,0, 0,0, 0,0, 0,0,0]
+  Time:Date = new Date();
+  YearMonth:Number[] = [0,0];
 
   ngOnInit(): void {
-    // var x = setInterval(() => this.calcTime(),0);
+    var x = setInterval(() => this.calcTime(),1000);
   }
   counter(i: number) {
     return new Array(i);
@@ -18,8 +19,7 @@ export class AppComponent implements OnInit {
 
 
   calcTime(){
-    var now:Date = new Date();
-    var date2 = new Date(2021,11,1);
+    var date2 = new Date(2015,11,1);
     var date1 = new Date();
     var dateToday = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
 
@@ -54,15 +54,15 @@ export class AppComponent implements OnInit {
       months = months - (years * 12);
     }
     
-    // var message = date2.toDateString();
-    // message += " was "
-    // message += milisecondsToday + " miliseconds "
-    // message += secondsToday + " seconds "
-    // message += minutesToday + " minutes "
-    // message += hoursToday + " hours "
-    // message += days + " days " 
-    // message += months + " months "
-    // message += years + " years ago \n"
+    var message = date2.toDateString();
+    message += " was "
+    message += milisecondsToday + " miliseconds "
+    message += secondsToday + " seconds "
+    message += minutesToday + " minutes "
+    message += hoursToday + " hours "
+    message += days + " days " 
+    message += months + " months "
+    message += years + " years ago \n"
 
     var arrayMiliseconds = milisecondsToday.toString().split('').map(Number)
     var arraySeconds = secondsToday.toString().split('').map(Number)
@@ -70,6 +70,8 @@ export class AppComponent implements OnInit {
     var arrayHours = hoursToday.toString().split('').map(Number)
 
 
-    // console.log(arrayMiliseconds)
+    console.log(message) 
+    this.YearMonth = [years,months];
+    this.Time = new Date();;
   }
 }

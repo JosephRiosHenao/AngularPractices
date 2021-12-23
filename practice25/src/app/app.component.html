@@ -1,102 +1,33 @@
 
-  <div class="text-white" *ngFor="let in of counter(10);let i = index;"> {{i}} </div>
-
-<button class="btn btn-primary" (click)="calcTime()" >COMENZAR</button>
-<div class="wrapper">
-  <div class="time-part-wrapper">
-    <div class="time-part hours tens">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-          <span class="digit" *ngFor="let item of constructor(10); let i = index">
-            {{i}}
-          </span>
-      </div>
-    </div>
-    <div class="time-part hours ones">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..9).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
+<h1>Te quiero</h1>
+<div class="corazon"></div>
+<!-- <button class="btn btn-primary" (click)="calcTime()" >COMENZAR</button>
+<span class="digit" *ngFor="let in of counter(10);let i = index;">{{i}}</span> -->
+<div class="row">
+  <div class="col">
+    <div class="container-card">
+      <div class="header-textCard">
+        <p class="text-center">ANIO</p>
+        <p>{{YearMonth[0]}}</p>
       </div>
     </div>
   </div>
-  <div class="time-part-wrapper">
-    <div class="time-part minutes tens">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..5).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
-      </div>
-    </div>
-    <div class="time-part minutes ones">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..9).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
+  <div class="col">
+    <div class="container-card">
+      <div class="header-textCard">
+        <p class="text-center">MESES</p>
+        <p>{{YearMonth[1]}}</p>
       </div>
     </div>
   </div>
-  <div class="time-part-wrapper">
-    <div class="time-part seconds tens">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..5).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
-      </div>
-    </div>
-    <div class="time-part seconds ones">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..9).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="time-part-wrapper">
-    <div class="time-part milliseconds hundreds">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..9).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
-      </div>
-    </div>
-    <div class="time-part milliseconds tens">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..9).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
-      </div>
-    </div>
-    <div class="time-part milliseconds ones">
-      <div class="digit-wrapper">
-        <span class="digit">0</span>
-        <% (-0..9).each do |i| %>
-          <span class="digit">
-            <%= i %>
-          </span>
-        <% end %>
+  <div class="col">
+    <div class="container-card">
+      <div class="header-textCard">
+        <p class="text-center">DIAS</p>
+        <p>{{Time | date:'dd'}}</p>
       </div>
     </div>
   </div>
 </div>
+<h1>{{Time | date:'hh:mm:ss'}}</h1>
+

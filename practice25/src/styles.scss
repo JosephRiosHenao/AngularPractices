@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~compass-mixins/lib/compass/css3';
+@import '../node_modules/compass-mixins/lib/compass/css3/';
+
 body {
     background: #333;
     color: #fff;
     font-family: 'Archivo Black', sans-serif;
-    font-size: 5em;
     text-align: center;
     text-transform: uppercase;
     display: flex;
@@ -12,174 +14,66 @@ body {
     height: 100vh;
   }
   
-  .heart {
-    fill: red;
-    position: relative;
-    top: 5px;
-    width: 1em;
-    animation: pulse 1s ease infinite, 
+
+  .corazon {
+    animation: latido 1s infinite;
+    background-color: red;
+    display: inline-block;
+    height: 50px;
+    margin: 0 10px;
+    top: 0;
+    transform: rotate(-45deg);
+    left: 45%; 
+    top: 45%;
+    width: 50px;
   }
   
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
+  .corazon:before, .corazon:after {
+    content: "";
+    background-color: red;
+    border-radius: 50%;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+  }
+  
+  .corazon:before {
+    top: -25px;
+    left: 0;
+  }
+  
+  .corazon:after {
+    left: 25px;
+    top: 0;
+  }
+  
+  @keyframes latido {
+    0%{
+      transform: scale( 2 )
+        rotate(-45deg);    
+    }
+    50%{
+      transform: scale( 1 )
+        rotate(-45deg);
+    }
+    0%{
+      transform: scale( 2 )
+      rotate(-45deg);
+    }
   }
 
+.container-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
 
+.header-textCard {
+  font-size: smaller;
+  font-weight: lighter;
+  text-align: center;
+  border-bottom: 1px dotted black;
 
-  /* Play with speed and easing of the animation */
-  $one-second: 1s;
-  $easing: cubic-bezier(1,0,1,0);
-  /* =========================================== */
-  
-  @mixin animate($count) {
-    $step: (100 / $count);
-    $progress: 0%;
-    $translate: -$digit-height;
-    @while $progress < 100 {
-      #{$progress} { transform: translateY($translate); }
-      $progress: $progress + $step;
-      $translate: $translate - $digit-height;
-    }
-  }
-  
-  $digit-height: 100px;
-  
-  .digit {
-    display: inline-block;
-    font-size: 100px;
-    color: rgba(255,255,255,1);
-    height: $digit-height;
-    line-height: 1;
-  }
-  
-  .time-part-wrapper {
-    display: inline-block;
-    margin-right: 30px;
-    position: relative;
-  
-    &:not(:last-child):after {
-      content: ":";
-      display: block;
-      width: 30px;
-      height: 100px;
-      position: absolute;
-      top: 0px;
-      right: -30px;
-      color: rgba(255,255,255,1);
-      font-size: 100px;
-      line-height: 0.9;
-    }
-  }
-  
-  .time-part {
-    width: 75px;
-    text-align: center;
-    height: $digit-height;
-    overflow: hidden;
-    display: inline-block;
-    margin-left: 0px;
-    box-sizing: border-box;
-    
-    .digit-wrapper {
-      animation-timing-function: $easing;
-    }
-    &.hours {
-      &.tens .digit-wrapper {
-        animation-name: hours-tens;
-        animation-duration: $one-second * 10 * 6 * 10 * 6 * 10 * 6;
-        animation-iteration-count: 1;
-      }
-      &.ones .digit-wrapper {
-        animation-name: hours-ones;
-        animation-duration: $one-second * 10 * 6 * 10 * 6 * 10;
-        animation-iteration-count: 6;
-      }
-    }
-    &.minutes {
-      &.tens .digit-wrapper {
-        animation-name: minutes-tens;
-        animation-duration: $one-second * 10 * 6 * 10 * 6;
-        animation-iteration-count: 60;
-      }
-      &.ones .digit-wrapper {
-        animation-name: minutes-ones;
-        animation-duration: $one-second * 10 * 6 * 10;
-        animation-iteration-count: 360;
-      }
-    }
-    
-    &.seconds {
-      &.tens .digit-wrapper {
-        animation-name: seconds-tens;
-        animation-duration: $one-second * 10 * 6;
-        animation-iteration-count: 3600;
-      }
-      &.ones .digit-wrapper {
-        animation-name: seconds-ones;
-        animation-duration: $one-second * 10;
-        animation-iteration-count: 21600;
-      }
-    }
-    
-    &.milliseconds {
-      &.hundreds .digit-wrapper {
-        animation-name: hundredths-tens;
-        animation-duration: $one-second;
-        animation-iteration-count: 216000;
-      }
-      &.tens .digit-wrapper {
-        animation-name: hundredths-ones;
-        animation-duration: $one-second / 10;
-        animation-iteration-count: 2160000;
-      }
-      &.ones .digit-wrapper {
-        animation-name: milliseconds;
-        animation-duration: $one-second / 100;
-        animation-iteration-count: 21600000;
-      }
-    }
-  }
-  @keyframes hours-tens {
-    @include animate(6)
-  }
-  @keyframes hours-ones {
-    @include animate(10)
-  }
-  @keyframes minutes-tens {
-    @include animate(6);
-  }
-  @keyframes minutes-ones {
-    @include animate(10);
-  }
-  
-  @keyframes seconds-tens {
-    @include animate(6);
-  }
-  @keyframes seconds-ones {
-    @include animate(10);
-  }
-  
-  @keyframes hundredths-tens {
-    @include animate(10);
-  }
-  @keyframes hundredths-ones {
-    @include animate(10);
-  }
-  @keyframes milliseconds {
-    @include animate(10);
-  }
-  
-  
-  body {
-    font-family: Verdana;
-    background: #000000;
-    margin: 0;
-  }
-  
-  .wrapper {
-    margin: 50px auto;
-    width: 1366px;
-    position: relative;
-  }
+}
