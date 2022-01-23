@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="box-items">
-            <div class="card" *ngFor="let item of studentsDB" (click)="selectStudent(item.code)" [ngClass]="{'bg-warning ': item.code == studentForm.code}">
+            <div class="card" *ngFor="let item of studentsDB; let i = index" (click)="selectStudent(i)" [ngClass]="{'bg-warning ': item.code == studentForm.code}">
                 <div class="card-body">
                     <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code}}</span> <span>{{item.name}} {{item.lastName}}</span> <span class="badge bg-danger">{{item.birthYear | date: 'dd/MM/yyyy'}}</span></div>
                 </div>
@@ -42,5 +42,5 @@
 </div>
 
 <div class="float-state">
-    <div class="btn-group"><button class="btn btn-lg btn-block btn-warning">LOAD</button><button class="btn btn-lg btn-block btn-success">SAVE</button></div>
+    <div class="btn-group"><button class="btn btn-lg btn-block btn-warning" (click)="load()">LOAD</button><button class="btn btn-lg btn-block btn-success" (click)="save()">SAVE</button></div>
 </div>
