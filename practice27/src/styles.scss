@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+.item-data {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.float-state {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
