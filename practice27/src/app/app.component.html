@@ -1,40 +1,82 @@
 <div class="container">
-    <div class="col-md-6">
-        <div class="card text-left">
-            <div class="card-body ">
-                <h1 class="card-title text-center fw-1 fs-1">STUDENT</h1>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="studentForm.name">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="card text-left ">
+                <div class="card-body ">
+                    <h1 class="card-title text-center fw-1 fs-1">STUDENT</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="studentForm.name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastName">Last Name:</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="studentForm.lastName">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="birthYear">Birth Year:</label>
+                                <input type="date" class="form-control" id="birthYear" name="birthYear" [(ngModel)]="studentForm.birthYear">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="lastName">Last Name:</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="studentForm.lastName">
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="birthYear">Birth Year:</label>
-                            <input type="date" class="form-control" id="birthYear" name="birthYear" [(ngModel)]="studentForm.birthYear">
-                        </div>
+
+                    <button *ngIf="!editModeStudents" class="btn btn-success btn-block btn-lg text-center w-100 mt-3" (click)="addStudent()">CREATE STUDENT</button>
+                    <div class="row mt-3" *ngIf="editModeStudents">
+                        <div class="col-md-6"><button class="btn btn-lg btn-block btn-danger w-100" (click)="deleteStudent()">DELETE</button></div>
+                        <div class="col-md-6"><button class="btn btn-lg btn-block btn-success w-100" (click)="selectStudent()">CONTINUE</button></div>
                     </div>
                 </div>
-
-                <button *ngIf="!editMode" class="btn btn-success btn-block btn-lg text-center w-100 mt-3" (click)="addStudent()">CREATE STUDENT</button>
-                <div class="row mt-3" *ngIf="editMode">
-                    <div class="col-md-6"><button class="btn btn-lg btn-block btn-danger w-100" (click)="deleteStudent()">DELETE</button></div>
-                    <div class="col-md-6"><button class="btn btn-lg btn-block btn-success w-100" (click)="selectStudent()">CONTINUE</button></div>
+            </div>
+            <div class="box-items">
+                <div class="card" *ngFor="let item of studentsDB; let i = index" (click)="selectStudent(i)" [ngClass]="{'bg-warning ': item.code == studentForm.code}">
+                    <div class="card-body">
+                        <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code | number:'3.0-5'}}</span> <span>{{item.name}} {{item.lastName}}</span> <span class="badge bg-danger">{{item.birthYear | date: 'dd/MM/yyyy'}}</span></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="box-items">
-            <div class="card" *ngFor="let item of studentsDB; let i = index" (click)="selectStudent(i)" [ngClass]="{'bg-warning ': item.code == studentForm.code}">
-                <div class="card-body">
-                    <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code}}</span> <span>{{item.name}} {{item.lastName}}</span> <span class="badge bg-danger">{{item.birthYear | date: 'dd/MM/yyyy'}}</span></div>
+        <div class="col-md-6 ">
+            <div class="card text-left ">
+                <div class="card-body ">
+                    <h1 class="card-title text-center fw-1 fs-1">TEACHER</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="teacherForm.name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tel">Telphone:</label>
+                                <input type="text" class="form-control" id="tel" name="tel" [(ngModel)]="teacherForm.tel">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="dirr">Direction House:</label>
+                                <input type="text" class="form-control" id="dirr" name="dirr" [(ngModel)]="teacherForm.dirr">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button *ngIf="!editModeTeachers" class="btn btn-success btn-block btn-lg text-center w-100 mt-3" (click)="addTeacher()">CREATE TEACHER</button>
+                    <div class="row mt-3" *ngIf="editModeTeachers">
+                        <div class="col-md-6"><button class="btn btn-lg btn-block btn-danger w-100" (click)="deleteTeacher()">DELETE</button></div>
+                        <div class="col-md-6"><button class="btn btn-lg btn-block btn-success w-100" (click)="selectTeacher()">CONTINUE</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-items">
+                <div class="card" *ngFor="let item of teachersDB; let i = index" (click)="selectTeacher(i)" [ngClass]="{'bg-warning ': item.code == teacherForm.code}">
+                    <div class="card-body">
+                        <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code | number:'3.0-5'}}</span> <span>{{item.name}} <span class="badge bg-primary">{{item.tel}}</span></span> <span class="badge bg-danger">{{item.dirr}}</span></div>
+                    </div>
                 </div>
             </div>
         </div>

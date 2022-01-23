@@ -1,3 +1,4 @@
+import { Teacher } from './models/teacher.model';
 import { Component } from '@angular/core';
 import { Student } from './models/student.model';
 import { DatabaseService } from './services/database.service';
@@ -9,56 +10,100 @@ import { DatabaseService } from './services/database.service';
 export class AppComponent {
 
 
-  constructor(private database:DatabaseService) {}
+  constructor(private database:DatabaseService) {
+    this.load()
 
-  studentsDB:Student[] = [
-    {name: 'Juan', lastName: 'Perez', code: 0, birthYear: new Date()},
-    {name: 'Juan', lastName: 'Perez', code: 1, birthYear: new Date()},
-    {name: 'Juan', lastName: 'Perez', code: 2, birthYear: new Date()},
-    {name: 'Juan', lastName: 'Perez', code: 3, birthYear: new Date()},
-  ]
+  }
+
+  studentsDB:Student[] = []
+  teachersDB:Teacher[] = []
 
   studentForm:Student = new Student()
-  editMode:boolean = false;
+  teacherForm:Teacher = new Teacher()
 
-  cleanForm(){
+  editModeStudents:boolean = false;
+  editModeTeachers:boolean = false;
+
+  cleanFormStudent(){
     this.studentForm = new Student()
   }
+  cleanFormTeacher(){
+    this.teacherForm = new Teacher()
+  }
+
   // CREATE
   addStudent(){
-    this.studentForm.code = this.studentsDB.length
+    this.studentForm.code = this.randomNumber(0,999)
     this.studentsDB.push(this.studentForm)
-    this.cleanForm()
+    this.cleanFormStudent()
+  }
+  addTeacher(){
+    this.teacherForm.code = this.randomNumber(0,999)
+    this.teachersDB.push(this.teacherForm)
+    this.cleanFormTeacher()
   }
   // READ
-  selectStudent(index:number = 0){
-    if (this.editMode && this.studentsDB[index] == this.studentForm) {
-      this.editMode = false;
+  selectStudent(index:number = -1){
+    if (index == -1){
+      this.studentForm = new Student()
+      this.editModeStudents = false;
+    }else if (this.editModeStudents && this.studentsDB[index] == this.studentForm) {
+      this.editModeStudents = false;
       this.studentForm = new Student()
     }else{
-      this.editMode = true;
+      this.editModeStudents = true;
       this.studentForm = this.studentsDB[index]
     }
   }
+  selectTeacher(index:number = -1){
+    if (index == -1){
+      this.teacherForm = new Teacher()
+      this.editModeTeachers = false;
+    }else if (this.editModeTeachers && this.teachersDB[index] == this.teacherForm) {
+      this.editModeTeachers = false;
+      this.teacherForm = new Teacher()
+    }else {
+      this.editModeTeachers = true;
+      this.teacherForm = this.teachersDB[index]
+    }
+  }
+
   // UPDATE
-  editStudent(code:number){
-    this.studentsDB[code] = this.studentForm
-    this.cleanForm()
+  editStudent(index:number){
+    this.studentsDB[index] = this.studentForm
+    this.cleanFormStudent()
+  }
+  editTeacher(index:number){
+    this.teachersDB[index] = this.teacherForm
   }
   // DELETE
   deleteStudent(){
-    console.log(this.studentForm.code)
-    this.studentsDB.splice(this.studentForm.code,1)
-    this.editMode = false;
-    this.cleanForm()
+    this.studentsDB.filter((item, index) => {
+      if (item.code == this.studentForm.code){
+        this.studentsDB.splice(index,1)
+      }
+    })
+    this.editModeStudents = false;
+    this.cleanFormStudent()
+  }
+  deleteTeacher(){
+    this.teachersDB.splice(this.teacherForm.code,1)
+    this.editModeTeachers = false;
+    this.cleanFormTeacher()
   }
 
   save(){
-    this.database.saveData(this.studentsDB)
+    this.database.saveData(this.studentsDB, this.teachersDB)
   }
 
   load(){
-    this.studentsDB = this.database.loadData()
+    let DB:{students:Student[], teachers:Teacher[]} = this.database.loadData()
+    this.studentsDB = DB.students;
+    this.teachersDB = DB.teachers;
   }
 
+
+  randomNumber(min:number, max:number) {
+    return Math.random() * (max - min) + min;
+  }
 }
