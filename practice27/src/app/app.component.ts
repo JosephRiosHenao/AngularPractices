@@ -87,7 +87,11 @@ export class AppComponent {
     this.cleanFormStudent()
   }
   deleteTeacher(){
-    this.teachersDB.splice(this.teacherForm.code,1)
+    this.teachersDB.filter((item, index) => {
+      if (item.code == this.teacherForm.code){
+        this.teachersDB.splice(index,1)
+      }
+    })
     this.editModeTeachers = false;
     this.cleanFormTeacher()
   }
@@ -104,6 +108,6 @@ export class AppComponent {
 
 
   randomNumber(min:number, max:number) {
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min) + min);
   }
 }
