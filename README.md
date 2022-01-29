@@ -19,3 +19,4 @@
 - practice23/ => Activity Select and Radio Buttons
 - practice24/ => Activity Forms
 - practice27/ => CRUD Student & Teacher
+- practice28/ => Firebase practice
