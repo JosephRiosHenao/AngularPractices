@@ -38,6 +38,16 @@
                         <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code | number:'3.0-5'}}</span> <span>{{item.name}} {{item.lastName}}</span> <span class="badge bg-danger">{{item.birthYear | date: 'dd/MM/yyyy'}}</span></div>
                     </div>
                 </div>
+                <div class="card mt-2">
+                    <input type="text" id="searchStudents" name="searchStudents" class="form-control" [(ngModel)]="searchParamStudents" (ngModelChange)="searchStudents()">
+                    <button class="btn btn-success btn-lg btn-block w-100" (click)="searchStudents()">SEARCH</button>
+                </div>
+                
+                <div class="card" *ngFor="let item of studentsQuerryDB; let i = index">
+                    <div class="card-body">
+                        <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code | number:'3.0-5'}}</span> <span>{{item.name}} {{item.lastName}}</span> <span class="badge bg-danger">{{item.birthYear | date: 'dd/MM/yyyy'}}</span></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-6 ">
@@ -74,6 +84,16 @@
             </div>
             <div class="box-items">
                 <div class="card" *ngFor="let item of teachersDB; let i = index" (click)="selectTeacher(i)" [ngClass]="{'bg-warning ': item.code == teacherForm.code}">
+                    <div class="card-body">
+                        <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code | number:'3.0-5'}}</span> <span>{{item.name}} <span class="badge bg-primary">{{item.tel}}</span></span> <span class="badge bg-danger">{{item.dirr}}</span></div>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <input type="text" id="searchTeacher" name="searchTeacher" class="form-control" [(ngModel)]="searchParamTeachers" (ngModelChange)="searchTeachers()">
+                    <button class="btn btn-success btn-lg btn-block w-100" (click)="searchTeachers()">SEARCH</button>
+                </div>
+                
+                <div class="card" *ngFor="let item of teachersQuerryDB; let i = index">
                     <div class="card-body">
                         <div class="fs-5 item-data w-100 h-100"><span class="badge bg-info me-2">{{item.code | number:'3.0-5'}}</span> <span>{{item.name}} <span class="badge bg-primary">{{item.tel}}</span></span> <span class="badge bg-danger">{{item.dirr}}</span></div>
                     </div>

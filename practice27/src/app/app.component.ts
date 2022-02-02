@@ -17,6 +17,11 @@ export class AppComponent {
 
   studentsDB:Student[] = []
   teachersDB:Teacher[] = []
+  teachersQuerryDB:Teacher[] = []
+  studentsQuerryDB:Student[] = []
+
+  searchParamTeachers:string = ""
+  searchParamStudents:string = ""
 
   studentForm:Student = new Student()
   teacherForm:Teacher = new Teacher()
@@ -106,6 +111,23 @@ export class AppComponent {
     this.teachersDB = DB.teachers;
   }
 
+  searchTeachers(){
+    this.teachersQuerryDB = []
+    this.teachersDB.filter((item, index) => {
+      if (item.name.toLowerCase().includes(this.searchParamTeachers.toLowerCase())){
+        this.teachersQuerryDB.push(item)
+      }
+    })
+  }
+
+  searchStudents(){
+    this.studentsQuerryDB = []
+    this.studentsDB.filter((item, index) => {
+      if (item.name.toLowerCase().includes(this.searchParamStudents.toLowerCase())){
+        this.studentsQuerryDB.push(item)
+      }
+    })
+  }
 
   randomNumber(min:number, max:number) {
     return Math.floor(Math.random() * (max - min) + min);
